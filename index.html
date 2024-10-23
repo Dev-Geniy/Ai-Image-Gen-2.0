@@ -17,41 +17,92 @@
         </div>
     </div>
   
-  <div class="container-2">
-    <!-- Кнопки генерации (уже существуют) -->
+    <div class="container-2">
+        <!-- Кнопки генерации (уже существуют) -->
+        
+        <div class="vertical-containers">
+            <div class="left-container">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>Моя история запросов:</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="right-container">
+    <h2>Настройки генерации изображения</h2>
     
-    <div class="vertical-containers">
-        <div class="left-container">
-            <table id="historyTable">
-                <thead>
-                    <tr>
-                        <th>Моя история запросов:</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+    <label for="style-select">Выберите стиль:</label>
+    <select id="style-select">
+        <option value="">--Выберите стиль--</option>
+        <option value="impressionism">Импрессионизм</option>
+        <option value="surrealism">Сюрреализм</option>
+        <option value="pop-art">Поп-арт</option>
+        <option value="cubism">Кубизм</option>
+        <option value="realism">Реализм</option>
+    </select>
+    
+    <label for="format-select">Выберите формат:</label>
+    <select id="format-select">
+        <option value="">--Выберите формат--</option>
+        <option value="square">Фотография</option>
+        <option value="portrait">Портрет</option>
+        <option value="landscape">Пейзаж</option>
+    </select>
+
+    <label for="tone-select">Выберите тон:</label>
+    <select id="tone-select">
+        <option value="">--Выберите тон--</option>
+        <option value="warm">Тёплые тона</option>
+        <option value="cool">Холодные тона</option>
+        <option value="monochrome">Монохром</option>
+        <option value="pastel">Пастельные цвета</option>
+        <option value="contrast">Контрастные цвета</option>
+    </select>
+
+    <label for="theme-select">Выберите тему:</label>
+    <select id="theme-select">
+        <option value="">--Выберите тему--</option>
+        <option value="nature">Природа</option>
+        <option value="urban">Городские пейзажи</option>
+        <option value="fantasy">Фантазия</option>
+        <option value="sci-fi">Научная фантастика</option>
+        <option value="retro">Ретро</option>
+    </select>
+</div>
+
         </div>
-        <div class="right-container">
-                        <div id="gallery" class="gallery-container"></div>
+        
+        <div class="bottom-container">
+            <!-- Здесь будет что-то еще -->
+<div class="news-container">
+    <p style="font-family: 'Comic Sans MS', cursive;">20.11 Запланирован запуск платформы для продажи ваших произведений!</p>
+    <p style="font-family: 'Comic Sans MS', cursive;">Узнайте, как заработать от 2000$ на сгенерированных картинках!</p>
+    <p style="font-family: 'Comic Sans MS', cursive;">Подпишитесь на нашего телеграм бота для получения обновлений!</p>
+</div>
         </div>
     </div>
-    
-    <div class="bottom-container">
-        <!-- Здесь будет что-то еще -->
-        <p>Здесь будет контент для нижнего контейнера.</p>
+    <div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="generated-images-container"></div>
+        <div class="image-buttons">
+            <button id="download-button" style="display: none;">Скачать</button>
+            <button id="share-button" style="display: none;">Поделиться</button>
+        </div>
     </div>
 </div>
   
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="generated-images-container"></div>
-            <a id="download" href="#" style="display: none;">Скачать</a>
-        </div>
+  
+
+    <div class="loading" id="loading-spinner" style="display:none;">
+        <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
     </div>
 
-<div class="loading" id="loading-spinner" style="display:none;">
-    <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
+  <div class="donation-button">
+    <button onclick="openDonationPage()">₿ Поддержка и развитие проекта ₿</button>
 </div>
 
     <script src="script.js"></script>
