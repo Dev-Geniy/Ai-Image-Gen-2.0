@@ -1,3 +1,5 @@
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,7 +11,7 @@ body {
 header {
     width: 100%;
     background-color: rgba(13, 13, 13, 0.8);
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
     box-shadow: 0 5px 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.2);
@@ -35,8 +37,8 @@ h1 {
 }
 
 textarea {
-    width: 80%;
-    height: 100px;
+    width: 90%;
+    height: 50px;
     margin-bottom: 20px;
     padding: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -107,53 +109,76 @@ button:hover {
     font-size: 1.5rem;
 }
 
-    .twitter-icon {
-        position: absolute;
-        top: 30px;
-        left: 20px;
-        opacity: 0.25;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-
-    .twitter-icon:hover {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-
-    .lp-icon {
-            position: fixed;
-            background-color: #4444;
-            bottom: 10px;
-            left: 25%;
-            opacity: 0.35;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+ .container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-    .lp-icon:hover {
-        opacity: 1;
-        transform: scale(1.3);
-    }
+.vertical-containers {
+    display: flex;
+    width: 100%;
+    opacity: 0.8; /* Прозрачность */
+}
 
-.lr-icon {
-            position: fixed;
-            background-color: #4444;
-            bottom: 10px;
-            right: 25%;
-            opacity: 0.55;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+.left-container,
+.right-container {
+  
+    width: 50%; /* Каждый контейнер занимает половину ширины */
+    padding: 20px;
+}
 
-    .lr-icon:hover {
-        opacity: 1;
-        transform: scale(1.3);
-    }
+#historyTable {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон таблицы */
+    border-collapse: collapse;
+}
+
+#historyTable th,
+#historyTable td {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* Стили для ячеек таблицы с запросами */
+#historyTable td {
+    transition: all 0.3s ease; /* Плавный переход при изменениях */
+    padding: 10px;
+}
+
+/* Эффект при наведении на ячейку таблицы */
+#historyTable td:hover {
+    font-size: 1.2em; /* Увеличиваем размер текста */
+    font-weight: bold; /* Делаем текст жирным */
+    background-color: rgba(200, 200, 200, 0.2); /* Более светлый фон */
+    cursor: pointer; /* Указатель на курсоре */
+}
+
+.bottom-container {
+    width: 90%; /* Во всю ширину */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Примерный фон для нижнего контейнера */
+}
+
+/* Г А Л Е Р Е Я М И Н И А Т Ю Р ===============*/
+/* - - - - З А Т У Х А Н И Е И G I F - - - - -  */
+/* Стиль для затемнения фона во время загрузки */
+.loading {
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    width: 100%; /* На всю ширину */
+    height: 100%; /* На всю высоту */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    display: flex; /* Flexbox для центрирования */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    z-index: 9999; /* Высокий индекс слоя для отображения поверх остальных элементов */
+    display: none; /* Скрыть по умолчанию */
+}
+
+.loading-gif {
+    width: 100px; /* Ширина анимации загрузки */
+    height: 100px; /* Высота анимации загрузки */
+}
