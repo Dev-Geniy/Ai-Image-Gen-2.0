@@ -6,6 +6,7 @@ body {
     background-size: cover;
 }
 
+/*Анимация заголовка*/
 header {
     width: 100%;
     background-color: rgba(13, 13, 13, 0.8);
@@ -17,6 +18,69 @@ header {
     top: 0;
     left: 0;
     z-index: 999;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-animation {
+    width: 50px;
+    height: auto;
+    margin-left: 10px;
+    opacity: 0;
+    animation: fade-in 1.3s forwards 3.2s;
+}
+
+.animated-title {
+    font-size: 36px;
+    font-family: 'Arial Black', sans-serif;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: wave 1.5s forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.animated-title span {
+    display: inline-block;
+    animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.animated-title::before {
+    content: attr(data-title);
+    display: inline-block;
 }
 
 h1 {
@@ -159,13 +223,92 @@ button:hover {
     cursor: pointer;
 }
 
+/* ==============ЖЕСТЬ !!!============== */
 .bottom-container {
     width: 85%;
-    padding: 10px;
+    padding: 15px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     margin: 20px;
 }
+
+.news-item {
+    animation: slideDown 0.5s forwards;
+    opacity: 0;
+}
+
+.news-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.news-text {
+    font-family: 'Arial Black', sans-serif; /* Подберите шрифт по вашему вкусу */
+    font-size: 18px;
+    color: black;
+    text-shadow: 0 0 20px lightblue; /* Неоновый эффект */
+    line-height: 1.5;
+}
+
+.subscribe {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.subscribe-text {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 24px;
+    color: black;
+    text-shadow: 0 0 10px lightblue;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    opacity: 0.8;
+    transition: transform 0.3s;
+    border: 2px solid black; /* Черный контур */
+    border-radius: 50%; /* Круглая форма */
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    transform: scale(1.6); /* Увеличение при наведении */
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация для каждого новостного элемента */
+.news-item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.news-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.news-item:nth-child(3) {
+    animation: slideDown 0.5s forwards, slideIn 0.5s forwards; /* Анимация появления для третьего элемента */
+}
+
+/* ==============КОНЕЦ ЖЕСТИ !!!============== */
 
 /* Загрузка */
 .loading {
@@ -196,14 +339,16 @@ button:hover {
 .donation-button button {
     padding: 10px 20px;
     background-color: #4444;
-    color: white;
+    color: Black;
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    font-size: 18px;
 }
 
 .donation-button button:hover {
-    background: #444;
+    background: none;
+    transform: scale(1.1); /* Увеличение */
 }
 
 /* Фильтры */
@@ -211,7 +356,7 @@ select {
     width: 100%;
     padding: 10px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
     color: black;
     font-size: 16px;
     border-radius: 5px;
@@ -246,8 +391,11 @@ label {
 
 /* Иконка загрузки */
 .upload-icon {
-    margin-right: 8px;
-    font-size: 28px;
+    width: 34px; /* Установите желаемый размер */
+    height: 34px; /* Установите желаемый размер */
+    fill: white; /* Изменяет цвет, если это SVG */
+    margin-right: 20px; /* Отступ справа для пространства между иконкой и текстом */
+     margin-right: 20px; /* Отступ слева*/
 }
 
 /* КРЕСТИК*/
@@ -282,6 +430,7 @@ label {
 }
 
 /* Стили textarea */
+/* Стили textarea */
 #text-input {
     width: 100%;
     padding: 50px;
@@ -291,10 +440,43 @@ label {
     box-sizing: border-box;
     font-size: 20px;
     color: white;
+    background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный фон для textarea */
     overflow-y: scroll;
     scrollbar-width: none;
+    transition: border 0.3s ease; /* Плавный переход для рамки */
 }
 
 #text-input::-webkit-scrollbar {
     display: none;
+}
+
+/* Эффект светового импульса для рамки */
+@keyframes borderPulse {
+    0%, 100% {
+        border-color: transparent;
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Без света */
+    }
+    50% {
+        border-color: white; /* Цвет рамки */
+        box-shadow: 0 0 10px white, 0 0 20px white; /* Подсветка рамки */
+    }
+}
+
+/* Эффект светового импульса для внутреннего поля */
+@keyframes innerPulse {
+    0%, 100% {
+        background-color: rgba(0, 0, 0, 0.1); /* Исходный цвет */
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.1); /* Слабо светящийся цвет */
+    }
+}
+
+/* Стили для активного состояния рамки */
+.pulsing {
+    animation: borderPulse 1s infinite; /* Бесконечная анимация для рамки */
+}
+
+.pulsing-inner {
+    animation: innerPulse 1s infinite; /* Бесконечная анимация для внутреннего поля */
 }
