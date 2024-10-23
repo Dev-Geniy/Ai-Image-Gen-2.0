@@ -8,36 +8,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const downloadButton = document.getElementById("download");
     const closeButton = document.querySelector(".close");
 
-    // Обработчик события для кнопки генерации одного изображения
+    //Кнопка 1 изображение
 generateButton.addEventListener("click", function () {
-        generateImage(1); // Генерируем одно изображение
+        generateImage(1);
     });
 
-    // Обработчик события для кнопки генерации 5 изображений
-    generateMultipleButton.addEventListener("click", function () {
-        generateImage(5); // Генерируем 5 изображений
+    //Кнопка 5 изображений
+generateMultipleButton.addEventListener("click", function () {
+        generateImage(5);
     });
 
-    // Обработчик события для кнопки закрытия модального окна
+    //Закрыть модальное окно
     closeButton.onclick = function() {
-        modal.style.display = "none"; // Закрыть модальное окно
-        generatedImagesContainer.innerHTML = ''; // Очистить контейнер изображений
+        modal.style.display = "none";
+        generatedImagesContainer.innerHTML = '';
     }
 
-    // Закрыть модальное окно при нажатии на область вне модального окна
+    // Закрыть при нажатии на область вне модального окна
     window.onclick = function(event) {
         if (event.target === modal) {
             modal.style.display = "none";
-            generatedImagesContainer.innerHTML = ''; // Очистить контейнер изображений
+            generatedImagesContainer.innerHTML = '';
         }
     }
 
-    // Функция генерации изображения (или изображений)
+    // Функция генерации
     function generateImage(count) {
-        const description = textInput.value.trim(); // Получаем значение из поля ввода
+        const description = textInput.value.trim();
         if (!description) {
-            alert("Пожалуйста, введите описание для генерации изображения."); // Предупреждение, если поле пустое
-            return; // Выход из функции, если поле пустое
+            alert("Пожалуйста, введите описание для генерации изображения.");
+            return;
         }
 
         displayLoadingState(true);
@@ -74,58 +74,53 @@ generateButton.addEventListener("click", function () {
             });
     }
 
-    // Создание описания на основе ввода текста
     function createDescription(inputText) {
-        return inputText || "просто изображение"; // Если ничего не введено, генерируем стандартное изображение
+        return inputText || "просто картинка";
     }
 
-    // Генерация случайного числа для seed
     function generateRandomSeed() {
         return Math.floor(Math.random() * 1e9);
     }
 
-    // Отображение состояния загрузки
     function displayLoadingState(isLoading) {
         loadingSpinner.style.display = isLoading ? "block" : "none";
-        generateButton.disabled = isLoading; // Заблокировать кнопку, пока идет загрузка
-        generateMultipleButton.disabled = isLoading; // Заблокировать кнопку, пока идет загрузка
+        generateButton.disabled = isLoading;
+        generateMultipleButton.disabled = isLoading;
         if (isLoading) {
-            modal.style.display = "none"; // Закрыть модальное окно, если оно открыто
+            modal.style.display = "none";
         }
     }
 
-    // Отображение сгенерированных изображений в модальном окне
     function displayGeneratedImages(urls) {
-        generatedImagesContainer.innerHTML = ''; // Очистить контейнер изображений
+        generatedImagesContainer.innerHTML = ''; 
         urls.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
-            img.style.width = "100%"; // Установка ширины изображения
-            img.style.borderRadius = "5px"; // Скругление углов
-            img.style.marginBottom = "10px"; // Отступ между изображениями
-            generatedImagesContainer.appendChild(img); // Добавление изображения в контейнер
+            img.style.width = "100%";
+            img.style.borderRadius = "10px";
+            img.style.marginBottom = "20px";
+            generatedImagesContainer.appendChild(img);
         });
-        modal.style.display = "block"; // Открыть модальное окно
+        modal.style.display = "block";
     }
 });
 
-// И Н О В А Ц И И ==========================
+//Дополнения версии 2.0
 document.addEventListener('DOMContentLoaded', () => {
-    // Функция для обновления таблицы истории запросов
+    
     function updateHistoryTable() {
         const history = JSON.parse(localStorage.getItem('history')) || [];
         const tableBody = document.querySelector('#historyTable tbody');
-        tableBody.innerHTML = ''; // Очищаем таблицу
+        tableBody.innerHTML = '';
 
         history.forEach(item => {
             const row = document.createElement('tr');
             const cell = document.createElement('td');
             cell.textContent = item;
-            cell.style.cursor = 'pointer'; // Меняем курсор на указатель при наведении
+            cell.style.cursor = 'pointer';
 
-            // Добавляем обработчик клика
             cell.onclick = () => {
-                document.querySelector('#text-input').value = item; // Заполнение поля ввода
+                document.querySelector('#text-input').value = item;
             };
 
             row.appendChild(cell);
@@ -133,20 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Функция для добавления запроса в историю
     function addToHistory(request) {
         const history = JSON.parse(localStorage.getItem('history')) || [];
         
-        // Удаляем запрос, если он уже есть, чтобы добавить его в конец
         const filteredHistory = history.filter(item => item !== request);
-        filteredHistory.push(request); // Добавляем новый запрос
+        filteredHistory.push(request);
 
-        // Сохраняем только последние 5 запросов
         localStorage.setItem('history', JSON.stringify(filteredHistory.slice(-5)));
         updateHistoryTable();
     }
 
-    // Проверяем наличие кнопок и добавляем обработчики событий
     const generateButton = document.querySelector('#generate');
     const generateMultipleButton = document.querySelector('#generate-multiple');
 
@@ -155,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const request = document.querySelector('#text-input').value;
             if (request) {
                 addToHistory(request);
-                // Ваша логика для генерации изображения здесь
+
             } else {
                 console.warn('Пожалуйста, введите текст запроса.');
             }
@@ -169,8 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const request = document.querySelector('#text-input').value;
             if (request) {
                 for (let i = 0; i < 5; i++) {
-                    addToHistory(`${request} - Запрос ${i + 1}`); // Добавляем вариации запроса
-                    // Ваша логика для генерации нескольких изображений здесь
+                    addToHistory(`${request} - Запрос ${i + 1}`);
                 }
             } else {
                 console.warn('Пожалуйста, введите текст запроса.');
@@ -180,49 +170,45 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Кнопка с ID 'generate-multiple' не найдена.");
     }
 
-    // Инициализация таблицы при загрузке страницы
     updateHistoryTable();
 });
 
-// ГАЛЕРЕЯ МИНИАТЮР ============================== 
-// З А Т У Х А Н И Е =============================
+// Заставка, анимация и затухание
 document.addEventListener("DOMContentLoaded", function () {
     const loadingSpinner = document.getElementById('loading-spinner');
 
-    // Функция для показа анимации загрузки
+
     function showLoading() {
-        loadingSpinner.style.display = 'flex'; // Отображаем элемент как flex
+        loadingSpinner.style.display = 'flex';
     }
 
-    // Функция для скрытия анимации загрузки
     function hideLoading() {
-        loadingSpinner.style.display = 'none'; // Скрываем элемент
+        loadingSpinner.style.display = 'none';
     }
 
-    // Обновление анимации загрузки для кнопок генерации
     const generateButton = document.getElementById('generate');
     const generateMultipleButton = document.getElementById('generate-multiple');
 
     generateButton.addEventListener('click', () => {
-        showLoading(); // Показываем загрузку
-        generateImage(1); // Генерация одного изображения
-        hideLoading(); // Скрываем загрузку после генерации
+        showLoading();
+        generateImage(1);
+        hideLoading();
     });
 
     generateMultipleButton.addEventListener('click', () => {
-        showLoading(); // Показываем загрузку
-        generateImage(5); // Генерация нескольких изображений
-        hideLoading(); // Скрываем загрузку после генерации
+        showLoading();
+        generateImage(5);
+        hideLoading();
     });
 });
 
-// СТРАНИЦА ПОЖЕРТВОВАНИЙ ===================================================
+// СТРАНИЦА ПОДДЕРЖКИ ПРОЕКТА
 function openDonationPage() {
-    window.open('https://example.com/donate', '_blank'); // Замените на вашу страницу пожертвований
+    window.open('https://example.com/donate', '_blank');
 }
-// ====================================== СТИЛИ ==================================
+//Списки фильтров и дополнений промта
 function generateImage(numberOfImages = 1) {
-    // Получаем значения из полей ввода и списков
+    
     const prompt = document.getElementById('text-input').value;
     const style = document.getElementById('style-select').value;
     const format = document.getElementById('format-select').value;
@@ -232,14 +218,12 @@ function generateImage(numberOfImages = 1) {
     const character = document.getElementById('character-select').value;
     const place = document.getElementById('place-select').value;
 
-    // Проверка на наличие текста в поле ввода
     if (!prompt) {
         alert('Пожалуйста, введите описание картинки.');
         return;
     }
 
-    // Формирование полного запроса
-    let fullPrompt = prompt.trim(); // Удаляем лишние пробелы
+    let fullPrompt = prompt.trim();
     if (style) fullPrompt += ` в стиле ${style}`;
     if (format) fullPrompt += ` в формате ${format}`;
     if (tone) fullPrompt += ` с тонами ${tone}`;
@@ -248,16 +232,15 @@ function generateImage(numberOfImages = 1) {
     if (character) fullPrompt += ` с персонажем ${character}`;
     if (place) fullPrompt += ` в ${place}`;
 
-    // Генерация изображений
     for (let i = 0; i < numberOfImages; i++) {
         const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?nologo=1&seed=${generateRandomSeed()}&height=512&width=512`;
 
-        // Вызов функции для отображения изображения
         addGeneratedImage(imageUrl);
     }
 }
 
-// Функция для генерации случайного числа
+//С ЭТОГО МОМЕНТА НЕПОНЯТНО ЧТО ДАЛЬШЕ В КОДЕ ПРОИСХОДИТ ЧТО НУЖНО А ЧТО НЕТ, ЧТО РАБОТАЕТ А ЧТО НЕТ:
+
 function generateRandomSeed() {
     return Math.floor(Math.random() * 1000000); // Генерирует случайное число от 0 до 999999
 }
@@ -267,7 +250,7 @@ function addGeneratedImage(imageUrl) {
     const imgElement = document.createElement("img");
     imgElement.src = imageUrl;
     imgElement.alt = "Сгенерированное изображение";
-    imgElement.className = "generated-image"; // Добавьте класс для стилей
+    imgElement.className = "generated-image";
 
     // Добавление кнопок "Скачать" и "Поделиться"
     const buttonContainer = document.createElement("div");
@@ -325,37 +308,37 @@ function updatePrompt() {
     // Обновляем поле ввода промта
     document.getElementById("text-input").value = fullPrompt;
 }
-// ========== ФОН =================================================================
+//ФОН 
 
 document.getElementById('background-upload').addEventListener('change', function(event) {
     const file = event.target.files[0];
     
     if (file) {
-        // Создаем FormData и добавляем файл в него
-        const formData = new FormData();
-        formData.append('image', file); // 'image' - это ключ, который ожидает API Imgbb
 
-        uploadToImgbb(formData); // Передаем FormData в функцию загрузки
+        const formData = new FormData();
+        formData.append('image', file);
+
+        uploadToImgbb(formData);
     }
 });
 
 function uploadToImgbb(formData) {
-    const apiKey = '776322487f852a2b3752cd6e0a88e7ad'; // Ваш API ключ
-
-    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+    const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
+  
+   fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            const imageUrl = data.data.url; // Получаем URL загруженного изображения
+            const imageUrl = data.data.url;
             alert('Изображение успешно загружено! URL: ' + imageUrl);
             
-            // Устанавливаем изображение как фон
-            document.body.style.backgroundImage = `url(${imageUrl})`;
-            document.body.style.backgroundSize = 'cover'; // Покрытие всего фона
-            document.body.style.backgroundPosition = 'center'; // Центрирование фона
+// Устанавливаем изображение как фон
+document.body.style.backgroundImage = `url(${imageUrl})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
         } else {
             alert('Ошибка при загрузке изображения: ' + data.error.message);
         }
@@ -366,21 +349,63 @@ function uploadToImgbb(formData) {
     });
 }
 
-//=================== КРЕСТИК =========================================
+//КРЕСТИК ДЛЯ УДАЛЕНИЯ
 const textInput = document.getElementById('text-input');
 const clearTextButton = document.getElementById('clear-text');
 
-// Показываем или скрываем крестик в зависимости от содержимого текстового поля
 textInput.addEventListener('input', () => {
     if (textInput.value) {
-        clearTextButton.style.display = 'block'; // Показываем крестик, если есть текст
+        clearTextButton.style.display = 'block';
     } else {
-        clearTextButton.style.display = 'none'; // Скрываем крестик, если нет текста
+        clearTextButton.style.display = 'none';
     }
 });
 
-// Функция для очистки текстового поля
 clearTextButton.addEventListener('click', () => {
+    textInput.value = '';
+    clearTextButton.style.display = 'none';
+});
+
+//АНИМАЦИЯ НАЗВАНИЯ
+document.addEventListener("DOMContentLoaded", function() {
+    const titleElement = document.querySelector('.animated-title');
+    const titleText = titleElement.textContent;
+    
+    // Очищаем текст заголовка
+    titleElement.textContent = '';
+
+    // Разбиваем текст на буквы и добавляем в заголовок
+    titleText.split('').forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.textContent = letter === ' ' ? '\u00A0' : letter; // Заменяем пробел на неразрывный пробел
+        span.style.animationDelay = `${index * 0.2}s`; // Задержка для каждой буквы
+        titleElement.appendChild(span);
+    });
+});
+
+// СВЕЧЕНИЕ ТЕКСТЕРА //
+
+const clearText = document.getElementById('clear-text');
+
+// Функция для проверки состояния текстового поля
+function checkInput() {
+    if (textInput.value.trim() === '') {
+        textInput.classList.add('pulsing'); // Добавляем класс для рамки
+        textInput.classList.add('pulsing-inner'); // Добавляем класс для внутреннего поля
+    } else {
+        textInput.classList.remove('pulsing'); // Убираем класс, если есть текст
+        textInput.classList.remove('pulsing-inner'); // Убираем класс для внутреннего поля
+    }
+}
+
+// Проверяем состояние при загрузке страницы
+checkInput();
+
+// Проверяем состояние при вводе текста
+textInput.addEventListener('input', checkInput);
+
+// Обработчик для кнопки очистки текста
+clearText.addEventListener('click', function() {
     textInput.value = ''; // Очищаем текстовое поле
-    clearTextButton.style.display = 'none'; // Скрываем крестик
+    checkInput(); // Проверяем состояние
 });
