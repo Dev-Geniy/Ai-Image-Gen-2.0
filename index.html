@@ -6,11 +6,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a href="https://x.com/HotDog850642" target="_blank">
-    <img src="https://x.com/favicon.ico" class="twitter-icon" alt="Twitter Icon">
-  </a>
     <header>
-        <h1>AI Image</h1>
+        <h1>AI Image v2.0</h1>
     </header>
     <div class="container">
         <textarea id="text-input" placeholder="Введите подробное описание картинки..."></textarea>
@@ -19,6 +16,32 @@
             <button id="generate-multiple">Generate 5</button>
         </div>
     </div>
+  
+  <div class="container-2">
+    <!-- Кнопки генерации (уже существуют) -->
+    
+    <div class="vertical-containers">
+        <div class="left-container">
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Моя история запросов:</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="right-container">
+                        <div id="gallery" class="gallery-container"></div>
+        </div>
+    </div>
+    
+    <div class="bottom-container">
+        <!-- Здесь будет что-то еще -->
+        <p>Здесь будет контент для нижнего контейнера.</p>
+    </div>
+</div>
+  
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -27,13 +50,10 @@
         </div>
     </div>
 
-    <div class="loading" id="loading-spinner" style="display:none;">Загрузка...</div>
+<div class="loading" id="loading-spinner" style="display:none;">
+    <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
+</div>
+
     <script src="script.js"></script>
-  <a href="https://dev-geniy.github.io/lr/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/5131/5131750.png" class="lr-icon" alt="Личностный рост">
-  </a>
-  <a href="https://dev-geniy.github.io/lp" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/5131/5131750.png" class="lp-icon" alt="Лидерская программа">
-  </a>
 </body>
 </html>
