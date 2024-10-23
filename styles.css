@@ -40,8 +40,8 @@ textarea {
     margin-bottom: 20px;
     padding: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
 }
 
@@ -51,7 +51,7 @@ button {
     border-radius: 5px;
     background: rgba(0, 255, 255, 0.6);
     color: black;
-    font-size: 1rem;
+    font-size: 1.8rem;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -134,9 +134,16 @@ button:hover {
 
 #historyTable th,
 #historyTable td {
-    padding: 6px;
+    padding: 8px;
     border: 1px solid #ccc;
     text-align: center;
+}
+
+#historyTable th {
+  color: 4444;
+  padding: 24px;
+  color: white; /* Цвет заголовка */
+  font-size: 22px; 
 }
 
 /* Стили для ячеек таблицы с запросами */
@@ -154,10 +161,12 @@ button:hover {
 }
 
 .bottom-container {
-    width: 90%; /* Во всю ширину */
+    width: 85%; /* Во всю ширину */
     padding: 10px;
+    
     background-color: rgba(255, 255, 255, 0.3); /* Примерный фон для нижнего контейнера */
     border-radius: 10px;
+    margin: 20px;
 }
 
 /* Г А Л Е Р Е Я М И Н И А Т Ю Р ===============*/
@@ -201,10 +210,49 @@ button:hover {
     background: #444;
 }
 
-/* = = = = = = = НОВОСТИ = = = = = = = */
-.news-container {
-    margin-top: 20px;
-    text-align: center;
-    color: #ffffff; /* Цвет текста новостей */
-    border-radius: 10px;
+/* Стили для выпадающих списков */
+select {
+    width: 100%; /* Занимает полную ширину контейнера */
+    padding: 10px; /* Отступы внутри выпадающего списка */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная рамка */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    color: black; /* Цвет текста */
+    font-size: 16px; /* Размер шрифта */
+    border-radius: 5px; /* Скругление углов */
+    margin-bottom: 15px; /* Отступ снизу между списками */
+    cursor: pointer; /* Курсор указателя при наведении */
 }
+
+/* Стили для заголовков и меток */
+h2 {
+    color: white; /* Цвет заголовка */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+label {
+    display: block; /* Делает метки блочными элементами */
+    color: white; /* Цвет текста меток */
+    margin-bottom: 5px; /* Отступ снизу */
+}
+
+/*=========== Стили фон фото ========== */
+/* Стили для кнопки загрузки фона */
+.upload-label {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Отступы */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная рамка */
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Указатель при наведении */
+    margin-top: 15px; /* Отступ сверху */
+    font-size: 22px; /* Размер иконки */
+}
+
+/* Стили для иконки загрузки */
+.upload-icon {
+    margin-right: 8px; /* Отступ справа от иконки */
+    font-size: 28px; /* Размер иконки */
+}
+
