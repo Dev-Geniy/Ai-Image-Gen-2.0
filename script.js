@@ -8,11 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const downloadButton = document.getElementById("download");
     const closeButton = document.querySelector(".close");
 
-    // Скрыть кнопку загрузки изначально
-    downloadButton.style.display = "none";
-
     // Обработчик события для кнопки генерации одного изображения
-    generateButton.addEventListener("click", function () {
+generateButton.addEventListener("click", function () {
         generateImage(1); // Генерируем одно изображение
     });
 
@@ -202,22 +199,57 @@ document.addEventListener("DOMContentLoaded", function () {
         loadingSpinner.style.display = 'none'; // Скрываем элемент
     }
 
-    // Пример использования функций
-    document.getElementById('generate').addEventListener('click', () => {
-        showLoading(); // Показываем загрузку
+    // Обновление анимации загрузки для кнопок генерации
+    const generateButton = document.getElementById('generate');
+    const generateMultipleButton = document.getElementById('generate-multiple');
 
-        // Здесь ваш код для получения данных или загрузки изображения
-        // Имитация загрузки с использованием setTimeout
-        setTimeout(() => {
-            hideLoading(); // Скрываем загрузку
-        }, 3000); // Имитация задержки 3 секунды
+    generateButton.addEventListener('click', () => {
+        showLoading(); // Показываем загрузку
+        generateImage(1); // Генерация одного изображения
+        hideLoading(); // Скрываем загрузку после генерации
     });
 
-    document.getElementById('generate-multiple').addEventListener('click', () => {
-        showLoading(); // Показываем загрузку для второго
-        // Имитация загрузки с использованием setTimeout
-        setTimeout(() => {
-            hideLoading(); // Скрываем загрузку
-        }, 3000); // Имитация задержки 3 секунды
+    generateMultipleButton.addEventListener('click', () => {
+        showLoading(); // Показываем загрузку
+        generateImage(5); // Генерация нескольких изображений
+        hideLoading(); // Скрываем загрузку после генерации
     });
 });
+
+// СТРАНИЦА ПОЖЕРТВОВАНИЙ ===================================================
+function openDonationPage() {
+    window.open('https://example.com/donate', '_blank'); // Замените на вашу страницу пожертвований
+}
+// =========== СТИЛИ ==============
+
+function generateImage(numberOfImages = 1) {
+    const prompt = document.getElementById('text-input').value;
+    const style = document.getElementById('style-select').value;
+    const format = document.getElementById('format-select').value;
+    const tone = document.getElementById('tone-select').value;
+    const theme = document.getElementById('theme-select').value;
+
+    // Проверка на наличие текста в поле ввода
+    if (!prompt) {
+        alert('Пожалуйста, введите описание картинки.');
+        return;
+    }
+
+    // Формирование полного запроса
+    let fullPrompt = prompt;
+    if (style) fullPrompt += ` в стиле ${style}`;
+    if (format) fullPrompt += ` в формате ${format}`;
+    if (tone) fullPrompt += ` с тонами ${tone}`;
+    if (theme) fullPrompt += ` на тему ${theme}`;
+
+    // Генерация изображений
+    for (let i = 0; i < numberOfImages; i++) {
+        const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?nologo=1&seed=${generateRandomSeed()}&height=512&width=512`;
+
+        // Вызов функции для отображения изображения
+        addGeneratedImage(imageUrl);
+    }
+}
+function generateRandomSeed() {
+    return Math.floor(Math.random() * 1000000); // Генерирует случайное число от 0 до 999999
+}
