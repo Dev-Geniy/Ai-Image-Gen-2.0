@@ -34,7 +34,7 @@
             <div class="right-container">
     <h2>Настройки генерации изображения</h2>
     
-    <label for="style-select">Выберите стиль:</label>
+    <label for="style-select"></label>
     <select id="style-select">
         <option value="">--Выберите стиль--</option>
         <option value="impressionism">Импрессионизм</option>
@@ -44,7 +44,7 @@
         <option value="realism">Реализм</option>
     </select>
     
-    <label for="format-select">Выберите формат:</label>
+    <label for="format-select"></label>
     <select id="format-select">
         <option value="">--Выберите формат--</option>
         <option value="square">Фотография</option>
@@ -52,7 +52,7 @@
         <option value="landscape">Пейзаж</option>
     </select>
 
-    <label for="tone-select">Выберите тон:</label>
+    <label for="tone-select"></label>
     <select id="tone-select">
         <option value="">--Выберите тон--</option>
         <option value="warm">Тёплые тона</option>
@@ -62,7 +62,7 @@
         <option value="contrast">Контрастные цвета</option>
     </select>
 
-    <label for="theme-select">Выберите тему:</label>
+    <label for="theme-select"></label>
     <select id="theme-select">
         <option value="">--Выберите тему--</option>
         <option value="nature">Природа</option>
@@ -72,9 +72,15 @@
         <option value="retro">Ретро</option>
     </select>
 </div>
-
         </div>
         
+      <label for="background-upload" class="upload-label">
+        <span class="upload-icon">&#x1F5BC;</span> <!-- Иконка для загрузки -->
+        Загрузить свой фон - сменить тему
+    </label>
+    <input type="file" id="background-upload" style="display: none;" accept="image/*">
+</div>
+      
         <div class="bottom-container">
             <!-- Здесь будет что-то еще -->
 <div class="news-container">
