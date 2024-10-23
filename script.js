@@ -253,3 +253,44 @@ function generateImage(numberOfImages = 1) {
 function generateRandomSeed() {
     return Math.floor(Math.random() * 1000000); // Генерирует случайное число от 0 до 999999
 }
+
+// ========== ФОН =============
+
+document.getElementById('background-upload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    
+    if (file) {
+        // Создаем FormData и добавляем файл в него
+        const formData = new FormData();
+        formData.append('image', file); // 'image' - это ключ, который ожидает API Imgbb
+
+        uploadToImgbb(formData); // Передаем FormData в функцию загрузки
+    }
+});
+
+function uploadToImgbb(formData) {
+    const apiKey = '776322487f852a2b3752cd6e0a88e7ad'; // Ваш API ключ
+
+    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const imageUrl = data.data.url; // Получаем URL загруженного изображения
+            alert('Изображение успешно загружено! URL: ' + imageUrl);
+            
+            // Устанавливаем изображение как фон
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+            document.body.style.backgroundSize = 'cover'; // Покрытие всего фона
+            document.body.style.backgroundPosition = 'center'; // Центрирование фона
+        } else {
+            alert('Ошибка при загрузке изображения: ' + data.error.message);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при загрузке изображения.');
+    });
+}
