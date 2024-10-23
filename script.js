@@ -220,14 +220,17 @@ document.addEventListener("DOMContentLoaded", function () {
 function openDonationPage() {
     window.open('https://example.com/donate', '_blank'); // Замените на вашу страницу пожертвований
 }
-// =========== СТИЛИ ==============
-
+// ====================================== СТИЛИ ==================================
 function generateImage(numberOfImages = 1) {
+    // Получаем значения из полей ввода и списков
     const prompt = document.getElementById('text-input').value;
     const style = document.getElementById('style-select').value;
     const format = document.getElementById('format-select').value;
     const tone = document.getElementById('tone-select').value;
     const theme = document.getElementById('theme-select').value;
+    const filter = document.getElementById('filter-select').value;
+    const character = document.getElementById('character-select').value;
+    const place = document.getElementById('place-select').value;
 
     // Проверка на наличие текста в поле ввода
     if (!prompt) {
@@ -236,11 +239,14 @@ function generateImage(numberOfImages = 1) {
     }
 
     // Формирование полного запроса
-    let fullPrompt = prompt;
+    let fullPrompt = prompt.trim(); // Удаляем лишние пробелы
     if (style) fullPrompt += ` в стиле ${style}`;
     if (format) fullPrompt += ` в формате ${format}`;
     if (tone) fullPrompt += ` с тонами ${tone}`;
     if (theme) fullPrompt += ` на тему ${theme}`;
+    if (filter) fullPrompt += ` с фильтром ${filter}`;
+    if (character) fullPrompt += ` с персонажем ${character}`;
+    if (place) fullPrompt += ` в ${place}`;
 
     // Генерация изображений
     for (let i = 0; i < numberOfImages; i++) {
@@ -250,11 +256,76 @@ function generateImage(numberOfImages = 1) {
         addGeneratedImage(imageUrl);
     }
 }
+
+// Функция для генерации случайного числа
 function generateRandomSeed() {
     return Math.floor(Math.random() * 1000000); // Генерирует случайное число от 0 до 999999
 }
 
-// ========== ФОН =============
+function addGeneratedImage(imageUrl) {
+    const gallery = document.getElementById("gallery"); // Предполагаем, что у вас есть элемент с id "gallery"
+    const imgElement = document.createElement("img");
+    imgElement.src = imageUrl;
+    imgElement.alt = "Сгенерированное изображение";
+    imgElement.className = "generated-image"; // Добавьте класс для стилей
+
+    // Добавление кнопок "Скачать" и "Поделиться"
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "button-container";
+
+    const downloadButton = document.createElement("a");
+    downloadButton.href = imageUrl;
+    downloadButton.download = "generated_image.png"; // Имя файла для скачивания
+    downloadButton.innerText = "Скачать";
+    downloadButton.className = "download-button";
+
+    const shareButton = document.createElement("button");
+    shareButton.innerText = "Поделиться";
+    shareButton.className = "share-button";
+    shareButton.onclick = () => {
+        navigator.clipboard.writeText(imageUrl)
+            .then(() => alert('Ссылка скопирована!'))
+            .catch(err => alert('Не удалось скопировать ссылку: ', err));
+    };
+
+    // Добавление кнопок в контейнер
+    buttonContainer.appendChild(downloadButton);
+    buttonContainer.appendChild(shareButton);
+
+    // Объединяем изображение и кнопки
+    const imageWrapper = document.createElement("div");
+    imageWrapper.className = "image-wrapper";
+    imageWrapper.appendChild(imgElement);
+    imageWrapper.appendChild(buttonContainer);
+
+    gallery.appendChild(imageWrapper); // Добавляем изображение и кнопки в галерею
+}
+
+// Слушаем изменения в каждом выпадающем списке и обновляем промт
+document.querySelectorAll('select').forEach(select => {
+    select.addEventListener("change", updatePrompt);
+});
+
+// Функция для обновления промта
+function updatePrompt() {
+    let promptText = document.getElementById("text-input").value;
+
+    // Добавляем значения из выпадающих списков
+    const styleValue = document.getElementById("style-select").value ? `Стиль: ${document.getElementById("style-select").value}` : '';
+    const formatValue = document.getElementById("format-select").value ? `Формат: ${document.getElementById("format-select").value}` : '';
+    const toneValue = document.getElementById("tone-select").value ? `Тон: ${document.getElementById("tone-select").value}` : '';
+    const themeValue = document.getElementById("theme-select").value ? `Тема: ${document.getElementById("theme-select").value}` : '';
+    const filterValue = document.getElementById("filter-select").value ? `Фильтр: ${document.getElementById("filter-select").value}` : '';
+    const characterValue = document.getElementById("character-select").value ? `Персонаж: ${document.getElementById("character-select").value}` : '';
+    const placeValue = document.getElementById("place-select").value ? `Место: ${document.getElementById("place-select").value}` : '';
+
+    // Создаем итоговый промт
+    const fullPrompt = `${promptText} ${styleValue} ${formatValue} ${toneValue} ${themeValue} ${filterValue} ${characterValue} ${placeValue}`.trim();
+    
+    // Обновляем поле ввода промта
+    document.getElementById("text-input").value = fullPrompt;
+}
+// ========== ФОН =================================================================
 
 document.getElementById('background-upload').addEventListener('change', function(event) {
     const file = event.target.files[0];
@@ -294,3 +365,22 @@ function uploadToImgbb(formData) {
         alert('Произошла ошибка при загрузке изображения.');
     });
 }
+
+//=================== КРЕСТИК =========================================
+const textInput = document.getElementById('text-input');
+const clearTextButton = document.getElementById('clear-text');
+
+// Показываем или скрываем крестик в зависимости от содержимого текстового поля
+textInput.addEventListener('input', () => {
+    if (textInput.value) {
+        clearTextButton.style.display = 'block'; // Показываем крестик, если есть текст
+    } else {
+        clearTextButton.style.display = 'none'; // Скрываем крестик, если нет текста
+    }
+});
+
+// Функция для очистки текстового поля
+clearTextButton.addEventListener('click', () => {
+    textInput.value = ''; // Очищаем текстовое поле
+    clearTextButton.style.display = 'none'; // Скрываем крестик
+});
