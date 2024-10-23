@@ -10,7 +10,10 @@
         <h1>AI Image v2.0</h1>
     </header>
     <div class="container">
+    <div class="input-wrapper">
         <textarea id="text-input" placeholder="Введите подробное описание картинки..."></textarea>
+        <span id="clear-text" class="clear-icon">&times;</span> <!-- Кнопка-крестик -->
+    </div>
         <div id="button-container">
             <button id="generate">Generate</button>
             <button id="generate-multiple">Generate 5</button>
@@ -47,7 +50,7 @@
     <label for="format-select"></label>
     <select id="format-select">
         <option value="">--Выберите формат--</option>
-        <option value="square">Фотография</option>
+        <option value="square">Квадрат</option>
         <option value="portrait">Портрет</option>
         <option value="landscape">Пейзаж</option>
     </select>
@@ -70,6 +73,52 @@
         <option value="fantasy">Фантазия</option>
         <option value="sci-fi">Научная фантастика</option>
         <option value="retro">Ретро</option>
+    </select>
+
+    <!-- Новые поля для выбора фильтров и персонажей -->
+    <label for="filter-select"></label>
+    <select id="filter-select">
+        <option value="">--Выберите фильтр--</option>
+        <option value="black-and-white">Чёрно-белый</option>
+        <option value="vintage">Винтаж</option>
+        <option value="sepia">Сепия</option>
+        <option value="blur">Размытие</option>
+        <option value="sharpen">Резкость</option>
+    </select>
+
+    <label for="character-select"></label>
+    <select id="character-select">
+        <option value="">--Выберите персонажа--</option>
+        <option value="grandfather">Дедушка</option>
+        <option value="grandmother">Бабушка</option>
+        <option value="man">Мужчина</option>
+        <option value="woman">Женщина</option>
+        <option value="boy">Мальчик</option>
+        <option value="girl">Девочка</option>
+        <option value="young-man">Парень</option>
+        <option value="young-woman">Девушка</option>
+    </select>
+
+    <label for="place-select"></label>
+    <select id="place-select">
+        <option value="">--Выберите место--</option>
+        <option value="city">В городе</option>
+        <option value="village">В селе</option>
+        <option value="by-river">Возле речки</option>
+        <option value="by-sea">У моря</option>
+        <option value="by-ocean">Возле океана</option>
+        <option value="forest">В лесу</option>
+        <option value="mountains">В горах</option>
+        <option value="everest">На вершине Эверест</option>
+        <option value="eiffel-tower">Возле Эйфелевой башни</option>
+        <option value="statue-of-liberty">Возле статуи свободы</option>
+        <option value="skyscraper-edge">На краю небоскрёба</option>
+        <option value="cruise-ship">На круизном лайнере</option>
+        <option value="airplane">В самолёте</option>
+        <option value="space-station">На космической станции</option>
+        <option value="hotel">В отеле</option>
+        <option value="near-house">Возле дома</option>
+        <option value="inside-house">В доме</option>
     </select>
 </div>
         </div>
