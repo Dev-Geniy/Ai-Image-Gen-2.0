@@ -111,3 +111,113 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "block"; // Открыть модальное окно
     }
 });
+
+// И Н О В А Ц И И ==========================
+document.addEventListener('DOMContentLoaded', () => {
+    // Функция для обновления таблицы истории запросов
+    function updateHistoryTable() {
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        const tableBody = document.querySelector('#historyTable tbody');
+        tableBody.innerHTML = ''; // Очищаем таблицу
+
+        history.forEach(item => {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = item;
+            cell.style.cursor = 'pointer'; // Меняем курсор на указатель при наведении
+
+            // Добавляем обработчик клика
+            cell.onclick = () => {
+                document.querySelector('#text-input').value = item; // Заполнение поля ввода
+            };
+
+            row.appendChild(cell);
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Функция для добавления запроса в историю
+    function addToHistory(request) {
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        
+        // Удаляем запрос, если он уже есть, чтобы добавить его в конец
+        const filteredHistory = history.filter(item => item !== request);
+        filteredHistory.push(request); // Добавляем новый запрос
+
+        // Сохраняем только последние 5 запросов
+        localStorage.setItem('history', JSON.stringify(filteredHistory.slice(-5)));
+        updateHistoryTable();
+    }
+
+    // Проверяем наличие кнопок и добавляем обработчики событий
+    const generateButton = document.querySelector('#generate');
+    const generateMultipleButton = document.querySelector('#generate-multiple');
+
+    if (generateButton) {
+        generateButton.addEventListener('click', () => {
+            const request = document.querySelector('#text-input').value;
+            if (request) {
+                addToHistory(request);
+                // Ваша логика для генерации изображения здесь
+            } else {
+                console.warn('Пожалуйста, введите текст запроса.');
+            }
+        });
+    } else {
+        console.error("Кнопка с ID 'generate' не найдена.");
+    }
+
+    if (generateMultipleButton) {
+        generateMultipleButton.addEventListener('click', () => {
+            const request = document.querySelector('#text-input').value;
+            if (request) {
+                for (let i = 0; i < 5; i++) {
+                    addToHistory(`${request} - Запрос ${i + 1}`); // Добавляем вариации запроса
+                    // Ваша логика для генерации нескольких изображений здесь
+                }
+            } else {
+                console.warn('Пожалуйста, введите текст запроса.');
+            }
+        });
+    } else {
+        console.error("Кнопка с ID 'generate-multiple' не найдена.");
+    }
+
+    // Инициализация таблицы при загрузке страницы
+    updateHistoryTable();
+});
+
+// ГАЛЕРЕЯ МИНИАТЮР ============================== 
+// З А Т У Х А Н И Е =============================
+document.addEventListener("DOMContentLoaded", function () {
+    const loadingSpinner = document.getElementById('loading-spinner');
+
+    // Функция для показа анимации загрузки
+    function showLoading() {
+        loadingSpinner.style.display = 'flex'; // Отображаем элемент как flex
+    }
+
+    // Функция для скрытия анимации загрузки
+    function hideLoading() {
+        loadingSpinner.style.display = 'none'; // Скрываем элемент
+    }
+
+    // Пример использования функций
+    document.getElementById('generate').addEventListener('click', () => {
+        showLoading(); // Показываем загрузку
+
+        // Здесь ваш код для получения данных или загрузки изображения
+        // Имитация загрузки с использованием setTimeout
+        setTimeout(() => {
+            hideLoading(); // Скрываем загрузку
+        }, 3000); // Имитация задержки 3 секунды
+    });
+
+    document.getElementById('generate-multiple').addEventListener('click', () => {
+        showLoading(); // Показываем загрузку для второго
+        // Имитация загрузки с использованием setTimeout
+        setTimeout(() => {
+            hideLoading(); // Скрываем загрузку
+        }, 3000); // Имитация задержки 3 секунды
+    });
+});
