@@ -6,13 +6,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>AI Image v2.0</h1>
-    </header>
+  
+<header>
+    <div class="header-container">
+        <img src="https://i.gifer.com/yy3.gif" alt="Animation" class="header-animation">
+        <h1 class="animated-title">AIImage v2.0</h1>
+    </div>
+</header>
+
     <div class="container">
     <div class="input-wrapper">
-        <textarea id="text-input" placeholder="Введите подробное описание картинки..."></textarea>
-        <span id="clear-text" class="clear-icon">&times;</span> <!-- Кнопка-крестик -->
+        <textarea id="text-input" placeholder="ВВЕДИТЕ ОПИСАНИЕ КАРТИНКИ..."></textarea>
+        <span id="clear-text" class="clear-icon">&times;</span>
     </div>
         <div id="button-container">
             <button id="generate">Generate</button>
@@ -21,8 +26,6 @@
     </div>
   
     <div class="container-2">
-        <!-- Кнопки генерации (уже существуют) -->
-        
         <div class="vertical-containers">
             <div class="left-container">
                 <table id="historyTable">
@@ -70,12 +73,10 @@
         <option value="">--Выберите тему--</option>
         <option value="nature">Природа</option>
         <option value="urban">Городские пейзажи</option>
-        <option value="fantasy">Фантазия</option>
+        <option value="fantasy">Фантазия</o>
         <option value="sci-fi">Научная фантастика</option>
         <option value="retro">Ретро</option>
     </select>
-
-    <!-- Новые поля для выбора фильтров и персонажей -->
     <label for="filter-select"></label>
     <select id="filter-select">
         <option value="">--Выберите фильтр--</option>
@@ -124,21 +125,38 @@
         </div>
         
       <label for="background-upload" class="upload-label">
-        <span class="upload-icon">&#x1F5BC;</span> <!-- Иконка для загрузки -->
-        Загрузить свой фон - сменить тему
-    </label>
+    <img src="https://i.gifer.com/origin/99/99d01a70dbd6759c794185f7194da575_w200.webp" alt="Upload Icon" class="upload-icon">
+    Загрузите свой фон сменить тему
+</label>
+
     <input type="file" id="background-upload" style="display: none;" accept="image/*">
 </div>
       
-        <div class="bottom-container">
-            <!-- Здесь будет что-то еще -->
-<div class="news-container">
-    <p style="font-family: 'Comic Sans MS', cursive;">20.11 Запланирован запуск платформы для продажи ваших произведений!</p>
-    <p style="font-family: 'Comic Sans MS', cursive;">Узнайте, как заработать от 2000$ на сгенерированных картинках!</p>
-    <p style="font-family: 'Comic Sans MS', cursive;">Подпишитесь на нашего телеграм бота для получения обновлений!</p>
-</div>
-        </div>
+<div class="bottom-container">
+    <div class="news-item" id="news1">
+        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/growth-profit-salary-investment-income-512.png" alt="Launch Icon" class="news-icon">
+        <p class="news-text">20.11 Запуск торговой платформы для торговли сгенерированными при помощи ии произведеними!</p>
     </div>
+    <div class="news-item" id="news2">
+        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/save-money-coin-piggy_bank-deposit-512.png" alt="Earnings Icon" class="news-icon">
+        <p class="news-text">Вы узнаете, как заработать от 2000$ на сгенерированных картинках!</p>
+<p class="news-text">Уже скоро запуск серии бесплатных тренингов и интерактивных уроков с практическими заданиями.</p>
+    </div>
+    <div class="news-item" id="news3">
+        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/idea-read-knowledge-light_bulb-thinking-512.png" alt="Telegram Icon" class="news-icon">
+        <p class="news-text">Подпишитесь на нашего телеграм бота, и следите в соц. сетях что бы получать свежие новости и обновления!</p>
+        <p class="news-text">Спасибо что Вы с нами!</p>
+    </div>
+    <div class="subscribe">
+    <p class="subscribe-text">Подпишитесь на нас:</p>
+    <div class="social-icons">
+        <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-3/512/335_Telegram-512.png" alt="Telegram" class="social-icon">
+        <img src="https://cdn2.iconfinder.com/data/icons/threads-by-instagram/24/x-logo-twitter-new-brand-512.png" alt="Twitter" class="social-icon">
+        <img src="https://cdn0.iconfinder.com/data/icons/phosphor-thin-vol-3/256/instagram-logo-thin-512.png" alt="Instagram" class="social-icon">
+    </div>
+</div>
+
+
     <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -149,8 +167,6 @@
         </div>
     </div>
 </div>
-  
-  
 
     <div class="loading" id="loading-spinner" style="display:none;">
         <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
