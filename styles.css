@@ -1,5 +1,3 @@
-
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -159,6 +157,7 @@ button:hover {
     width: 90%; /* Во всю ширину */
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.3); /* Примерный фон для нижнего контейнера */
+    border-radius: 10px;
 }
 
 /* Г А Л Е Р Е Я М И Н И А Т Ю Р ===============*/
@@ -179,6 +178,33 @@ button:hover {
 }
 
 .loading-gif {
-    width: 100px; /* Ширина анимации загрузки */
-    height: 100px; /* Высота анимации загрузки */
+    width: 150px; /* Ширина анимации загрузки */
+    height: 150px; /* Высота анимации загрузки */
+}
+
+/*==========КНОПКИ==========*/
+.donation-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.donation-button button {
+    padding: 10px 20px;
+    background-color: #4444; /* Цвет кнопки */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.donation-button button:hover {
+    background: #444;
+}
+
+/* = = = = = = = НОВОСТИ = = = = = = = */
+.news-container {
+    margin-top: 20px;
+    text-align: center;
+    color: #ffffff; /* Цвет текста новостей */
+    border-radius: 10px;
 }
