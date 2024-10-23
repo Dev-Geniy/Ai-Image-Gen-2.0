@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('https://pibig.info/uploads/posts/2022-12/1670033417_1-pibig-info-p-ochen-krasivie-foni-krasivo-1.jpg') no-repeat center center fixed;
+    background: url('https://i.ibb.co/SVt9NyF/d1627e64-2186-42c1-95f9-4fb005a1e8a3.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -116,19 +116,19 @@ button:hover {
 .vertical-containers {
     display: flex;
     width: 100%;
-    opacity: 0.8; /* Прозрачность */
+    opacity: 0.8;
 }
 
 .left-container,
 .right-container {
   
-    width: 50%; /* Каждый контейнер занимает половину ширины */
+    width: 50%;
     padding: 20px;
 }
 
 #historyTable {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.3); /* Прозрачный фон таблицы */
+    background-color: rgba(255, 255, 255, 0.3);
     border-collapse: collapse;
 }
 
@@ -142,56 +142,52 @@ button:hover {
 #historyTable th {
   color: 4444;
   padding: 24px;
-  color: white; /* Цвет заголовка */
+  color: white;
   font-size: 22px; 
 }
 
 /* Стили для ячеек таблицы с запросами */
 #historyTable td {
-    transition: all 0.3s ease; /* Плавный переход при изменениях */
+    transition: all 0.3s ease;
     padding: 10px;
 }
 
-/* Эффект при наведении на ячейку таблицы */
 #historyTable td:hover {
-    font-size: 1.2em; /* Увеличиваем размер текста */
-    font-weight: bold; /* Делаем текст жирным */
-    background-color: rgba(200, 200, 200, 0.2); /* Более светлый фон */
-    cursor: pointer; /* Указатель на курсоре */
+    font-size: 1.2em;
+    font-weight: bold; 
+    background-color: rgba(200, 200, 200, 0.2);
+    cursor: pointer;
 }
 
 .bottom-container {
-    width: 85%; /* Во всю ширину */
+    width: 85%;
     padding: 10px;
-    
-    background-color: rgba(255, 255, 255, 0.3); /* Примерный фон для нижнего контейнера */
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     margin: 20px;
 }
 
-/* Г А Л Е Р Е Я М И Н И А Т Ю Р ===============*/
-/* - - - - З А Т У Х А Н И Е И G I F - - - - -  */
-/* Стиль для затемнения фона во время загрузки */
+/* Загрузка */
 .loading {
-    position: fixed; /* Фиксированное положение */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* На всю ширину */
-    height: 100%; /* На всю высоту */
-    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
-    display: flex; /* Flexbox для центрирования */
-    align-items: center; /* Вертикальное центрирование */
-    justify-content: center; /* Горизонтальное центрирование */
-    z-index: 9999; /* Высокий индекс слоя для отображения поверх остальных элементов */
-    display: none; /* Скрыть по умолчанию */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    display: none;
 }
 
 .loading-gif {
-    width: 150px; /* Ширина анимации загрузки */
-    height: 150px; /* Высота анимации загрузки */
+    width: 150px;
+    height: 150px;
 }
 
-/*==========КНОПКИ==========*/
+/*КНОПКИ*/
 .donation-button {
     text-align: center;
     margin-top: 20px;
@@ -199,7 +195,7 @@ button:hover {
 
 .donation-button button {
     padding: 10px 20px;
-    background-color: #4444; /* Цвет кнопки */
+    background-color: #4444;
     color: white;
     border: none;
     cursor: pointer;
@@ -210,79 +206,95 @@ button:hover {
     background: #444;
 }
 
-/* Стили для выпадающих списков */
+/* Фильтры */
 select {
-    width: 100%; /* Занимает полную ширину контейнера */
-    padding: 10px; /* Отступы внутри выпадающего списка */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная рамка */
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
-    color: black; /* Цвет текста */
-    font-size: 16px; /* Размер шрифта */
-    border-radius: 5px; /* Скругление углов */
-    margin-bottom: 15px; /* Отступ снизу между списками */
-    cursor: pointer; /* Курсор указателя при наведении */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
-/* Стили для заголовков и меток */
 h2 {
-    color: white; /* Цвет заголовка */
-    margin-bottom: 10px; /* Отступ снизу */
+    color: white;
+    margin-bottom: 10px;
 }
 
 label {
-    display: block; /* Делает метки блочными элементами */
-    color: white; /* Цвет текста меток */
-    margin-bottom: 5px; /* Отступ снизу */
+    display: block;
+    color: white;
+    margin-bottom: 5px;
 }
 
-/*=========== Стили фон фото ========== */
-/* Стили для кнопки загрузки фона */
+/* Кнопка загрузки фона */
 .upload-label {
     display: inline-flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
-    color: white; /* Цвет текста */
-    padding: 10px 15px; /* Отступы */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная рамка */
-    border-radius: 5px; /* Скругление углов */
-    cursor: pointer; /* Указатель при наведении */
-    margin-top: 15px; /* Отступ сверху */
-    font-size: 22px; /* Размер иконки */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 22px;
 }
 
-/* Стили для иконки загрузки */
+/* Иконка загрузки */
 .upload-icon {
-    margin-right: 8px; /* Отступ справа от иконки */
-    font-size: 28px; /* Размер иконки */
+    margin-right: 8px;
+    font-size: 28px;
 }
 
-/* КРЕСТИК ============================== */
+/* КРЕСТИК*/
 .input-wrapper {
-    position: relative; /* Позволяет размещать крестик относительно контейнера */
-    width: 90%; /* Задает ширину контейнера для текстового поля во всю ширину */
+    position: relative;
+    width: 90%;
 }
 
 #text-input {
-    width: 100%; /* Устанавливаем текстовое поле во всю ширину */
-    padding: 20px; /* Отступы внутри текстового поля */
-    padding-right: 40px; /* Увеличиваем правый отступ для места под крестик */
-    border: 1px solid #ccc; /* Граница текстового поля */
-    border-radius: 5px; /* Скругленные углы */
-    resize: 1; /* Отключаем возможность изменения размера текстового поля */
-    box-sizing: border-box; /* Учитываем отступы и границы в ширине */
+    width: 100%;
+    padding: 20px;
+    padding-right: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: 1;
+    box-sizing: border-box;
 }
 
 .clear-icon {
-    position: absolute; /* Позиционируем крестик относительно контейнера */
-    right: 15px; /* Отступ от правого края */
-    top: 40%; /* Центрируем по вертикали */
-    transform: translateY(-50%); /* Чтобы крестик был по центру вертикально */
-    font-size: 70px; /* Размер крестика */
-    color: white; /* Цвет крестика */
-    cursor: pointer; /* Изменение курсора при наведении */
-    display: none; /* По умолчанию скрываем крестик */
+    position: absolute;
+    right: 15px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 70px;
+    color: white;
+    cursor: pointer;
+    display: none;
 }
 
 .clear-icon:hover {
-    color: Red; /* Изменение цвета при наведении */
+    color: Red;
+}
+
+/* Стили textarea */
+#text-input {
+    width: 100%;
+    padding: 50px;
+    padding-right: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+#text-input::-webkit-scrollbar {
+    display: none;
 }
