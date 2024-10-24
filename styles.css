@@ -7,7 +7,6 @@ body {
     height: 100vh;
 }
 
-/*Анимация заголовка*/
 header {
     width: 100%;
     background-color: rgba(13, 13, 13, 0.8);
@@ -120,12 +119,12 @@ button {
     font-size: 1.6rem;
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
-    animation: pulse 2s infinite ease-in-out; /* Анимация пульсации */
+    animation: pulse 2s infinite ease-in-out;
 }
 
 button:hover {
     background: rgba(0, 255, 255, 0.7);
-    transform: scale(1.05); /* Немного увеличиваем кнопку при наведении */
+    transform: scale(1.05);
 }
 
 @keyframes pulse {
@@ -370,15 +369,15 @@ h2 {
     color: white;
     margin-bottom: 10px;
 }
-/* Контейнер для кнопок */
+
 .background-controls {
     display: flex;
     align-items: center;
-    gap: 15px; /* Расстояние между кнопками */
+    gap: 15px;
     margin-top: 15px;
+    margin-bottom: 20px;
 }
 
-/* Стили для кнопки удаления фона */
 #remove-background {
     color: white;
     border: none;
@@ -392,7 +391,6 @@ h2 {
     background-color: #ff0000;
 }
 
-/* Стили для загрузки фона */
 .upload-label {
     display: inline-flex;
     align-items: center;
@@ -405,7 +403,6 @@ h2 {
     font-size: 16px;
 }
 
-/* Иконка для загрузки (если есть) */
 .upload-icon {
     width: 34px;
     height: 34px;
@@ -458,7 +455,6 @@ h2 {
 }
 
 /* ПРОКРУТКА */
-/* Скрываем стандартный скроллбар */
 html {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
