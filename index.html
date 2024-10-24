@@ -19,6 +19,7 @@
         <textarea id="text-input" placeholder="ВВЕДИТЕ ОПИСАНИЕ КАРТИНКИ..."></textarea>
         <span id="clear-text" class="clear-icon">&times;</span>
     </div>
+      
         <div id="button-container">
             <button id="generate">Generate</button>
             <button id="generate-multiple">Generate 5</button>
@@ -94,10 +95,10 @@
         <option value="grandmother">Бабушка</option>
         <option value="man">Мужчина</option>
         <option value="woman">Женщина</option>
-        <option value="boy">Мальчик</option>
-        <option value="girl">Девочка</option>
         <option value="young-man">Парень</option>
         <option value="young-woman">Девушка</option>
+        <option value="boy">Мальчик</option>
+        <option value="girl">Девочка</option>
     </select>
 
     <label for="place-select"></label>
@@ -123,19 +124,16 @@
     </select>
 </div>
         </div>
-       
-  <div id="gallery" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
-    <!-- Здесь будут иконки изображений -->
-</div>
-
   
-      <label for="background-upload" class="upload-label">
-    <img src="https://cdn-icons-png.flaticon.com/512/12654/12654393.png" alt="Upload Icon" class="upload-icon">
-    Загрузите свой фон | сменить тему
-</label>
-
+  <div class="background-controls">
+    <label for="background-upload" class="upload-label">
+        <img src="https://cdn-icons-png.flaticon.com/512/12654/12654393.png" alt="Upload Icon" class="upload-icon">
+        Загрузите свой фон | сменить тему
+    </label>
+    <button id="remove-background">Удалить</button>
     <input type="file" id="background-upload" style="display: none;" accept="image/*">
 </div>
+
       
 <div class="bottom-container">
     <div class="news-item" id="news1">
@@ -166,10 +164,6 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <div id="generated-images-container"></div>
-        <div class="image-buttons">
-            <button id="download-button" style="display: none;">Скачать</button>
-            <button id="share-button" style="display: none;">Поделиться</button>
-        </div>
     </div>
 </div>
 
@@ -177,7 +171,7 @@
         <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
     </div>
 
-  <div class="donation-button">
+<div class="donation-button">
     <button onclick="openDonationPage()">₿ Поддержка и развитие проекта ₿</button>
 </div>
 
