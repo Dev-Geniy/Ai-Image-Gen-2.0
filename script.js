@@ -1,428 +1,284 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('https://i.ibb.co/SVt9NyF/d1627e64-2186-42c1-95f9-4fb005a1e8a3.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const generateButton = document.getElementById("generate");
+    const generateMultipleButton = document.getElementById("generate-multiple");
+    const textInput = document.getElementById("text-input");
+    const loadingSpinner = document.getElementById("loading-spinner");
+    const modal = document.getElementById("modal");
+    const generatedImagesContainer = document.getElementById("generated-images-container");
+    const closeButton = document.querySelector(".close");
 
-header {
-    width: 100%;
-    background-color: rgba(13, 13, 13, 0.8);
-    padding: 15px 0;
-    text-align: center;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.2);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
+    function updatePrompt() {
+        let promptText = textInput.value.trim();
 
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        const styleValue = document.getElementById("style-select").value;
+        const formatValue = document.getElementById("format-select").value;
+        const toneValue = document.getElementById("tone-select").value;
+        const themeValue = document.getElementById("theme-select").value;
+        const filterValue = document.getElementById("filter-select").value;
+        const characterValue = document.getElementById("character-select").value;
+        const placeValue = document.getElementById("place-select").value;
 
-.header-animation {
-    width: 50px;
-    height: auto;
-    margin-left: 10px;
-    opacity: 0;
-    animation: fade-in 1.3s forwards 3.2s;
-}
-
-.animated-title {
-    font-size: 36px;
-    font-family: 'Arial Black', sans-serif;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: wave 1.5s forwards;
-}
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
+        // Формируем полный промт
+        const fullPrompt = [promptText, styleValue, formatValue, toneValue, themeValue, filterValue, characterValue, placeValue]
+            .filter(item => item) 
+            .join(', ');
+        
+        textInput.value = fullPrompt;
     }
-    100% {
-        opacity: 1;
+
+    document.querySelectorAll('select').forEach(select => {
+        select.addEventListener("change", updatePrompt);
+    });
+
+    generateButton.addEventListener("click", function () {
+        generateImage(1);
+    });
+
+    generateMultipleButton.addEventListener("click", function () {
+        generateImage(5);
+    });
+
+    closeButton.onclick = function () {
+        modal.style.display = "none";
+        generatedImagesContainer.innerHTML = '';
+    };
+
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+            generatedImagesContainer.innerHTML = '';
+        }
+    };
+
+    function generateImage(count) {
+        const description = textInput.value.trim();
+        if (!description) {
+            alert("⚠️ Пожалуйста, введите описание для генерации изображения 😉✨");
+            return;
+        }
+
+        displayLoadingState(true);
+        const promises = [];
+        for (let i = 0; i < count; i++) {
+            const encodedDescription = encodeURIComponent(createDescription(description));
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodedDescription}?nologo=1&seed=${generateRandomSeed()}&height=512&width=512`;
+            const proxyUrl = "https://corsproxy.io/?";
+            const proxiedImageUrl = proxyUrl + encodeURIComponent(imageUrl);
+
+            promises.push(fetch(proxiedImageUrl)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Ошибка сети");
+                    }
+                    return response.blob();
+                })
+                .then((blob) => URL.createObjectURL(blob)) // Создание URL для изображения
+            );
+        }
+
+        Promise.all(promises)
+            .then(urls => {
+                displayGeneratedImages(urls);
+            })
+            .catch((error) => {
+                alert("⚠️ Не удалось сгенерировать изображения. Попробуйте еще раз! У вас всё получиться 😉✨");
+                console.error("Ошибка:", error);
+            })
+            .finally(() => {
+                displayLoadingState(false);
+            });
     }
-}
 
-@keyframes typing {
-    0% {
-        width: 0;
+    function createDescription(inputText) {
+        return inputText || "просто картинка";
     }
-    100% {
-        width: 100%;
+
+    function generateRandomSeed() {
+        return Math.floor(Math.random() * 1e9);
     }
-}
 
-.animated-title span {
-    display: inline-block;
-    animation: appear 0.5s forwards;
-}
-
-@keyframes appear {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+    function displayLoadingState(isLoading) {
+        loadingSpinner.style.display = isLoading ? "block" : "none";
+        generateButton.disabled = isLoading;
+        generateMultipleButton.disabled = isLoading;
+        if (isLoading) {
+            modal.style.display = "none";
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    function displayGeneratedImages(urls) {
+        generatedImagesContainer.innerHTML = ''; 
+        urls.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.style.width = "100%";
+            img.style.borderRadius = "10px";
+            img.style.marginBottom = "20px";
+            generatedImagesContainer.appendChild(img);
+
+        currentImageUrl = url;
+    });
+      
+        modal.style.display = "block";
     }
-}
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+    function updateHistoryTable() {
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        const tableBody = document.querySelector('#historyTable tbody');
+        tableBody.innerHTML = '';
+      
+        history.forEach(item => {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = item;
+            cell.style.cursor = 'pointer';
 
-.animated-title::before {
-    content: attr(data-title);
-    display: inline-block;
-}
+            cell.onclick = () => {
+                document.querySelector('#text-input').value = item;
+            };
 
-h1 {
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.9);
-}
-
-.container {
-    padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-textarea {
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background: rgba(0, 255, 255, 0.4);
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: rgba(0, 255, 255, 0.7);
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modal-content {
-    background-color: rgba(13, 13, 13, 0.9);
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.modal-content img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.loading {
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-}
-
- .container-2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.vertical-containers {
-    display: flex;
-    width: 100%;
-    opacity: 0.8;
-}
-
-.left-container,
-.right-container {
-  
-    width: 50%;
-    padding: 20px;
-}
-
-#historyTable {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-collapse: collapse;
-}
-
-#historyTable th,
-#historyTable td {
-    padding: 8px;
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-#historyTable th {
-  color: 4444;
-  padding: 24px;
-  color: white;
-  font-size: 22px; 
-}
-
-/* Стили для ячеек таблицы с запросами */
-#historyTable td {
-    transition: all 0.3s ease;
-    padding: 10px;
-}
-
-#historyTable td:hover {
-    font-size: 1.2em;
-    font-weight: bold; 
-    background-color: rgba(200, 200, 200, 0.2);
-    cursor: pointer;
-}
-
-.bottom-container {
-    width: 85%;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    margin: 20px;
-}
-
-.news-item {
-    animation: slideDown 0.5s forwards;
-    opacity: 0;
-}
-
-.news-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.news-text {
-    font-family: 'Arial Black', sans-serif; /* Подберите шрифт по вашему вкусу */
-    font-size: 18px;
-    color: black;
-    text-shadow: 0 0 20px lightblue; /* Неоновый эффект */
-    line-height: 1.5;
-}
-
-.subscribe {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.subscribe-text {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 24px;
-    color: black;
-    text-shadow: 0 0 10px lightblue;
-    margin-bottom: 10px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-}
-
-.social-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
-    opacity: 0.8;
-    transition: transform 0.3s;
-    border: 2px solid black; /* Черный контур */
-    border-radius: 50%; /* Круглая форма */
-    cursor: pointer;
-}
-
-.social-icon:hover {
-    transform: scale(1.6); /* Увеличение при наведении */
-}
-
-@keyframes slideDown {
-    0% {
-        transform: translateY(-20px);
-        opacity: 0;
+            row.appendChild(cell);
+            tableBody.appendChild(row);
+        });
     }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
+
+    function addToHistory(request) {
+        const history = JSON.parse(localStorage.getItem('history')) || [];
+        const filteredHistory = history.filter(item => item !== request);
+        filteredHistory.push(request);
+        localStorage.setItem('history', JSON.stringify(filteredHistory.slice(-5)));
+        updateHistoryTable();
     }
+
+    const generateButton = document.querySelector('#generate');
+    const generateMultipleButton = document.querySelector('#generate-multiple');
+
+    if (generateButton) {
+        generateButton.addEventListener('click', () => {
+            const request = document.querySelector('#text-input').value;
+            if (request) {
+                addToHistory(request);
+            } else {
+                console.warn('Пожалуйста, введите текст запроса.');
+            }
+        });
+    }
+
+    if (generateMultipleButton) {
+        generateMultipleButton.addEventListener('click', () => {
+            const request = document.querySelector('#text-input').value;
+            if (request) {
+                for (let i = 0; i < 5; i++) {
+                    addToHistory(`${request} - Запрос ${i + 1}`);
+                }
+            } else {
+                console.warn('Пожалуйста, введите текст запроса.');
+            }
+        });
+    }
+
+    updateHistoryTable();
+});
+
+document.getElementById('background-upload').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        uploadToImgbb(formData);
+    }
+});
+
+function uploadToImgbb(formData) {
+    const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
+    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const imageUrl = data.data.url;
+                alert('Изображение успешно загружено! URL: ' + imageUrl);
+                document.body.style.backgroundImage = `url(${imageUrl})`;
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center';
+            } else {
+                alert('Ошибка при загрузке изображения: ' + data.error.message);
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при загрузке изображения.');
+        });
 }
 
-.loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    display: none;
+const textInput = document.getElementById('text-input');
+const clearTextButton = document.getElementById('clear-text');
+
+textInput.addEventListener('input', () => {
+    clearTextButton.style.display = textInput.value ? 'block' : 'none';
+});
+
+clearTextButton.style.display = textInput.value ? 'block' : 'none';
+
+clearTextButton.addEventListener('click', () => {
+    textInput.value = '';
+    clearTextButton.style.display = 'none';
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const titleElement = document.querySelector('.animated-title');
+    const titleText = titleElement.textContent;
+    
+    titleElement.textContent = '';
+
+    titleText.split('').forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.textContent = letter === ' ' ? '\u00A0' : letter;
+        span.style.animationDelay = `${index * 0.2}s`;
+        span.classList.add('fade-in-letter');
+        titleElement.appendChild(span);
+    });
+});
+
+function saveBackgroundUrl(url) {
+    localStorage.setItem('backgroundImage', url);
 }
 
-.loading-gif {
-    width: 150px;
-    height: 150px;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const savedBackground = localStorage.getItem('backgroundImage');
+    if (savedBackground) {
+        document.body.style.backgroundImage = `url(${savedBackground})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundPosition = 'center';
+    }
+});
 
-/*КНОПКИ*/
-.donation-button {
-    text-align: center;
-    margin-top: 20px;
-}
+function uploadToImgbb(formData) {
+    const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
 
-.donation-button button {
-    padding: 10px 20px;
-    background-color: #4444;
-    color: Black;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 18px;
-}
-
-.donation-button button:hover {
-    background: none;
-    transform: scale(1.1); /* Увеличение */
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.2);
-    color: black;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-h2 {
-    color: white;
-    margin-bottom: 10px;
-}
-
-label {
-    display: block;
-    color: white;
-    margin-bottom: 5px;
-}
-
-.upload-label {
-    display: inline-flex;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    font-size: 16px;
-}
-
-.upload-icon {
-    width: 34px; /* Установите желаемый размер */
-    height: 34px; /* Установите желаемый размер */
-    fill: white; /* Изменяет цвет, если это SVG */
-    margin-right: 20px; /* Отступ справа для пространства между иконкой и текстом */
-     margin-right: 20px; /* Отступ слева*/
-}
-
-.input-wrapper {
-    position: relative;
-    width: 90%;
-}
-
-#text-input {
-    width: 100%;
-    padding: 20px;
-    padding-right: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: 1;
-    box-sizing: border-box;
-}
-
-.clear-icon {
-    position: absolute;
-    right: 15px;
-    top: 40%;
-    transform: translateY(-50%);
-    font-size: 70px;
-    color: white;
-    cursor: pointer;
-    display: none;
-}
-
-.clear-icon:hover {
-    color: Red;
-}
-
-#text-input {
-    width: 100%;
-    padding: 50px;
-    padding-right: 50px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 20px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.2);
-    overflow-y: scroll;
-    scrollbar-width: none;
-    transition: border 0.3s ease;
-}
-
-#text-input::-webkit-scrollbar {
-    display: none;
+    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const imageUrl = data.data.url;
+            saveBackgroundUrl(imageUrl);
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        } else {
+            alert('Ошибка при загрузке изображения: ' + data.error.message);
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при загрузке изображения.');
+    });
 }
