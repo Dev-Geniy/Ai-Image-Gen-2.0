@@ -7,9 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const generatedImagesContainer = document.getElementById("generated-images-container");
     const closeButton = document.querySelector(".close");
 
+    // Обновление текста в поле ввода на основе выбранных значений
     function updatePrompt() {
         let promptText = textInput.value.trim();
 
+        // Получаем значения из всех выпадающих списков
         const styleValue = document.getElementById("style-select").value;
         const formatValue = document.getElementById("format-select").value;
         const toneValue = document.getElementById("tone-select").value;
@@ -20,29 +22,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Формируем полный промт
         const fullPrompt = [promptText, styleValue, formatValue, toneValue, themeValue, filterValue, characterValue, placeValue]
-            .filter(item => item) 
-            .join(', ');
+            .filter(item => item) // Убираем пустые строки
+            .join(', '); // Объединяем значения через запятую
         
-        textInput.value = fullPrompt;
+        textInput.value = fullPrompt; // Обновляем текстовое поле
     }
 
+    // Добавляем обработчики событий для всех селекторов
     document.querySelectorAll('select').forEach(select => {
         select.addEventListener("change", updatePrompt);
     });
 
+    // Кнопка для генерации 1 изображения
     generateButton.addEventListener("click", function () {
         generateImage(1);
     });
 
+    // Кнопка для генерации 5 изображений
     generateMultipleButton.addEventListener("click", function () {
         generateImage(5);
     });
 
+    // Закрытие модального окна
     closeButton.onclick = function () {
         modal.style.display = "none";
         generatedImagesContainer.innerHTML = '';
     };
 
+    // Закрытие модального окна при нажатии на область вне модального окна
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
@@ -50,10 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Функция генерации изображений
     function generateImage(count) {
         const description = textInput.value.trim();
         if (!description) {
-            alert("⚠️ Пожалуйста, введите описание для генерации изображения 😉✨");
+            alert("Пожалуйста, введите описание для генерации изображения.");
             return;
         }
 
@@ -78,10 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         Promise.all(promises)
             .then(urls => {
-                displayGeneratedImages(urls);
+                displayGeneratedImages(urls); // Отображение всех изображений
             })
             .catch((error) => {
-                alert("⚠️ Не удалось сгенерировать изображения. Попробуйте еще раз! У вас всё получиться 😉✨");
+                alert("Не удалось сгенерировать изображения. Попробуйте еще раз.");
                 console.error("Ошибка:", error);
             })
             .finally(() => {
@@ -115,14 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
             img.style.borderRadius = "10px";
             img.style.marginBottom = "20px";
             generatedImagesContainer.appendChild(img);
-
-        currentImageUrl = url;
-    });
-      
+        });
         modal.style.display = "block";
     }
 });
 
+// Дополнения версии 2.0 для работы с историей запросов
 document.addEventListener('DOMContentLoaded', () => {
     function updateHistoryTable() {
         const history = JSON.parse(localStorage.getItem('history')) || [];
@@ -182,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHistoryTable();
 });
 
+// Загрузка фона через Imgbb API
 document.getElementById('background-upload').addEventListener('change', function (event) {
     const file = event.target.files[0];
     if (file) {
@@ -216,6 +223,7 @@ function uploadToImgbb(formData) {
         });
 }
 
+// Очищение текстового поля
 const textInput = document.getElementById('text-input');
 const clearTextButton = document.getElementById('clear-text');
 
@@ -223,6 +231,7 @@ textInput.addEventListener('input', () => {
     clearTextButton.style.display = textInput.value ? 'block' : 'none';
 });
 
+// Также добавляем проверку при загрузке страницы
 clearTextButton.style.display = textInput.value ? 'block' : 'none';
 
 clearTextButton.addEventListener('click', () => {
@@ -230,25 +239,30 @@ clearTextButton.addEventListener('click', () => {
     clearTextButton.style.display = 'none';
 });
 
+// Анимация заголовка
 document.addEventListener("DOMContentLoaded", function() {
     const titleElement = document.querySelector('.animated-title');
     const titleText = titleElement.textContent;
     
+    // Очищаем текст заголовка
     titleElement.textContent = '';
 
+    // Разбиваем текст на буквы и добавляем в заголовок
     titleText.split('').forEach((letter, index) => {
         const span = document.createElement('span');
-        span.textContent = letter === ' ' ? '\u00A0' : letter;
-        span.style.animationDelay = `${index * 0.2}s`;
-        span.classList.add('fade-in-letter');
+        span.textContent = letter === ' ' ? '\u00A0' : letter; // Заменяем пробел на неразрывный пробел
+        span.style.animationDelay = `${index * 0.2}s`; // Задержка для каждой буквы
+        span.classList.add('fade-in-letter'); // Добавляем класс для анимации
         titleElement.appendChild(span);
     });
 });
 
+// Сохраняем фон в Local Storage
 function saveBackgroundUrl(url) {
     localStorage.setItem('backgroundImage', url);
 }
 
+// Восстанавливаем фон при загрузке страницы
 document.addEventListener("DOMContentLoaded", function () {
     const savedBackground = localStorage.getItem('backgroundImage');
     if (savedBackground) {
@@ -258,6 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// После успешной загрузки на Imgbb
 function uploadToImgbb(formData) {
     const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
 
@@ -269,7 +284,7 @@ function uploadToImgbb(formData) {
     .then(data => {
         if (data.success) {
             const imageUrl = data.data.url;
-            saveBackgroundUrl(imageUrl);
+            saveBackgroundUrl(imageUrl);  // Сохраняем ссылку на фон
             document.body.style.backgroundImage = `url(${imageUrl})`;
             document.body.style.backgroundSize = 'cover';
             document.body.style.backgroundPosition = 'center';
@@ -282,3 +297,40 @@ function uploadToImgbb(formData) {
         alert('Произошла ошибка при загрузке изображения.');
     });
 }
+
+document.getElementById('remove-background').addEventListener('click', function() {
+    // Убираем фон страницы
+    document.body.style.backgroundImage = '';
+
+    // Удаляем сохранённое значение фона из Local Storage
+    localStorage.removeItem('backgroundImage');
+
+    // Уведомляем пользователя
+    alert('Фон удалён.');
+});
+
+// ПРОКРУТКА
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollIndicator = document.createElement('div');
+    scrollIndicator.classList.add('scroll-indicator');
+    document.body.appendChild(scrollIndicator);
+
+    let timeout = null;
+
+    window.addEventListener('scroll', function() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPosition = window.scrollY / scrollHeight;
+
+        // Изменение высоты индикатора в зависимости от прокрутки
+        scrollIndicator.style.height = `${scrollPosition * 100}%`;
+
+        // Показываем индикатор, если скроллим
+        scrollIndicator.classList.add('active');
+
+        // Если скроллинг прекращается, через 500ms прячем индикатор
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            scrollIndicator.classList.remove('active');
+        }, 500);
+    });
+});
