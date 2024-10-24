@@ -6,7 +6,6 @@ body {
     background-size: cover;
 }
 
-/*Анимация заголовка*/
 header {
     width: 100%;
     background-color: rgba(13, 13, 13, 0.8);
@@ -224,7 +223,6 @@ button:hover {
     cursor: pointer;
 }
 
-/* ==============ЖЕСТЬ !!!============== */
 .bottom-container {
     width: 85%;
     padding: 15px;
@@ -296,9 +294,6 @@ button:hover {
     }
 }
 
-/* ==============КОНЕЦ ЖЕСТИ !!!============== */
-
-/* Загрузка */
 .loading {
     position: fixed;
     top: 0;
@@ -339,7 +334,6 @@ button:hover {
     transform: scale(1.1); /* Увеличение */
 }
 
-/* Фильтры */
 select {
     width: 100%;
     padding: 10px;
@@ -363,7 +357,6 @@ label {
     margin-bottom: 5px;
 }
 
-/* Кнопка загрузки фона */
 .upload-label {
     display: inline-flex;
     align-items: center;
@@ -377,7 +370,6 @@ label {
     font-size: 16px;
 }
 
-/* Иконка загрузки */
 .upload-icon {
     width: 34px; /* Установите желаемый размер */
     height: 34px; /* Установите желаемый размер */
@@ -386,7 +378,6 @@ label {
      margin-right: 20px; /* Отступ слева*/
 }
 
-/* КРЕСТИК*/
 .input-wrapper {
     position: relative;
     width: 90%;
@@ -417,7 +408,6 @@ label {
     color: Red;
 }
 
-/* Стили textarea */
 #text-input {
     width: 100%;
     padding: 50px;
@@ -427,57 +417,12 @@ label {
     box-sizing: border-box;
     font-size: 20px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный фон для textarea */
+    background-color: rgba(0, 0, 0, 0.2);
     overflow-y: scroll;
     scrollbar-width: none;
-    transition: border 0.3s ease; /* Плавный переход для рамки */
+    transition: border 0.3s ease;
 }
 
 #text-input::-webkit-scrollbar {
     display: none;
-}
-
-/* Эффект светового импульса для рамки */
-@keyframes borderPulse {
-    0%, 100% {
-        border-color: transparent;
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Без света */
-    }
-    50% {
-        border-color: white; /* Цвет рамки */
-        box-shadow: 0 0 10px white, 0 0 20px white; /* Подсветка рамки */
-    }
-}
-
-/* Эффект светового импульса для внутреннего поля */
-@keyframes innerPulse {
-    0%, 100% {
-        background-color: rgba(0, 0, 0, 0.1); /* Исходный цвет */
-    }
-    50% {
-        background-color: rgba(255, 255, 255, 0.1); /* Слабо светящийся цвет */
-    }
-}
-
-/* Стили для активного состояния рамки */
-.pulsing {
-    animation: borderPulse 1s infinite; /* Бесконечная анимация для рамки */
-}
-
-.pulsing-inner {
-    animation: innerPulse 1s infinite; /* Бесконечная анимация для внутреннего поля */
-}
-
-/* Г А Л Е Р Е Я */
-
-#gallery img {
-    width: 80px; /* Ширина маленьких иконок */
-    height: auto; /* Высота будет подстраиваться */
-    border-radius: 5px; /* Закругление углов */
-    cursor: pointer; /* Указатель на курсор при наведении */
-    transition: transform 0.2s; /* Плавное увеличение при наведении */
-}
-
-#gallery img:hover {
-    transform: scale(1.1); /* Увеличение при наведении */
 }
