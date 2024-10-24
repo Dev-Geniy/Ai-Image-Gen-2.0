@@ -1,22 +1,22 @@
 html, body {
-    height: 100%;
+    height: 100%; /* Это нужно для того, чтобы фон занимал всю высоту */
     margin: 0;
     padding: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background: url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360') no-repeat center center;
+    background: url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360') no-repeat center center fixed;
     background-size: cover;
-    background-attachment: fixed;
+    height: 100vh; /* Это позволяет фону покрывать видимую область экрана */
 }
 
+/* Специальные стили для iOS через медиазапрос */
 @supports (-webkit-touch-callout: none) {
     body {
-        background-attachment: scroll;
+        background-attachment: fixed; /* Оставляем фиксированный фон для iOS */
     }
 }
-
 
 header {
     width: 100%;
