@@ -1,11 +1,22 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background: url('https://img.freepik.com/premium-photo/cosmic-vortex-purple-space-exploration-concept_271410-55515.jpg?w=360') no-repeat center center fixed;
-    background-size: cover;
-    height: 100vh;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
 
 header {
     width: 100%;
