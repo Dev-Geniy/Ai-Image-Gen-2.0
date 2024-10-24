@@ -113,15 +113,15 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: rgba(0, 255, 255, 0.6);
-    color: black;
+    background: rgba(0, 255, 255, 0.4);
+    color: white;
     font-size: 1.8rem;
     cursor: pointer;
     transition: background 0.3s;
 }
 
 button:hover {
-    background: rgba(0, 255, 255, 0.8);
+    background: rgba(0, 255, 255, 0.7);
 }
 
 .modal {
@@ -144,11 +144,12 @@ button:hover {
     width: 80%;
     max-width: 600px;
     text-align: center;
+    border-radius: 10px;
 }
 
 .modal-content img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .close {
@@ -210,7 +211,6 @@ button:hover {
   font-size: 22px; 
 }
 
-/* Стили для ячеек таблицы с запросами */
 #historyTable td {
     transition: all 0.3s ease;
     padding: 10px;
@@ -223,9 +223,9 @@ button:hover {
     cursor: pointer;
 }
 
-/* ==============ЖЕСТЬ !!!============== */
 .bottom-container {
-    width: 85%;
+    left: 50%;
+    right: 50;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -244,10 +244,10 @@ button:hover {
 }
 
 .news-text {
-    font-family: 'Arial Black', sans-serif; /* Подберите шрифт по вашему вкусу */
+    font-family: 'Arial Black', sans-serif;
     font-size: 18px;
     color: black;
-    text-shadow: 0 0 20px lightblue; /* Неоновый эффект */
+    text-shadow: 0 0 20px lightblue;
     line-height: 1.5;
 }
 
@@ -275,13 +275,13 @@ button:hover {
     margin: 0 10px;
     opacity: 0.8;
     transition: transform 0.3s;
-    border: 2px solid black; /* Черный контур */
-    border-radius: 50%; /* Круглая форма */
+    border: 2px solid black;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .social-icon:hover {
-    transform: scale(1.6); /* Увеличение при наведении */
+    transform: scale(1.6);
 }
 
 @keyframes slideDown {
@@ -295,22 +295,6 @@ button:hover {
     }
 }
 
-/* Анимация для каждого новостного элемента */
-.news-item:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.news-item:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.news-item:nth-child(3) {
-    animation: slideDown 0.5s forwards, slideIn 0.5s forwards; /* Анимация появления для третьего элемента */
-}
-
-/* ==============КОНЕЦ ЖЕСТИ !!!============== */
-
-/* Загрузка */
 .loading {
     position: fixed;
     top: 0;
@@ -330,7 +314,6 @@ button:hover {
     height: 150px;
 }
 
-/*КНОПКИ*/
 .donation-button {
     text-align: center;
     margin-top: 20px;
@@ -348,10 +331,9 @@ button:hover {
 
 .donation-button button:hover {
     background: none;
-    transform: scale(1.1); /* Увеличение */
+    transform: scale(1.1);
 }
 
-/* Фильтры */
 select {
     width: 100%;
     padding: 10px;
@@ -375,7 +357,6 @@ label {
     margin-bottom: 5px;
 }
 
-/* Кнопка загрузки фона */
 .upload-label {
     display: inline-flex;
     align-items: center;
@@ -386,19 +367,17 @@ label {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 15px;
-    font-size: 22px;
+    font-size: 16px;
 }
 
-/* Иконка загрузки */
 .upload-icon {
-    width: 34px; /* Установите желаемый размер */
-    height: 34px; /* Установите желаемый размер */
-    fill: white; /* Изменяет цвет, если это SVG */
-    margin-right: 20px; /* Отступ справа для пространства между иконкой и текстом */
-     margin-right: 20px; /* Отступ слева*/
+    width: 34px;
+    height: 34px;
+    fill: white;
+    margin-right: 20px;
+    margin-right: 20px;
 }
 
-/* КРЕСТИК*/
 .input-wrapper {
     position: relative;
     width: 90%;
@@ -429,8 +408,6 @@ label {
     color: Red;
 }
 
-/* Стили textarea */
-/* Стили textarea */
 #text-input {
     width: 100%;
     padding: 50px;
@@ -440,43 +417,8 @@ label {
     box-sizing: border-box;
     font-size: 20px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный фон для textarea */
+    background-color: rgba(0, 0, 0, 0.3);
     overflow-y: scroll;
     scrollbar-width: none;
-    transition: border 0.3s ease; /* Плавный переход для рамки */
-}
-
-#text-input::-webkit-scrollbar {
-    display: none;
-}
-
-/* Эффект светового импульса для рамки */
-@keyframes borderPulse {
-    0%, 100% {
-        border-color: transparent;
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Без света */
-    }
-    50% {
-        border-color: white; /* Цвет рамки */
-        box-shadow: 0 0 10px white, 0 0 20px white; /* Подсветка рамки */
-    }
-}
-
-/* Эффект светового импульса для внутреннего поля */
-@keyframes innerPulse {
-    0%, 100% {
-        background-color: rgba(0, 0, 0, 0.1); /* Исходный цвет */
-    }
-    50% {
-        background-color: rgba(255, 255, 255, 0.1); /* Слабо светящийся цвет */
-    }
-}
-
-/* Стили для активного состояния рамки */
-.pulsing {
-    animation: borderPulse 1s infinite; /* Бесконечная анимация для рамки */
-}
-
-.pulsing-inner {
-    animation: innerPulse 1s infinite; /* Бесконечная анимация для внутреннего поля */
+    transition: border 0.3s ease;
 }
