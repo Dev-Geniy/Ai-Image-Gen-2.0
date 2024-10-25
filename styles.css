@@ -474,45 +474,40 @@ h2 {
     transition: border 0.3s ease;
 }
 
-/* ПРОКРУТКА */
 html {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari и Opera */
+    display: none;
 }
 
-/* Основной контейнер страницы */
 body {
     position: relative;
-    overflow-y: scroll; /* Важно для вертикальной прокрутки */
+    overflow-y: scroll;
 }
 
-/* Индикатор скролла с неоновым эффектом киберпанка */
 .scroll-indicator {
     position: fixed;
     top: 0;
-    right: 0; /* Выравнивание справа */
+    right: 0;
     width: 8px;
-    height: 100%; /* Высота зависит от прокрутки */
-    background: linear-gradient(180deg, #00FFFF, #007FFF); /* Яркий неоновый синий градиент */
-    opacity: 0; /* Прячем индикатор по умолчанию */
+    height: 100%;
+    background: linear-gradient(180deg, #00FFFF, #007FFF);
+    opacity: 0;
     transition: opacity 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
     z-index: 9999;
     
-    /* Неоновое свечение */
+    
     box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 80px #007FFF;
-    filter: blur(1px); /* Размытость для неонового эффекта */
+    filter: blur(1px);
 }
 
-/* Анимация появления */
 .scroll-indicator.active {
-    opacity: 1; /* Отображаем индикатор при скролле */
+    opacity: 1;
 }
 
-/* Анимация прокрутки */
 @keyframes scroll-pulse {
     0%, 100% {
         height: 5px;
