@@ -188,41 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHistoryTable();
 });
 
-// Загрузка фона через Imgbb API
-document.getElementById('background-upload').addEventListener('change', function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-
-        uploadToImgbb(formData);
-    }
-});
-
-function uploadToImgbb(formData) {
-    const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
-    fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const imageUrl = data.data.url;
-                alert('Изображение успешно загружено! URL: ' + imageUrl);
-                document.body.style.backgroundImage = `url(${imageUrl})`;
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundPosition = 'center';
-            } else {
-                alert('Ошибка при загрузке изображения: ' + data.error.message);
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Произошла ошибка при загрузке изображения.');
-        });
-}
-
 // Очищение текстового поля
 const textInput = document.getElementById('text-input');
 const clearTextButton = document.getElementById('clear-text');
@@ -266,16 +231,36 @@ function saveBackgroundUrl(url) {
 document.addEventListener("DOMContentLoaded", function () {
     const savedBackground = localStorage.getItem('backgroundImage');
     if (savedBackground) {
-        document.body.style.backgroundImage = `url(${savedBackground})`;
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundPosition = 'center';
+        setBodyBackground(savedBackground); // Устанавливаем сохранённый фон
     }
 });
 
-// После успешной загрузки на Imgbb
+// Устанавливаем фон на псевдоэлемент
+function setBodyBackground(url) {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        body::before {
+            background-image: url(${url});
+            background-size: cover;
+            background-position: center;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Загрузка фона через Imgbb API
+document.getElementById('background-upload').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        uploadToImgbb(formData);
+    }
+});
+
 function uploadToImgbb(formData) {
     const apiKey = '776322487f852a2b3752cd6e0a88e7ad';
-
     fetch('https://api.imgbb.com/1/upload?key=' + apiKey, {
         method: 'POST',
         body: formData
@@ -284,10 +269,9 @@ function uploadToImgbb(formData) {
     .then(data => {
         if (data.success) {
             const imageUrl = data.data.url;
-            saveBackgroundUrl(imageUrl);  // Сохраняем ссылку на фон
-            document.body.style.backgroundImage = `url(${imageUrl})`;
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';
+            alert('Изображение успешно загружено! URL: ' + imageUrl);
+            saveBackgroundUrl(imageUrl); // Сохраняем ссылку на фон
+            setBodyBackground(imageUrl); // Устанавливаем фон
         } else {
             alert('Ошибка при загрузке изображения: ' + data.error.message);
         }
@@ -298,18 +282,26 @@ function uploadToImgbb(formData) {
     });
 }
 
+// УДАЛЕНИЕ ФОНА КНОПКА
 document.getElementById('remove-background').addEventListener('click', function() {
-    // Убираем фон страницы
-    document.body.style.backgroundImage = '';
-
     // Удаляем сохранённое значение фона из Local Storage
     localStorage.removeItem('backgroundImage');
+    
+    // Возвращаем фон, указанный в CSS, путем создания нового стиля
+    const style = document.createElement('style');
+    style.innerHTML = `
+        body::before {
+            background-image: url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360');
+            background-size: cover;
+            background-position: center;
+        }
+    `;
+    document.head.appendChild(style);
 
     // Уведомляем пользователя
-    alert('Фон удалён.');
+    alert('Фон удалён. Возвращён исходный фон сайта.');
 });
 
-// ПРОКРУТКА
 document.addEventListener('DOMContentLoaded', function() {
     const scrollIndicator = document.createElement('div');
     scrollIndicator.classList.add('scroll-indicator');
@@ -321,10 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPosition = window.scrollY / scrollHeight;
 
-        // Изменение высоты индикатора в зависимости от прокрутки
         scrollIndicator.style.height = `${scrollPosition * 100}%`;
 
-        // Показываем индикатор, если скроллим
         scrollIndicator.classList.add('active');
 
         // Если скроллинг прекращается, через 500ms прячем индикатор
