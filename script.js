@@ -375,3 +375,28 @@ appPanel.addEventListener('touchmove', (e) => {
 appPanel.addEventListener('touchend', () => {
     isDragging = false;
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const donationButton = document.querySelector(".donation-button");
+
+    if (donationButton) {
+        donationButton.addEventListener("click", function () {
+            alert("Спасибо за поддержку!");
+        });
+    }
+});
+
+// УВЕДОМЛЕНИЯ
+window.alert = function (message) {
+    Swal.fire({
+        title: message,
+        background: '#0f0f3d', // Тёмно-синий фон для киберпанк стиля
+        color: '#00ffcc',      // Неоновый текст
+        confirmButtonColor: '#ff00ff', // Неоновая кнопка
+        buttonsStyling: false, 
+        customClass: {
+            popup: 'cyberpunk-popup',
+            confirmButton: 'cyberpunk-button'
+        }
+    });
+};
