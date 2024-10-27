@@ -547,21 +547,6 @@ body {
     }
 }
 
-.btn-transparent {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-transparent:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
-/*================== Контейнер карточек приложений ================*/
 .app-card h3,
 .app-card p,
 .app-card a {
@@ -579,7 +564,6 @@ body {
     text-overflow: ellipsis;
 }
 
-
 .app-panel-container {
     overflow: hidden;
     cursor: grab;
@@ -594,7 +578,7 @@ body {
     overflow-x: hidden;
     padding: 10px;
     scroll-behavior: smooth;
-    transition: transform 0.2s ease; /* Плавный переход для плавности */
+    transition: transform 0.2s ease;
 }
 
 .app-card {
@@ -620,4 +604,22 @@ body {
     margin-right: 20px;
     font-size: 24px;
     color: white;
+}
+
+/*Алерт меняем на Алерт 2*/
+.cyberpunk-popup {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 20px rgba(0, 255, 204, 0.8);
+}
+.cyberpunk-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ff00ff;
+    background: none;
+    border: 2px solid #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
+    transition: 0.3s;
+}
+.cyberpunk-button:hover {
+    background-color: #00ffcc;
+    color: #0f0f3d;
 }
