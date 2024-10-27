@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateImage(count) {
         const description = textInput.value.trim();
         if (!description) {
-            alert("Пожалуйста, введите описание для генерации изображения.");
+            alert("🤷‍♂️ Пожалуйста, введите описание для генерации изображения ✏️");
             return;
         }
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     return response.blob();
                 })
-                .then((blob) => URL.createObjectURL(blob)) // Создание URL для изображения
+                .then((blob) => URL.createObjectURL(blob))
             );
         }
 
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 displayGeneratedImages(urls); // Отображение всех изображений
             })
             .catch((error) => {
-                alert("Не удалось сгенерировать изображения. Попробуйте еще раз.");
+                alert("🤷‍♂️ Не удалось сгенерировать изображения. Попробуйте еще раз.");
                 console.error("Ошибка:", error);
             })
             .finally(() => {
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     addToHistory(`${request} - Запрос ${i + 1}`);
                 }
             } else {
-                console.warn('Пожалуйста, введите текст запроса.');
+                console.warn('Пожалуйста, введите текст запроса');
             }
         });
     }
@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHistoryTable();
 });
 
-// Очищение текстового поля
 const textInput = document.getElementById('text-input');
 const clearTextButton = document.getElementById('clear-text');
 
@@ -209,33 +208,28 @@ document.addEventListener("DOMContentLoaded", function() {
     const titleElement = document.querySelector('.animated-title');
     const titleText = titleElement.textContent;
     
-    // Очищаем текст заголовка
     titleElement.textContent = '';
 
-    // Разбиваем текст на буквы и добавляем в заголовок
     titleText.split('').forEach((letter, index) => {
         const span = document.createElement('span');
-        span.textContent = letter === ' ' ? '\u00A0' : letter; // Заменяем пробел на неразрывный пробел
+        span.textContent = letter === ' ' ? '\u00A0' : letter;
         span.style.animationDelay = `${index * 0.2}s`; // Задержка для каждой буквы
-        span.classList.add('fade-in-letter'); // Добавляем класс для анимации
+        span.classList.add('fade-in-letter');
         titleElement.appendChild(span);
     });
 });
 
-// Сохраняем фон в Local Storage
 function saveBackgroundUrl(url) {
     localStorage.setItem('backgroundImage', url);
 }
 
-// Восстанавливаем фон при загрузке страницы
 document.addEventListener("DOMContentLoaded", function () {
     const savedBackground = localStorage.getItem('backgroundImage');
     if (savedBackground) {
-        setBodyBackground(savedBackground); // Устанавливаем сохранённый фон
+        setBodyBackground(savedBackground);
     }
 });
 
-// Устанавливаем фон на псевдоэлемент
 function setBodyBackground(url) {
     const style = document.createElement('style');
     style.innerHTML = `
@@ -269,7 +263,7 @@ function uploadToImgbb(formData) {
     .then(data => {
         if (data.success) {
             const imageUrl = data.data.url;
-            alert('Изображение успешно загружено! URL: ' + imageUrl);
+            alert('AiImage: Изображение успешно загружено ✨🎉✨ Ссылка на ваше изображение: ' + imageUrl);
             saveBackgroundUrl(imageUrl); // Сохраняем ссылку на фон
             setBodyBackground(imageUrl); // Устанавливаем фон
         } else {
@@ -278,16 +272,14 @@ function uploadToImgbb(formData) {
     })
     .catch(error => {
         console.error('Ошибка:', error);
-        alert('Произошла ошибка при загрузке изображения.');
+        alert('AiImage: Произошла ошибка при загрузке изображения. Попробуйте снова!');
     });
 }
 
-// УДАЛЕНИЕ ФОНА КНОПКА
 document.getElementById('remove-background').addEventListener('click', function() {
-    // Удаляем сохранённое значение фона из Local Storage
+
     localStorage.removeItem('backgroundImage');
     
-    // Возвращаем фон, указанный в CSS, путем создания нового стиля
     const style = document.createElement('style');
     style.innerHTML = `
         body::before {
@@ -299,7 +291,7 @@ document.getElementById('remove-background').addEventListener('click', function(
     document.head.appendChild(style);
 
     // Уведомляем пользователя
-    alert('Фон удалён. Возвращён исходный фон сайта.');
+    alert('AiImage: Фон 🗑 удалён. Возвращён исходный фон сайта!');
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -365,28 +357,51 @@ appPanel.addEventListener('touchstart', (e) => {
 
 appPanel.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    e.preventDefault();
-    
+
+    e.preventDefault(); // Предотвращаем прокрутку страницы
     const x = e.touches[0].pageX - appPanel.offsetLeft;
     const walk = (x - startX) * 1;
     appPanel.scrollLeft = scrollLeft - walk;
 });
 
-appPanel.addEventListener('touchend', () => {
+// Добавьте обработчик для touchend
+appPanel.addEventListener('touchend', (e) => {
     isDragging = false;
+
+    // Если был свайп, разрешаем прокрутку страницы
+    if (Math.abs(e.changedTouches[0].pageX - startX) < 30) {
+        e.stopPropagation();
+    }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const donationButton = document.querySelector(".donation-button");
 
     if (donationButton) {
         donationButton.addEventListener("click", function () {
-            alert("Спасибо за поддержку!");
+            alert("AiImage: Спасибо за поддержку!");
         });
     }
 });
 
-// УВЕДОМЛЕНИЯ
+// Бесконечная прокрутка карточек
+function setupInfiniteScroll(appPanel) {
+    const cardCount = appPanel.children.length;
+
+    appPanel.addEventListener('scroll', () => {
+        const scrollPosition = appPanel.scrollLeft;
+        const panelWidth = appPanel.scrollWidth - appPanel.clientWidth;
+
+        // Если достигли конца, прокручиваем к началу
+        if (scrollPosition >= panelWidth) {
+            appPanel.scrollLeft = 0; // Прокрутка к началу
+        }
+    });
+}
+
+setupInfiniteScroll(appPanel);
+
 window.alert = function (message) {
     Swal.fire({
         title: message,
