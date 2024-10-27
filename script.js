@@ -317,10 +317,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
         scrollIndicator.classList.add('active');
 
-        // Если скроллинг прекращается, через 500ms прячем индикатор
         clearTimeout(timeout);
         timeout = setTimeout(() => {
             scrollIndicator.classList.remove('active');
         }, 500);
     });
+});
+
+// КАРТОЧКИ ПРОКРУТКА = = = = = =
+const appPanel = document.querySelector('.app-panel');
+let isDragging = false;
+let startX;
+let scrollLeft;
+
+appPanel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - appPanel.offsetLeft;
+    scrollLeft = appPanel.scrollLeft;
+    appPanel.style.cursor = 'grabbing';
+});
+
+appPanel.addEventListener('mouseleave', () => {
+    isDragging = false;
+    appPanel.style.cursor = 'grab';
+});
+
+appPanel.addEventListener('mouseup', () => {
+    isDragging = false;
+    appPanel.style.cursor = 'grab';
+});
+
+appPanel.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  
+    const x = e.pageX - appPanel.offsetLeft;
+    const walk = (x - startX) * 1;
+    appPanel.scrollLeft = scrollLeft - walk;
+});
+
+// Обработка сенсорных событий для мобильных устройств
+appPanel.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - appPanel.offsetLeft;
+    scrollLeft = appPanel.scrollLeft;
+});
+
+appPanel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const x = e.touches[0].pageX - appPanel.offsetLeft;
+    const walk = (x - startX) * 1;
+    appPanel.scrollLeft = scrollLeft - walk;
+});
+
+appPanel.addEventListener('touchend', () => {
+    isDragging = false;
 });
