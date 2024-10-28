@@ -1,0 +1,425 @@
+body {  
+    margin: 0;  
+    font-family: Arial, sans-serif;  
+    color: white;  
+    overflow-x: hidden;  
+    position: relative;
+    background-image: url('https://i.gifer.com/IrM.gif'); 
+    background-size: cover;
+}  
+
+.theme-selector {  
+    position: fixed;  
+    top: 10px;  
+    right: 20px;  
+    display: flex;  
+    gap: 15px;  
+    z-index: 1;  
+}  
+
+.color-dot {  
+    width: 30px;  
+    height: 30px;  
+    border-radius: 50%;  
+    cursor: pointer;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    border: 2px solid transparent;  
+    transition: border 0.3s ease;  
+}  
+
+.white { background-color: white; }  
+.green { background-color: green; }  
+.blue { background-color: blue; }  
+.red { background-color: red; }  
+
+.color-dot:hover {  
+    border: 2px solid rgba(255, 255, 255, 0.5);  
+}  
+
+.color-dot.active {  
+    box-shadow: 0 0 10px currentColor;  
+}  
+
+.content {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    justify-content: center;  
+    height: auto; /* Изменено для контейнера с карточками */  
+    text-align: center;  
+    position: relative;  
+    z-index: 1;  
+}  
+
+.cards-container {  
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 20px;  
+    width: 90%;  
+}  
+
+.card {  
+    background-color: rgba(50, 50, 50, 0.8);  
+    border: none; /* Убираем границу */  
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Добавляем рассеянный свет */  
+    padding: 20px;  
+    cursor: pointer;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+    border-radius: 10px; /* Закругленные углы */
+}  
+
+.card:hover {  
+    transform: translateY(-10px);  
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.8);  
+}  
+
+.progress-container {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    width: 100%;  
+    height: 5px;  
+    background-color: transparent;  
+}  
+
+.progress-bar {  
+    height: 5px;  
+    background-color: blue;  
+    width: 0;  
+    transition: width 0.1s;  
+    box-shadow: 0 0 10px blue; /* Добавляем рассеянный свет */  
+}   
+
+.modal {  
+    display: none;  
+    position: fixed;  
+    z-index: 100;  
+    left: 0;  
+    top: 0;  
+    width: 100%;  
+    height: 100%;  
+    overflow: auto;  
+    background-color: rgba(0, 0, 0, 0.9); 
+}  
+
+.modal-content {  
+    background-color: rgba(50, 50, 50, 1);  
+    margin: 15% auto;  
+    padding: 20px;  
+    border-radius: 10px; /* Скругление углов */
+    border: 1px solid #888;  
+    width: 80%;  
+    color: white;  
+}  
+
+.close {  
+    color: white;  
+    float: right;  
+    font-size: 28px;  
+    font-weight: bold;  
+}  
+
+.close:hover,  
+.close:focus {  
+    color: #bbb;  
+    text-decoration: none;  
+    cursor: pointer;  
+}  
+
+.full-width-cards {  
+    display: flex;  
+    flex-direction: column;  
+    width: 90%;  
+    margin-top: 20px;
+}  
+
+.full-card {  
+    background-color: rgba(50, 50, 50, 0.8);  
+    padding: 20px;  
+    margin-bottom: 10px;  
+    text-align: center;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;/
+}
+
+.full-width-card {  
+    border: 0px solid rgba(0, 255, 255, 0.5);  
+    padding: 20px;  
+    margin-top: 10px;  
+    text-align: center;  
+}  
+
+@media (max-width: 600px) {  
+    .cards-container {  
+        grid-template-columns: 1fr;
+    }  
+
+    .theme-selector {  
+        position: fixed;  
+        top: 5px;  
+        right: 10px;  
+        gap: 10px;  
+    }  
+
+    .color-dot {  
+        width: 20px;  
+        height: 20px;  
+    }  
+
+    .content h1 {  
+        font-size: 1.5em;  
+    }  
+
+    .content p {  
+        font-size: 1em;  
+    }  
+}
+
+.modal-title {
+    color: yellow;
+    text-align: center;
+    font-weight: bold;
+}
+
+.modal-icon {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}
+
+.difficulty, .income {
+    text-align: center;
+    font-weight: bold;
+}
+
+.difficulty-label, .income-label {
+    color: yellow;
+}
+
+.difficulty-stars, .income-stars {
+    color: yellow;
+}
+
+.section-title {
+    color: white;
+    text-align: center;
+}
+
+.section-description {
+    text-align: left;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service {
+    width: 45%;
+    margin: 10px;
+}
+
+.statistics-table {
+    width: 100%;
+    border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.statistics-table th, .statistics-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+button {
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.section-description {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.section-description li {
+    margin-bottom: 10px;
+}
+
+/*========= ФОРМА ДЛЯ ВОПРОСОВ =========*/
+.h11 {
+font-size: 26px; 
+color: white;
+}
+
+.container-podval {
+    display: flex; /* Включаем Flexbox */
+    justify-content: space-between; /* Распределяем пространство между карточками */
+    flex-wrap: wrap; /* Позволяем элементам переноситься на следующую строку */
+    width: 100%; /* Ширина 100% родителя */
+    padding: 10px; /* Отступ внутри контейнера */
+    box-sizing: border-box; /* Включаем отступы в ширину */
+}
+
+.podval-card {
+    flex: 1 1 300px; /* Позволяем карточкам занимать одинаковую ширину, минимально 300px */
+    padding: 20px; /* Отступ внутри карточки */
+    margin: 10px; /* Отступ между карточками */
+    text-align: center; /* Центрируем текст */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Добавляем тень для карточек */
+    border-radius: 8px; /* Скругляем углы карточек */
+    background-color: #4444; /* Задаем цвет фона с небольшим прозрачным эффектом */
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 600px) {
+    .podval-card {
+        flex: 1 1 100%; /* На узких экранах карточки занимают 100% ширины */
+    }
+}
+
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    font-size: 14px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    display: block;
+    width: calc(100% - 22px);
+    line-height: 1.6;
+    font-size: 16px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: #4460AA;
+    outline: none;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4460AA;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        background-color: #8a44aa;
+    }
+    50% {
+        background-color: #ff8c00;
+    }
+}
+
+input[type="submit"]:hover {
+    background-color: #365b8a;
+}
+
+.star-rating {
+    display: flex;
+    margin-top: 10px;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 60px;
+    color: #ddd;
+    transition: color 0.3s;
+    margin: 0 auto;
+}
+
+.star:hover,
+.star.selected {
+    color: #ffd700;
+}
+
+/* иконки */
+.crypto-addresses {
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.crypto-addresses h4 {
+    margin-bottom: 10px; /* Отступ между заголовком и адресами */
+}
+
+.address {
+    display: flex; /* Используем flex для адресов */
+    align-items: center; /* Центрируем элементы по вертикали */
+    margin: 5px 0; /* Отступ между адресами */
+}
+
+.address span {
+    margin-right: 10px; /* Отступ между меткой и полем ввода */
+}
+
+.address input {
+    flex: 1; /* Заставляем поле занимать доступное пространство */
+    padding: 5px; /* Внутренний отступ */
+    border: 1px solid #ccc; /* Рамка */
+    border-radius: 5px; /* Скругляем углы */
+    margin-right: 10px; /* Отступ между полем и кнопкой */
+}
+
+.copy-button {
+    background-color: #4460AA; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    padding: 5px 10px; /* Отступ внутри кнопки */
+    border-radius: 5px; /* Скругляем углы */
+    cursor: pointer; /* Указываем, что это кликабельный элемент */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.copy-button:hover {
+    background-color: #365b8a; /* Цвет кнопки при наведении */
+}
+
+.thank-you {
+    margin-top: 20px; /* Отступ сверху */
+    font-size: 14px; /* Размер шрифта для благодарности */
+    color: #555; /* Цвет текста */
+}
+
+.social-icons a {
+    text-decoration: none; /* Убираем нижнее подчеркивание */
+    color: inherit; /* Устанавливаем цвет текста как наследуемый от родителя */
+}
