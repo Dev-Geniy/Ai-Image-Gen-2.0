@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// КАРТОЧКИ ПРОКРУТКА = = = = = =
+// ПРОКРУТКА КАРТОЧЕК
 const appPanel = document.querySelector('.app-panel');
 let isDragging = false;
 let startX, startY;
@@ -374,7 +374,7 @@ appPanel.addEventListener('touchmove', (e) => {
     // Проверяем, больше ли горизонтальное движение
     if (xDiff > yDiff) {
         isHorizontalSwipe = true;
-        e.preventDefault(); // Блокируем вертикальную прокрутку только для горизонтального свайпа
+        e.preventDefault();
         const walk = (x - startX) * scrollSpeed;
         appPanel.scrollLeft = scrollLeft - walk;
     }
@@ -386,20 +386,18 @@ appPanel.addEventListener('touchend', () => {
     appPanel.style.scrollBehavior = 'smooth';
 });
 
-//СТРЕЛКИ НА КОНТЕЙНЕР АПП
+//СТРЕЛКИ
 const arrowLeft = document.querySelector('.arrow-left');
 const arrowRight = document.querySelector('.arrow-right');
 
 appPanel.addEventListener('scroll', () => {
-    // Проверяем, находится ли панель в крайнем левом положении
     arrowLeft.style.color = appPanel.scrollLeft > 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
     
-    // Проверяем, находится ли панель в крайнем правом положении
     const isAtEnd = appPanel.scrollWidth - appPanel.clientWidth <= appPanel.scrollLeft + 1;
     arrowRight.style.color = !isAtEnd ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
 });
 
-// УВЕДОМЛЕНИЯ ====================
+// УВЕДОМЛЕНИЯ
 window.alert = function (message) {
     Swal.fire({
         title: message,
@@ -414,7 +412,7 @@ window.alert = function (message) {
     });
 };
 
-// СОВЕТИ ПРИ ЗАГРУЗКЕ =======================
+// СОВЕТИ ПРИ ЗАГРУЗКЕ
 const tips = [
     "Используйте точные прилагательные для лучшего результата.",
     "Добавьте цветовые детали для увеличения выразительности.",
@@ -484,33 +482,9 @@ function updateLoadingTip() {
 // Показываем загрузочный экран и обновляем совет
 function showLoadingScreen() {
     document.getElementById("loading-spinner").style.display = "block";
-    updateLoadingTip();  // Обновляем совет при показе загрузочного экрана
+    updateLoadingTip();
 }
 
 // Пример использования функции showLoadingScreen, например, при нажатии на кнопку "Generate"
 document.getElementById("generate").addEventListener("click", showLoadingScreen);
 document.getElementById("generate-multiple").addEventListener("click", showLoadingScreen);
-
-// ПОДСКАЗКИ ОКНО
-// Находим все элементы с классом tooltip
-document.querySelectorAll('.tooltip').forEach(item => {
-    item.addEventListener('click', function() {
-        // Получаем текст подсказки из атрибута data-tooltip
-        const tooltipText = item.getAttribute('data-tooltip');
-        
-        // Находим модальное окно и вставляем текст
-        const modal = document.getElementById('tooltipModal');
-        const modalContent = document.getElementById('tooltipContent');
-        modalContent.textContent = tooltipText;
-
-        // Показываем модальное окно
-        modal.style.display = 'flex';
-    });
-});
-
-// Закрываем модальное окно при нажатии на фон
-document.getElementById('tooltipModal').addEventListener('click', function(event) {
-    if (event.target === this) {
-        this.style.display = 'none';
-    }
-});
