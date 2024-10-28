@@ -13,7 +13,7 @@
 <header>
     <div class="header-container">
         <img src="https://i.gifer.com/yy3.gif" alt="Animation" class="header-animation">
-        <h1 class="animated-title">AIImage v2.0</h1>
+        <h1 class="animated-title">AIImage v2.0 PRO</h1>
     </div>
 </header>
 
@@ -41,59 +41,72 @@
                     <tbody></tbody>
                 </table>
             </div>
+          
             <div class="right-container">
     <h2>Настройки генерации изображения:</h2>
     
-    <label for="style-select"></label>
+    <div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите художественный стиль, который придаст вашему изображению уникальный характер.">?</span>
     <select id="style-select">
-        <option value="">--Выберите стиль--</option>
+        <option value="">▪️▪️▪️ Выберите стиль ▪️▪️▪️</option>
         <option value="impressionism">Импрессионизм</option>
         <option value="surrealism">Сюрреализм</option>
         <option value="pop-art">Поп-арт</option>
         <option value="cubism">Кубизм</option>
         <option value="realism">Реализм</option>
     </select>
+</div>
     
-    <label for="format-select"></label>
+<div class="select-container"> 
+    <span class="tooltip" data-tooltip="Выберите формат изображения для управления его пропорциями и ориентацией. 'Квадрат' подходит для симметричных композиций, 'Портрет' — для фокусировки на вертикальных элементах, 'Пейзаж' — для широких сцен.">?</span>
     <select id="format-select">
-        <option value="">--Выберите формат--</option>
+        <option value="">▪️▪️▪️ Выберите формат ▪️▪️▪️</option>
         <option value="square">Квадрат</option>
         <option value="portrait">Портрет</option>
         <option value="landscape">Пейзаж</option>
     </select>
+</div>
 
-    <label for="tone-select"></label>
+<div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите цветовой тон для изображения. 'Тёплые тона' добавят уютные оттенки, 'Холодные тона' придадут свежесть, 'Монохром' сделает изображение одноцветным, 'Пастельные цвета' создадут мягкий эффект, а 'Контрастные цвета' — яркий и выразительный.">?</span>
     <select id="tone-select">
-        <option value="">--Выберите тон--</option>
+        <option value="">▪️▪️▪️ Выберите тон ▪️▪️▪️</option>
         <option value="warm">Тёплые тона</option>
         <option value="cool">Холодные тона</option>
         <option value="monochrome">Монохром</option>
         <option value="pastel">Пастельные цвета</option>
         <option value="contrast">Контрастные цвета</option>
     </select>
+</div>
 
-    <label for="theme-select"></label>
+<div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите тему, которая станет основой сюжета изображения. 'Природа' добавит естественные элементы, 'Городские пейзажи' — архитектурные формы, 'Фантазия' оживит сказочные детали, 'Научная фантастика' — футуристические элементы, а 'Ретро' придаст винтажный стиль.">?</span>
     <select id="theme-select">
-        <option value="">--Выберите тему--</option>
+        <option value="">▪️▪️▪️ Выберите тему ▪️▪️▪️</option>
         <option value="nature">Природа</option>
         <option value="urban">Городские пейзажи</option>
-        <option value="fantasy">Фантазия</o>
+        <option value="fantasy">Фантазия</option>
         <option value="sci-fi">Научная фантастика</option>
         <option value="retro">Ретро</option>
     </select>
-    <label for="filter-select"></label>
+</div>
+
+<div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите фильтр, чтобы изменить визуальные эффекты. 'Чёрно-белый' добавит классический оттенок, 'Винтаж' придаст изображению старинный стиль, 'Сепия' — теплый коричневый тон, 'Размытие' создаст мягкий фокус, а 'Резкость' — выделит детали.">?</span>
     <select id="filter-select">
-        <option value="">--Выберите фильтр--</option>
+        <option value="">▪️▪️▪️ Выберите фильтр ▪️▪️▪️</option>
         <option value="black-and-white">Чёрно-белый</option>
         <option value="vintage">Винтаж</option>
         <option value="sepia">Сепия</option>
         <option value="blur">Размытие</option>
         <option value="sharpen">Резкость</option>
     </select>
+</div>
 
-    <label for="character-select"></label>
+<div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите тип персонажа для изображения. Например, 'Дедушка' придаст зрелость, 'Мужчина' или 'Женщина' добавят современные черты, а 'Мальчик' или 'Девочка' — молодость и наивность.">?</span>
     <select id="character-select">
-        <option value="">--Выберите персонажа--</option>
+        <option value="">▪️▪️▪️ Выберите персонажа ▪️▪️▪️</option>
         <option value="grandfather">Дедушка</option>
         <option value="grandmother">Бабушка</option>
         <option value="man">Мужчина</option>
@@ -103,28 +116,32 @@
         <option value="boy">Мальчик</option>
         <option value="girl">Девочка</option>
     </select>
+</div>
 
-    <label for="place-select"></label>
+<div class="select-container">
+    <span class="tooltip" data-tooltip="Выберите место для сцены. Например, 'Город' добавит урбанистический фон, 'Лес' — природный, а 'Эйфелева башня' и 'Статуя свободы' придадут узнаваемые символы.">?</span>
     <select id="place-select">
-        <option value="">--Выберите место--</option>
-        <option value="city">В городе</option>
-        <option value="village">В селе</option>
-        <option value="by-river">Возле речки</option>
-        <option value="by-sea">У моря</option>
-        <option value="by-ocean">Возле океана</option>
-        <option value="forest">В лесу</option>
-        <option value="mountains">В горах</option>
-        <option value="everest">На вершине Эверест</option>
-        <option value="eiffel-tower">Возле Эйфелевой башни</option>
-        <option value="statue-of-liberty">Возле статуи свободы</option>
-        <option value="skyscraper-edge">На краю небоскрёба</option>
-        <option value="cruise-ship">На круизном лайнере</option>
+        <option value="">▪️▪️▪️ Выберите место ▪️▪️▪️</option>
+        <option value="city">Город</option>
+        <option value="village">Село</option>
+        <option value="by-river">Река</option>
+        <option value="by-sea">Море</option>
+        <option value="by-ocean">Океан</option>
+        <option value="forest">Лес</option>
+        <option value="mountains">Горы</option>
+        <option value="everest">Гора Эверест</option>
+        <option value="eiffel-tower">Эйфелева башня</option>
+        <option value="statue-of-liberty">Статуя свободы</option>
+        <option value="skyscraper-edge">Небоскрёб</option>
+        <option value="cruise-ship">Круизный лайнер</option>
         <option value="airplane">В самолёте</option>
-        <option value="space-station">На космической станции</option>
+        <option value="space-station">В космической станции</option>
         <option value="hotel">В отеле</option>
         <option value="near-house">Возле дома</option>
         <option value="inside-house">В доме</option>
     </select>
+</div>
+
   </div>
 </div>
 
@@ -141,7 +158,10 @@
 </div>
   
 <div class="app-panel-container">
-<h2>Карусель ТОП-5 программ для улучшения и редактирования созданных работ:</h2>
+    <span class="arrow-left"></span> <!-- Левая стрелка -->
+    <span class="arrow-right"></span> <!-- Правая стрелка -->
+    
+<h2>Топ-5 сервисов для улучшения и редактирования изображений:</h2>
     <div class="app-panel">
         <div class="app-card">
     <img src="https://images.sftcdn.net/images/t_app-icon-m/p/ca9cc5b8-0973-4631-87cb-f25e8d4e2b2b/4161190089/waifu2x-logo" alt="Логотип" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
@@ -228,7 +248,7 @@
         <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/save-money-coin-piggy_bank-deposit-512.png" alt="Earnings Icon" class="news-icon">
       <p class="news-text">Запущены обучающие курсы и материалы в открытом доступе!</p>
           <p>Мало кто знает, что на созданных ИИ картинках можно зарабатывать от $2000 и более...</p>
-<p>Вы уже можете ознакомится: <a href="https://dev-geniy.github.io/Ai-Image-Gen-2.0/mat" target="_blank">"Как заработать - обучающие материалы"</a> и не благодарите, лучшая благодарность это ваш УСПЕХ! 🤝</p>
+<p>Вы уже можете ознакомится: <a href="С С Ы Л К А  НА О БУЧЕНИЕ" target="_blank">"Как заработать - обучающие материалы"</a> и не благодарите, лучшая благодарность это ваш УСПЕХ! 🤝</p>
     </div>
      </div>  
       <div class="bottom-container">
@@ -244,7 +264,7 @@
         <p>Спасибо что Вы с нами, мы работаем для Вас!</p>
     </div>
   </div>
-        
+
         <div class="bottom-container">
       <div class="crypto-addresses">
         <h4>Адреса для пожертвований:</h4>
@@ -283,7 +303,15 @@
     }
 </script>
 </div>
-    </div>  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
 </div>
 
 <div id="modal" class="modal">
@@ -302,7 +330,11 @@
     <p><strong>СЛУЧАЙНЫЕ CОВЕТЫ:</strong></p>
     <h2 class="loading-tip" id="loading-tip">Рекомендации и советы для вас: (совет появится здесь)</h2>
       </div>
-  
+
+<div class="tooltip-modal" id="tooltipModal">
+    <div class="tooltip-content" id="tooltipContent"></div>
+</div>
+
     </div>
    <script src="script.js"></script>
   </body>
