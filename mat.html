@@ -1,290 +1,1123 @@
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<html lang="ru">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Как зарабатывать на сгенерированных ИИ изображениях</title>  
+    <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+    <div class="background"></div>  
+    <div class="content">  
+        <h1>Обучающие материалы Ai Image</h1>   <h2>Как начать зарабатывать на сгенерированных ИИ изображениях?
+</h2> 
+        <div class="cards-container">  
+            <div class="card" onclick="openModal('modal1')">  
+                <img src="https://cdn-icons-png.freepik.com/256/1163/1163288.png?semt=ais_hybrid" alt="Иконка 1">  
+                <h2>1. Продажа изображений на стоковых платформах (Сложность: 3)</h2>  
+                <p>Вы можете создавать уникальные изображения с помощью ИИ и загружать их на стоковые платформы, такие как Shutterstock, Adobe Stock или iStock. Каждая продажа может приносить вам определенный процент от цены изображения. </p>
+             <p>Потенциальный доход: От $0.25 - $100 за продажу, в зависимости от качества и лицензии. Можно заработать от 100 до 1000 в месяц.</p>
+            </div>  
+            <div class="card" onclick="openModal('modal2')">  
+                <img src="https://cdn-icons-png.freepik.com/256/8631/8631127.png?semt=ais_hybrid" alt="Иконка 2">  
+                <h2>2. Создание и продажа NFT (Сложность: 4)</h2>  
+                <p>Создавайте уникальные цифровые произведения искусства с использованием ИИ и продавайте их как невзаимозаменяемые токены (NFT) на платформах, таких как OpenSea или Rarible.</p>  
+              <p>Потенциальный доход: В зависимости от популярности вашего произведения, можно заработать от $50 +++ до нескольких тысяч долларов за одно NFT. Временной период: от 1 месяца до 1 года, чтобы построить аудиторию.</p>
+            </div>  
+            <div class="card" onclick="openModal('modal3')">  
+                <img src="https://cdn-icons-png.freepik.com/256/1429/1429789.png?semt=ais_hybrid" alt="Иконка 3">  
+                <h2>3. Илюстрации для книг и публикаций (Сложность: 3)</h2>  
+                <p>Обеспечьте услуги по созданию иллюстраций для авторов книг или публикаций. ИИ может помочь быстро генерировать изображения, которые можно адаптировать под конкретные нужды.</p>  
+              <p>Потенциальный доход: От $100 - $500 за проект. Временной период: от 1 недели до нескольких месяцев, в зависимости от объема работы.</p> 
+            </div>  
+            <div class="card" onclick="openModal('modal4')">  
+                <img src="https://cdn-icons-png.freepik.com/256/8229/8229230.png?semt=ais_hybrid" alt="Иконка 4">  
+                <h2>4. Создание мерчендайза (Сложность: 3)
+</h2>  
+                <p>Используйте сгенерированные изображения для создания уникальных товаров, таких как футболки, кружки и постеры, используя такие сервисы, как Redbubble или Printful.</p>  
+                <p>Потенциальный доход: Приблизительно $5 - $30 на продажу в зависимости от товара и цены. Можно зарабатывать от 100 до 1500 в месяц, в зависимости от объема продаж.</p>
+            </div>  
+            <div class="card" onclick="openModal('modal5')">  
+                <img src="https://cdn-icons-png.freepik.com/256/7253/7253178.png?semt=ais_hybrid" alt="Иконка 5">  
+                <h2>5. Ведение социальных сетей и контент для блогов (Сложность: 2)</h2>  
+                <p>Разработайте контент (изображения) для социальных сетей или блогов, используя ИИ-генерацию. Можно предлагать свои услуги как фрилансер на платформах, таких как Fiverr или Upwork..</p>  
+              <p>Потенциальный доход: От $50 - $300 за проект. Временной период: 1-3 месяца для формирования клиентской базы.</p>
+            </div>  
+            <div class="card" onclick="openModal('modal6')">  
+                <img src="https://cdn-icons-png.freepik.com/256/8438/8438858.png?semt=ais_hybrid" alt="Иконка 6">  
+                <h2>6. Создание и продажа курсов по искусственному интеллекту (Сложность: 5)</h2> 
+                <p>Если вы обладаете опытом в ИИ и генерации изображений, создайте образовательный курс на Udemy или Teachable и продавайте его.</p>  
+             <p>Потенциальный доход: От $200 до $500 за курс, если курс будет успешным. Возможно заработок от $1000 - $3000 в месяц, в зависимости от популярности и качества курса.</p>
+            </div>  
+        </div>  
 
+        <div class="progress-container">  
+            <div class="progress-bar" id="progress-bar"></div>  
+        </div>  
 
-    <title>AI Image</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div class="content">
-<header>
-    <div class="header-container">
-        <img src="https://i.gifer.com/yy3.gif" alt="Animation" class="header-animation">
-        <h1 class="animated-title">AIImage v2.0 PRO</h1>
-    </div>
-</header>
+<!-- Модальное окно 1 -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h1 class="modal-title">Продажа изображений на стоковых платформах</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/1163/1163288.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
 
-    <div class="container">
-    <div class="input-wrapper">
-        <textarea id="text-input" placeholder="ВВЕДИТЕ ОПИСАНИЕ КАРТИНКИ..."></textarea>
-        <span id="clear-text" class="clear-icon">&times;</span>
-    </div>
-      
-        <div id="button-container">
-            <button id="generate">Generate</button>
-            <button id="generate-multiple">Generate 5</button>
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Очень легко
         </div>
-    </div>
-  
-    <div class="container-2">
-        <div class="vertical-containers">
-            <div class="left-container">
-                <table id="historyTable">
-                    <thead>
-                        <tr>
-                            <th>Моя история запросов:</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Средняя доходность
+        </div>
+
+        <h2 class="section-title">Метод продажи изображений</h2>
+        <p class="section-description">Вы можете создавать уникальные изображения с помощью ИИ и загружать их на стоковые платформы, такие как Shutterstock, Adobe Stock или iStock. Каждая продажа может приносить вам определенный процент от цены изображения.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">От $0.25 до $100 за продажу, в зависимости от качества и лицензии. Можно заработать от $100 до $1000 в месяц, что делает эту возможность привлекательной для тех, кто хочет начать зарабатывать на своих творениях.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Для запуска и получения первых результатов вам потребуется всего несколько дней. Зарегистрируйтесь на платформах, загрузите свои изображения и ждите, пока они начнут продаваться. Это быстрый и эффективный способ начать зарабатывать на своих навыках.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>Shutterstock</h3>
+                <p>Широкая аудитория и высокие выплаты.</p>
+                <p>Оплата: до 30% от продаж.</p>
+                <p>Функционал: Огромная библиотека изображений, анализ спроса.</p>
+                <button onclick="window.open('https://www.shutterstock.com')">Регистрация</button>
             </div>
-          
-            <div class="right-container">
-    <h2>Настройки генерации изображения:</h2>
-    
-    <div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите художественный стиль, который придаст вашему изображению уникальный характер.">?</span>
-    <select id="style-select">
-        <option value="">▪️▪️▪️ Выберите стиль ▪️▪️▪️</option>
-        <option value="impressionism">Импрессионизм</option>
-        <option value="surrealism">Сюрреализм</option>
-        <option value="pop-art">Поп-арт</option>
-        <option value="cubism">Кубизм</option>
-        <option value="realism">Реализм</option>
-    </select>
-</div>
-    
-<div class="select-container"> 
-    <span class="tooltip" data-tooltip="Выберите формат изображения для управления его пропорциями и ориентацией. 'Квадрат' подходит для симметричных композиций, 'Портрет' — для фокусировки на вертикальных элементах, 'Пейзаж' — для широких сцен.">?</span>
-    <select id="format-select">
-        <option value="">▪️▪️▪️ Выберите формат ▪️▪️▪️</option>
-        <option value="square">Квадрат</option>
-        <option value="portrait">Портрет</option>
-        <option value="landscape">Пейзаж</option>
-    </select>
-</div>
+            <div class="service">
+                <h3>Adobe Stock</h3>
+                <p>Интеграция с Adobe Creative Cloud.</p>
+                <p>Оплата: до 33% от продаж.</p>
+                <p>Функционал: Легкий доступ к клиентам Adobe.</p>
+                <button onclick="window.open('https://stock.adobe.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>iStock</h3>
+                <p>Отличные возможности для продажи.</p>
+                <p>Оплата: до 45% от продаж.</p>
+                <p>Функционал: Нишевые сегменты и специализированный контент.</p>
+                <button onclick="window.open('https://www.istockphoto.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Dreamstime</h3>
+                <p>Доступные лицензии и простота использования.</p>
+                <p>Оплата: до 60% от продаж.</p>
+                <p>Функционал: Разнообразие форматов и лицензий.</p>
+                <button onclick="window.open('https://www.dreamstime.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Alamy</h3>
+                <p>Высокие выплаты и гибкость.</p>
+                <p>Оплата: до 50% от продаж.</p>
+                <p>Функционал: Безопасный контент и хорошая репутация.</p>
+                <button onclick="window.open('https://www.alamy.com')">Регистрация</button>
+            </div>
+        </div>
 
-<div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите цветовой тон для изображения. 'Тёплые тона' добавят уютные оттенки, 'Холодные тона' придадут свежесть, 'Монохром' сделает изображение одноцветным, 'Пастельные цвета' создадут мягкий эффект, а 'Контрастные цвета' — яркий и выразительный.">?</span>
-    <select id="tone-select">
-        <option value="">▪️▪️▪️ Выберите тон ▪️▪️▪️</option>
-        <option value="warm">Тёплые тона</option>
-        <option value="cool">Холодные тона</option>
-        <option value="monochrome">Монохром</option>
-        <option value="pastel">Пастельные цвета</option>
-        <option value="contrast">Контрастные цвета</option>
-    </select>
-</div>
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Зарегистрируйтесь на стоковых платформах.</p>
+        <p class="section-description">2. Создайте и загрузите свои уникальные изображения.</p>
+        <p class="section-description">3. Промоутируйте свои работы через социальные сети.</p>
+        
+        <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Изучайте актуальные тренды и требования платформ, чтобы ваши работы соответствовали запросам покупателей.</li>
+    <li>Создавайте уникальные и высококачественные изображения, так как качество напрямую влияет на ваши продажи.</li>
+    <li>Используйте правильные ключевые слова и теги при загрузке изображений, чтобы облегчить их поиск покупателями.</li>
+    <li>Обращайте внимание на освещение и композицию при создании изображений, так как это значительно влияет на восприятие вашей работы.</li>
+    <li>Не бойтесь экспериментировать с разными темами и стилями, чтобы найти свою нишу и привлекать разнообразных клиентов.</li>
+    <li>Анализируйте свои продажи и изучайте, какие изображения пользуются наибольшим спросом, чтобы оптимизировать свой портфель.</li>
+    <li>Будьте терпеливы и не расстраивайтесь из-за первоначальных неудач — процесс накапливания продаж может занять время.</li>
+</ul>
 
-<div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите тему, которая станет основой сюжета изображения. 'Природа' добавит естественные элементы, 'Городские пейзажи' — архитектурные формы, 'Фантазия' оживит сказочные детали, 'Научная фантастика' — футуристические элементы, а 'Ретро' придаст винтажный стиль.">?</span>
-    <select id="theme-select">
-        <option value="">▪️▪️▪️ Выберите тему ▪️▪️▪️</option>
-        <option value="nature">Природа</option>
-        <option value="urban">Городские пейзажи</option>
-        <option value="fantasy">Фантазия</option>
-        <option value="sci-fi">Научная фантастика</option>
-        <option value="retro">Ретро</option>
-    </select>
-</div>
+      
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Регулярно обновляйте свой портфель и тестируйте разные стили и темы.</li>
+    <li>Создавайте серии изображений по одной теме, чтобы увеличить вероятность продаж — покупатели часто ищут наборы связанных работ.</li>
+    <li>Участвуйте в конкурсах и акциях на стоковых платформах, чтобы повысить свою видимость и привлечь новых клиентов.</li>
+    <li>Занимайтесь активным продвижением своих работ в социальных сетях и на платформах для фрилансеров, чтобы расширить свою аудиторию.</li>
+</ul>
 
-<div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите фильтр, чтобы изменить визуальные эффекты. 'Чёрно-белый' добавит классический оттенок, 'Винтаж' придаст изображению старинный стиль, 'Сепия' — теплый коричневый тон, 'Размытие' создаст мягкий фокус, а 'Резкость' — выделит детали.">?</span>
-    <select id="filter-select">
-        <option value="">▪️▪️▪️ Выберите фильтр ▪️▪️▪️</option>
-        <option value="black-and-white">Чёрно-белый</option>
-        <option value="vintage">Винтаж</option>
-        <option value="sepia">Сепия</option>
-        <option value="blur">Размытие</option>
-        <option value="sharpen">Резкость</option>
-    </select>
-</div>
 
-<div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите тип персонажа для изображения. Например, 'Дедушка' придаст зрелость, 'Мужчина' или 'Женщина' добавят современные черты, а 'Мальчик' или 'Девочка' — молодость и наивность.">?</span>
-    <select id="character-select">
-        <option value="">▪️▪️▪️ Выберите персонажа ▪️▪️▪️</option>
-        <option value="grandfather">Дедушка</option>
-        <option value="grandmother">Бабушка</option>
-        <option value="man">Мужчина</option>
-        <option value="woman">Женщина</option>
-        <option value="young-man">Парень</option>
-        <option value="young-woman">Девушка</option>
-        <option value="boy">Мальчик</option>
-        <option value="girl">Девочка</option>
-    </select>
-</div>
-
-<div class="select-container">
-    <span class="tooltip" data-tooltip="Выберите место для сцены. Например, 'Город' добавит урбанистический фон, 'Лес' — природный, а 'Эйфелева башня' и 'Статуя свободы' придадут узнаваемые символы.">?</span>
-    <select id="place-select">
-        <option value="">▪️▪️▪️ Выберите место ▪️▪️▪️</option>
-        <option value="city">Город</option>
-        <option value="village">Село</option>
-        <option value="by-river">Река</option>
-        <option value="by-sea">Море</option>
-        <option value="by-ocean">Океан</option>
-        <option value="forest">Лес</option>
-        <option value="mountains">Горы</option>
-        <option value="everest">Гора Эверест</option>
-        <option value="eiffel-tower">Эйфелева башня</option>
-        <option value="statue-of-liberty">Статуя свободы</option>
-        <option value="skyscraper-edge">Небоскрёб</option>
-        <option value="cruise-ship">Круизный лайнер</option>
-        <option value="airplane">В самолёте</option>
-        <option value="space-station">В космической станции</option>
-        <option value="hotel">В отеле</option>
-        <option value="near-house">Возле дома</option>
-        <option value="inside-house">В доме</option>
-    </select>
-</div>
-
-  </div>
-</div>
-
-<div class="app-panel-container">
-  <h2>Меняйте тему в 1 клик. Ставьте свои любимые фото!</h2>
-</div>
-  <div class="background-controls">
-    <label for="background-upload" class="upload-label">
-        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/ebook-e_learning-education-plant-online-512.png" alt="Upload Icon" class="upload-icon">
-        Загрузите свой фон | сменить тему
-    </label>
-    <button id="remove-background">Удалить</button>
-    <input type="file" id="background-upload" style="display: none;" accept="image/*">
-</div>
-  
-<div class="app-panel-container">
-    <span class="arrow-left"></span> <!-- Левая стрелка -->
-    <span class="arrow-right"></span> <!-- Правая стрелка -->
-    
-<h2>Топ-5 сервисов для улучшения и редактирования изображений:</h2>
-    <div class="app-panel">
-        <div class="app-card">
-    <img src="https://images.sftcdn.net/images/t_app-icon-m/p/ca9cc5b8-0973-4631-87cb-f25e8d4e2b2b/4161190089/waifu2x-logo" alt="Логотип" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
-    <h3 style="display: inline;">1. Waifu2x</h3>
-    <p>Улучшите качество и масштаб, без регистрации, онлайн.</p>
-          <p>▪️ Уменьшить шум, уеличить разрешение</p> 
-          <p>▪ Бесплатный полностью </p>
-          <p>Хорошо подходит для жанров "Anime" и "Реализм".</p>
-    <div class="button-card"> 
-       <button class="button-link" onclick="window.open('https://waifu2x.booru.pics/', '_blank')">Перейти</button>
-   </div>
-</div>
-
-<div class="app-card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJzawsgXHriluIErQtcoiXW8NtovNrvq21gxBVQgxBzm38vl8GUIOA2FGK0qCzFvafcOU&usqp=CAU" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
-    <h3 style="display: inline;">2. Photopea</h3>
-    <p>Аналог фотошопа, бесплатный, без регистрации, онлайн.</p>
-    <p>▪️ Поддержка слоев и масок</p> 
-    <p>▪️ Бесплатный полностью</p>
-    <p>Идеально для редактирования изображений разных форматов, добавление текстов и т.д..</p>
-    <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www.photopea.com/', '_blank')">Перейти</button>
-    </div>
-</div>
-
-<div class="app-card">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT45OV-zrGjQV4kthoUy3pKTrvQcct4YWvGAZbD1HojfPkf36phA0_OUESXQIgAU6hzPLk&usqp=CAU" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
-    <h3 style="display: inline;">3. LunaPic</h3>
-    <p>Широкий выбор стилизации, улучшения и редактирования, онлайн.</p>
-    <p>▪️ Более 200 инструментов и эффектов</p> 
-    <p>▪️ Простота использования без регистрации и полностью бесплатно.</p>
-    <p>Отлично для быстрого редактирования и фильтров.</p>
-    <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www5.lunapic.com/editor/', '_blank')">Перейти</button>
-    </div>
-</div>
-
-<div class="app-card">
-    <img src="https://www.remove.bg/favicon-32x32.png" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
-    <h3 style="display: inline;">4. Remove.bg</h3>
-    <p>Удаление фона в один клик, бесплатно, без регистрации, онлайн.</p>
-    <p>▪️ Высокая точность обработки</p> 
-    <p>▪️ Поддержка различных разрешений</p>
-    <p>Прекрасно подходит для портретов и объектов.</p>
-    <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www.remove.bg/ru', '_blank')">Перейти</button>
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата (%)</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>Shutterstock</td>
+                <td>30%</td>
+                <td>$500</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Adobe Stock</td>
+                <td>33%</td>
+                <td>$400</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>iStock</td>
+                <td>45%</td>
+                <td>$300</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Dreamstime</td>
+                <td>60%</td>
+                <td>$200</td>
+                <td>Низкая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Alamy</td>
+                <td>50%</td>
+                <td>$250</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+      
+        <button onclick="closeModal('modal1')">Прочитал!</button>
     </div>
 </div>
       
-<div class="app-card">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAjVBMVEX5+fkAAAD///+JiYn8/Pzy8vLu7u7ExMT39/eysrKpqano6Ojx8fG2trbHx8esrKzX19fd3d2enp5FRUVxcXGAgIC1tbUzMzM+Pj5NTU1YWFgqKiq+vr7Q0NDg4OBSUlKHh4eTk5MZGRliYmIgICAQEBChoaETExM6OjqXl5doaGgoKCgxMTEeHh55eXmMtA5wAAAH5ElEQVR4nO2daXviOgyFE9dAoaV0nW50L3Sd/v+fdyFQJgTp2DIQB1+dT/MMJdaLjZMj2SYzhGy2m7KWgMmSwZtplbFKuNt8hSBhAnxZtR+XCGOHtjFZmjCNDpzJUoQpAWalb+PiX7Ej2riqhLHj2YKWCRMbojOVCZMEnE83WapjdCq7IIwdydb0S5jmGJ3Kzgljx7FFzQjT7cKiE7Oku3DaiVnSXTjtxCztLpx0YpZ2F0468X9AqFKpVCqVSqVSqVQqlUqlUqlUKpVKpWq4ilU4ZcUOaNNqDQbd/vDo7niik5P7+4P2vl17ZY41bVoR6tTmO6fVXwPRHjMXzfOTuhFBLGuEYvbYq+7VXYs352wsa3RikwhbbCj5QxKEpscT5vfB47RJhO+A8Ck4mOYQgnlmqgQIzQUk7IQO0+YQZhAwfwmNpjGEposJ84PATmwO4ZmD8DQwnKYQ2hMHYP6644Tm0UWY34UN06YQWidgfh4WT0MITd9NmLfCLt0QwgcPwl5QQM0gtPcegPn7DhOaJx/C/DhkrmkIoRdgfhESUSMIbcePMMjqN4LQ3HgS/gkIqQmE9sATML/eUULz4UsYYvUbQTjyJgyw+g0gtEfegCFWvwGE5lNAKLf68QltWwAYYPXjE5pTCaHc6jeA8FVEKLb60QntnQgwf945QlCsoCW1+tEJD4WAYqsfmxAWK2gJrX50wksxodDqRyaUzjNTCa1+ZELzwzZ/xb4iK05HJtxnW2+ZMfeSzOrHJTQDQMHTy9qIS8gOxWObmRfuRVFVPyohX6y4NShLLLL6UQn5oujHtG1+5YLE6sftQ7btwkHww1Ri9WMSmj9c02cGvz7aFcJrrunurGl+mAqsfkRCUKw4nAfH5lEFVj8iId/057xlUNtve3diTEK25d8xCFI4/lY/HqEZsi0vGuaH6dcuELLR/3vu5J/q/K1+NEJQrCiVCfkMgLfVj0bIF0VvS+3yNxRvqx+PkG33o0zID9OBZ3ixCEFRtJzzBbOpr9WPRcg/cy4bBzBMPa1+JEIwz3SXCflcnKfVj0QIihXLMwiq23g2FYnwmWv1s9IqGKZ+Vj8OISiKVl0DGKZ+Vj8OISiKVqcPtIzBq9IWhdDyjyqr0wdYWutl9aMQ8qlQYmEX+GOvSlscwluuTcIyoGHqY/VjEIJixQfRJhimPlY/BiEoilJzBximPlY/BiGfrifnfzRMx+4YIxCCO1yXbJLP/S85La65CIT8Dq59+g1gPYrb6tdPCHZwVZ/Yft8Bhqnb6tdPCHZwcZM/GKZuqx+hD9kGR9yIQ8PUafVrJwRZ3keuQbSU/6p5hPz9m1+Kj1ZsuKx+3YRgBxeY+dEqYpfVr5sQ7OCintjmgjtOXC3W3Yd8pMjtoV3QQxxnzYRoB9fQkCoOAEH7ohx79esmRDu4Xs5/fi4e956ePj5Ox+Nerzfodvv94XDYOeKjzF1Wv15Cvx1cUmGrXy+h5w4uoZ6b1IfbAMzzI4RYK6Hli6JrCVr9Wgm9d3BJhax+nYT+O7ikQla/TkLBDi6hkNWvlZAtVqwtsH+2RkLRDi6hgNWvkZAvim5AdIanXkLZDi6p6CxdvYTCHVxC8Va/RsKvbRLyi2rXIVz8/q9PGS9kZ4VEbJInnNCag/7Pze3352Pf5wRC8Q4uqdiGAwmt6ZQK7A9HTka+WLEhcVY/kNDcV1JmZwcOpy3fwSUUZ/XDCKmkJ06XBOzgkoqx+kGE9MSP9pQ5jpvbiBirH0LILafrgE7nd3BtTIzVDyDkk7p8SgjMM6P+UaEOreFw2O/3uxMNBr1eD6WkaKsfQMjnLtklPGAR5eR5yzq0lFwEiLTVlxOiw/G4hAkqj/HPzJRgto6stAUQvvFNMDM2Om5Oem4Qv1KFsfpiQuzy6G8iOtZSeloxeoAnrb6YEB/Cydwx+Dc4y39VwWFKVfXlhNyJ1IV+yE+R3aGFfB0ndIQkZfXFhPiEAHqc8EtEhfNMcTX0/EdcTkroqjwQ70FvCTifDOYKiCEhJnTYPNkwCToVHQ0J4mtdAyEoVojnmSJk8PhAfGRiQkc+ifgMQbFCPs+4QiBW4EpnGnBw+kQ3BCEoigbwZY7yx9p9iM8VJxwMKlYEnYOI7z6rNnXDd/zVWy4qigadZZnhjMjKKJI/taGp5u9qyJZ/jA2aZ4qg0fln1QfHgCdvcHLV6t5VdKyl7+6zFcFKa/WLEkAIFowQfw2KFYF8UwHCt7UJ3dvoS0Ize+A8U4SAkq8VkxqSxeBmR+K5F3md0HkmcxzpWlmHG5SJoi0iNXFY/ksbPM8U1wWEeXttwsxQH+E19eNMYJAGzzNFBCh3t3zLCswIH68cOfpD/vqUeXoejcjjSb/X4Jt+U/5VzEejt+fnv69fX7e335eXV++VuEEKBR0CY+3yJ3N5x01LNtsv1JrpcKa2/6kPXADF5WbXnv3HIilX/dOsRSvDMZj2eJGof+lE+Pmr7WvyiR10xqfj7olNkq/QbFwki6dSqVQqlUqlUqlUKpVKpVKpVCqVSrUbSr1cY7NtnWbXFKVPaLLEq4p2Qph2J5opYdKdWBCm3IlmRphuJ9o5YbqdaH4JU+1EuyBMFHG29Coj11+lIVMmTBHRLBOmh2iqhKkhmlXCpKab0qbrEmFCiOVd5WXCVBiXd80vE6bwbbRVIlPVbvdjlY8i3GHGVbyJ/gPZF2XXxa31RgAAAABJRU5ErkJggg==" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
-    <h3 style="display: inline;">5. ImgLarger</h3>
-    <p>Улучшение качества изображения, много инструментов ИИ.</p>
-    <p>▪️ Поддержка различных форматов</p> 
-    <p>▪️ Бесплатно первые 100 шт.</p>
-    <p>Идеально подходит для фотографий и графики.</p>
-    <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://imglarger.com/', '_blank')">Перейти</button>
-    </div>
-</div>
-        <!-- Добавьте больше карточек при необходимости -->
+<!-- Модальное окно 2 -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h1 class="modal-title">Создание и продажа NFT</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/8631/8631127.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
+
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Нормально
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Хорошая доходность
+        </div>
+
+        <h2 class="section-title">Метод создания и продажи NFT</h2>
+        <p class="section-description">Создавайте уникальные цифровые произведения искусства с использованием ИИ и продавайте их как невзаимозаменяемые токены (NFT) на платформах, таких как OpenSea или Rarible. NFT позволяют продавать ваше искусство в виде цифровых активов, которые нельзя заменить или копировать.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">В зависимости от популярности вашего произведения, можно заработать от $50 до нескольких тысяч долларов за одно NFT. Это делает данный метод заработка особенно привлекательным для творческих людей, стремящихся monetизировать свои таланты.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Чтобы построить аудиторию и начать зарабатывать, вам потребуется от 1 месяца до 1 года. Начните с создания нескольких уникальных произведений и продвигайте их в социальных сетях для привлечения внимания.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>OpenSea</h3>
+                <p>Одна из крупнейших платформ для торговли NFT.</p>
+                <p>Оплата: комиссия 2.5% с продажи.</p>
+                <p>Функционал: Удобный интерфейс, поддержка различных токенов.</p>
+                <button onclick="window.open('https://opensea.io')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Rarible</h3>
+                <p>Децентрализованная платформа для создания и продажи NFT.</p>
+                <p>Оплата: комиссия 2.5% с продажи.</p>
+                <p>Функционал: Социальные функции, возможность голосовать за изменения.</p>
+                <button onclick="window.open('https://rarible.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Mintable</h3>
+                <p>Простота создания NFT с возможностью моментального выпуска.</p>
+                <p>Оплата: комиссия 2.5% с продажи.</p>
+                <p>Функционал: Легкая интеграция с Ethereum и другие функции.</p>
+                <button onclick="window.open('https://mintable.app')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Nifty Gateway</h3>
+                <p>Платформа для продажи высококачественных NFT от известных художников.</p>
+                <p>Оплата: комиссия зависит от сделки.</p>
+                <p>Функционал: Поддержка кредитных карт, специальные коллекции.</p>
+                <button onclick="window.open('https://niftygateway.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Foundation</h3>
+                <p>Платформа для художников и коллекционеров NFT.</p>
+                <p>Оплата: комиссия 15% с продажи.</p>
+                <p>Функционал: Эксклюзивный доступ к аукционам и продажам.</p>
+                <button onclick="window.open('https://foundation.app')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Создайте уникальные цифровые произведения искусства.</p>
+        <p class="section-description">2. Выберите платформу для продажи NFT.</p>
+        <p class="section-description">3. Настройте профиль и загрузите свои работы.</p>
+        
+        <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Изучайте рынок NFT, следите за трендами и взаимодействуйте с сообществом для привлечения аудитории.</li>
+    <li>Определите свою целевую аудиторию и создавайте контент, который будет ей интересен.</li>
+    <li>Изучите платформы для создания и продажи NFT, чтобы выбрать ту, которая лучше всего подходит для вас.</li>
+    <li>Обратите внимание на качество своих работ — чем лучше качество, тем выше вероятность продаж.</li>
+    <li>Не бойтесь делиться своими творениями в сообществах, чтобы получить обратную связь и улучшить свои навыки.</li>
+    <li>Следите за успешными художниками в пространстве NFT, чтобы понять, что работает, а что нет.</li>
+</ul>
+
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Используйте социальные сети для продвижения своих NFT и создания ажиотажа вокруг своих работ.</li>
+    <li>Создавайте ограниченные серии NFT, чтобы увеличить их ценность и привлечь внимание коллекционеров.</li>
+    <li>Проводите виртуальные выставки и аукционы, чтобы продемонстрировать свои работы и взаимодействовать с потенциальными покупателями.</li>
+    <li>Общайтесь с другими создателями NFT и сотрудничайте с ними для расширения вашей аудитории.</li>
+</ul>
+
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Комиссия (%)</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>OpenSea</td>
+                <td>2.5%</td>
+                <td>$1000</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Rarible</td>
+                <td>2.5%</td>
+                <td>$800</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Mintable</td>
+                <td>2.5%</td>
+                <td>$600</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Nifty Gateway</td>
+                <td>Зависит от сделки</td>
+                <td>$1200</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Foundation</td>
+                <td>15%</td>
+                <td>$900</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal2')">Прочитал!</button>
     </div>
 </div>
 
-<div class="bottom-container">
-  <div class="news-item" id="news1">
-    <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/document-research-search-file-resume-512.png" alt="Launch Icon" class="news-icon">
-        <p class="news-text"><p class="news-text">Как получить качественное изображение?</p>
-    <p>Указывайте четкие детали: цвет, стиль, настроение и объекты. Чем точнее ваш запрос, тем выше шанс получить желаемый результат!</p>
-    <p class="news-text">Примеры запросов:</p>
-    <p><strong>• • • </strong>Синий дракон, летающий над горным озером, в стиле акварели</p>
-    <p><strong>• • • </strong>Футуристический город с неоновыми огнями ночью</p>
-   </div>
-</div>
-<div class="bottom-container">
-    <div class="news-item" id="news2">
-        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/growth-profit-salary-investment-income-512.png" alt="Launch Icon" class="news-icon">
-        <p class="news-text">20.11 Запуск торговой платформы!</p> 
-          <p>Мы уже анонсировали запуск платформы для торговли сгенерированными при помощи ии произведеними. Следите за новостями, что бы быть одним из первых!</p>
-   </div>
-</div>
-<div class="bottom-container">
-    <div class="news-item" id="news3">
-        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/save-money-coin-piggy_bank-deposit-512.png" alt="Earnings Icon" class="news-icon">
-      <p class="news-text">Запущены обучающие курсы и материалы в открытом доступе!</p>
-          <p>Мало кто знает, что на созданных ИИ картинках можно зарабатывать от $2000 и более...</p>
-<p>Вы уже можете ознакомится: <a href="С С Ы Л К А  НА О БУЧЕНИЕ" target="_blank">"Как заработать - обучающие материалы"</a> и не благодарите, лучшая благодарность это ваш УСПЕХ! 🤝</p>
-    </div>
-     </div>  
-      <div class="bottom-container">
-    <div class="news-item" id="news3">
-        <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/idea-read-knowledge-light_bulb-thinking-512.png" alt="Telegram Icon" class="news-icon">
-        <p class="news-text">Неожиданно но мы теперь и в телеграм!</p>
-          <p>Вы можете следить в соц. сетях, что бы получать свежие новости и обновления!</p>
-      <div class="social-icons">
-        <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-3/512/335_Telegram-512.png" alt="Telegram" class="social-icon">
-        <img src="https://cdn2.iconfinder.com/data/icons/threads-by-instagram/24/x-logo-twitter-new-brand-512.png" alt="Twitter" class="social-icon">
-        <img src="https://cdn0.iconfinder.com/data/icons/phosphor-thin-vol-3/256/instagram-logo-thin-512.png" alt="Instagram" class="social-icon">
-    </div>
-        <p>Спасибо что Вы с нами, мы работаем для Вас!</p>
-    </div>
-  </div>
+        <!-- Модальное окно 3 -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h1 class="modal-title">Иллюстрации для книг и публикаций</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/1429/1429789.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
 
-        <div class="bottom-container">
-      <div class="crypto-addresses">
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Нормально
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Средняя доходность
+        </div>
+
+        <h2 class="section-title">Метод создания иллюстраций</h2>
+        <p class="section-description">Обеспечьте услуги по созданию иллюстраций для авторов книг или публикаций. ИИ может помочь быстро генерировать изображения, которые можно адаптировать под конкретные нужды. Это позволяет авторам сэкономить время и получить качественные изображения для своих проектов.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">Вы можете зарабатывать от $100 до $500 за проект в зависимости от сложности и объема работы. Это создает отличную возможность для фрилансеров и художников, желающих монетизировать свои навыки в создании иллюстраций.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Временной период может составлять от 1 недели до нескольких месяцев, в зависимости от объема работы и требований клиентов. Начните с создания нескольких образцов работ и продвигайте свои услуги через онлайн-платформы.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>Fiverr</h3>
+                <p>Платформа для фрилансеров, предлагающих услуги по созданию иллюстраций.</p>
+                <p>Оплата: от $5 до $500 за проект.</p>
+                <p>Функционал: Простота использования и доступ к широкой аудитории.</p>
+                <button onclick="window.open('https://www.fiverr.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Upwork</h3>
+                <p>Международная платформа для поиска фрилансеров и проектов.</p>
+                <p>Оплата: от $10 до $500 за проект.</p>
+                <p>Функционал: Гибкость в выборе проектов и заказчиков.</p>
+                <button onclick="window.open('https://www.upwork.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>99designs</h3>
+                <p>Платформа для дизайнеров и художников.</p>
+                <p>Оплата: зависит от проекта, возможны конкурсы.</p>
+                <p>Функционал: Возможность участвовать в конкурсах для получения проектов.</p>
+                <button onclick="window.open('https://99designs.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Behance</h3>
+                <p>Социальная сеть для дизайнеров и художников.</p>
+                <p>Оплата: от $100 до $500 за проект.</p>
+                <p>Функционал: Витрина работ и возможность найти клиентов.</p>
+                <button onclick="window.open('https://www.behance.net')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>ArtStation</h3>
+                <p>Платформа для художников и иллюстраторов.</p>
+                <p>Оплата: от $50 до $500 за проект.</p>
+                <p>Функционал: Профессиональная платформа для продажи искусства.</p>
+                <button onclick="window.open('https://www.artstation.com')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Создайте портфолио своих иллюстраций.</p>
+        <p class="section-description">2. Зарегистрируйтесь на фриланс-платформах.</p>
+        <p class="section-description">3. Начните предлагать свои услуги и активно ищите клиентов.</p>
+        
+        <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Работайте над качеством своих иллюстраций и учитывайте пожелания клиентов для достижения лучших результатов.</li>
+    <li>Изучайте стиль и жанр книг, для которых вы создаете иллюстрации, чтобы соответствовать ожиданиям авторов.</li>
+    <li>Соберите портфолио с разнообразными работами, чтобы продемонстрировать свой стиль и возможности.</li>
+    <li>Не бойтесь просить обратную связь от клиентов, чтобы улучшать свои работы и навыки.</li>
+    <li>Участвуйте в сообществах и форумах для иллюстраторов, чтобы обмениваться опытом и находить клиентов.</li>
+</ul>
+
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Развивайте свои навыки и изучайте новые техники, чтобы оставаться конкурентоспособным на рынке.</li>
+    <li>Создавайте образцы иллюстраций для различных жанров и тем, чтобы расширить круг потенциальных клиентов.</li>
+    <li>Предлагайте дополнительные услуги, такие как создание обложек книг или графики для маркетинга, чтобы увеличить доход.</li>
+    <li>Сетевой маркетинг: используйте социальные сети, чтобы продвигать свои работы и находить клиентов.</li>
+</ul>
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>Fiverr</td>
+                <td>От $5 до $500</td>
+                <td>$300</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Upwork</td>
+                <td>От $10 до $500</td>
+                <td>$400</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>99designs</td>
+                <td>Зависит от проекта</td>
+                <td>$600</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Behance</td>
+                <td>От $100 до $500</td>
+                <td>$500</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>ArtStation</td>
+                <td>От $50 до $500</td>
+                <td>$400</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal3')">Прочитал!</button>
+    </div>
+</div>
+
+        <!-- Модальное окно 4 -->
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <h1 class="modal-title">Создание мерчендайза</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/8229/8229230.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
+
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Нормально
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Средняя доходность
+        </div>
+
+        <h2 class="section-title">Метод создания мерчендайза</h2>
+        <p class="section-description">Используйте сгенерированные изображения для создания уникальных товаров, таких как футболки, кружки и постеры, с помощью таких сервисов, как Redbubble или Printful. Это отличный способ монетизировать свои творения и создать уникальный бренд.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">Приблизительно $5 - $30 на продажу в зависимости от товара и цены. Можно зарабатывать от $100 до $1500 в месяц, в зависимости от объема продаж и вашей маркетинговой стратегии.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Запуск может занять от 1 недели до нескольких месяцев в зависимости от вашего подхода к дизайну и маркетингу. Начните с создания нескольких дизайнов и их размещения на выбранной платформе.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>Redbubble</h3>
+                <p>Платформа для продажи уникальных товаров с вашими дизайнами.</p>
+                <p>Оплата: от $5 до $30 за продажу.</p>
+                <p>Функционал: Широкий выбор товаров и возможность настройки.</p>
+                <button onclick="window.open('https://www.redbubble.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Printful</h3>
+                <p>Сервис печати по запросу и выполнение заказов.</p>
+                <p>Оплата: от $5 до $30 за продажу.</p>
+                <p>Функционал: Интеграция с интернет-магазинами и настраиваемые товары.</p>
+                <button onclick="window.open('https://www.printful.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>TeeSpring</h3>
+                <p>Платформа для создания и продажи одежды и аксессуаров.</p>
+                <p>Оплата: от $5 до $30 за продажу.</p>
+                <p>Функционал: Удобный интерфейс и возможность создания интернет-магазина.</p>
+                <button onclick="window.open('https://www.teespring.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Society6</h3>
+                <p>Платформа для продажи искусства и мерчендайза.</p>
+                <p>Оплата: от $5 до $30 за продажу.</p>
+                <p>Функционал: Поддержка различных товаров, таких как постеры и текстиль.</p>
+                <button onclick="window.open('https://www.society6.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Zazzle</h3>
+                <p>Платформа для создания персонализированных товаров.</p>
+                <p>Оплата: от $5 до $30 за продажу.</p>
+                <p>Функционал: Огромный выбор товаров и настройка дизайна.</p>
+                <button onclick="window.open('https://www.zazzle.com')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Создайте уникальные дизайны для мерчендайза.</p>
+        <p class="section-description">2. Выберите платформу для размещения ваших товаров.</p>
+        <p class="section-description">3. Настройте свой магазин и начните продвигать свои товары.</p>
+        
+       <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Сосредоточьтесь на качестве своих дизайнов и активно используйте социальные сети для продвижения.</li>
+    <li>Изучите целевую аудиторию и создавайте продукты, которые будут им интересны и востребованы.</li>
+    <li>Создавайте разнообразные дизайны для разных товаров, чтобы привлечь более широкую аудиторию.</li>
+    <li>Не забывайте про использование качественных изображений и макетов для представления своих товаров.</li>
+    <li>Поддерживайте обратную связь с клиентами и используйте их отзывы для улучшения дизайнов.</li>
+</ul>
+
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Изучайте тренды и следите за успешными дизайнерами для вдохновения.</li>
+    <li>Создавайте уникальные коллекции товаров, чтобы усилить бренд и привлечь внимание покупателей.</li>
+    <li>Участвуйте в конкурсах и акциях на платформах, чтобы повысить видимость своих работ.</li>
+    <li>Используйте платные и бесплатные рекламные инструменты в социальных сетях для продвижения своих товаров.</li>
+</ul>
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>Redbubble</td>
+                <td>От $5 до $30</td>
+                <td>$400</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Printful</td>
+                <td>От $5 до $30</td>
+                <td>$600</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>TeeSpring</td>
+                <td>От $5 до $30</td>
+                <td>$350</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Society6</td>
+                <td>От $5 до $30</td>
+                <td>$500</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Zazzle</td>
+                <td>От $5 до $30</td>
+                <td>$450</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal4')">Прочитал!</button>
+    </div>
+</div>
+
+        <!-- Модальное окно 5 -->
+<div id="modal5" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal5')">&times;</span>
+        <h1 class="modal-title">Ведение социальных сетей и контент для блогов</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/7253/7253178.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
+
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Легко
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Есть доход
+        </div>
+
+        <h2 class="section-title">Метод создания контента для социальных сетей</h2>
+        <p class="section-description">Разработайте контент (изображения) для социальных сетей или блогов, используя ИИ-генерацию. Можно предлагать свои услуги как фрилансер на платформах, таких как Fiverr или Upwork. Это позволит вам работать с различными клиентами и проектами, получая ценный опыт и доход.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">Вы можете зарабатывать от $50 до $300 за проект в зависимости от объема работы и требований клиента. Это дает возможность фрилансерам зарабатывать на создании качественного визуального контента.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Временной период для формирования клиентской базы может составлять от 1 до 3 месяцев. Начните с создания нескольких образцов контента и активно продвигайте свои услуги в социальных сетях.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>Fiverr</h3>
+                <p>Платформа для фрилансеров, предлагающих услуги по созданию контента.</p>
+                <p>Оплата: от $5 до $500 за проект.</p>
+                <p>Функционал: Простота использования и доступ к широкой аудитории.</p>
+                <button onclick="window.open('https://www.fiverr.com')">Регистрация</button>
+         
+            </div>
+            <div class="service">
+                <h3>Upwork</h3>
+                <p>Международная платформа для поиска фрилансеров и проектов.</p>
+                <p>Оплата: от $10 до $500 за проект.</p>
+                <p>Функционал: Гибкость в выборе проектов и заказчиков.</p>
+                <button onclick="window.open('https://www.upwork.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Freelancer</h3>
+                <p>Платформа для фрилансеров с множеством предложений.</p>
+                <p>Оплата: от $10 до $300 за проект.</p>
+                <p>Функционал: Широкий выбор проектов и клиентов.</p>
+                <button onclick="window.open('https://www.freelancer.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>99designs</h3>
+                <p>Платформа для дизайнеров и создателей контента.</p>
+                <p>Оплата: зависит от проекта, возможны конкурсы.</p>
+                <p>Функционал: Участие в конкурсах для получения проектов.</p>
+                <button onclick="window.open('https://99designs.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>PeoplePerHour</h3>
+                <p>Платформа для фрилансеров и малых бизнесов.</p>
+                <p>Оплата: от $10 до $500 за проект.</p>
+                <p>Функционал: Разнообразные предложения и гибкий подход.</p>
+                <button onclick="window.open('https://www.peopleperhour.com')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Создайте образцы контента, которые будете предлагать.</p>
+        <p class="section-description">2. Зарегистрируйтесь на фриланс-платформах.</p>
+        <p class="section-description">3. Начните предлагать свои услуги и активно ищите клиентов.</p>
+        
+       <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Не бойтесь экспериментировать с контентом и предлагать разные форматы, чтобы привлечь больше клиентов.</li>
+    <li>Изучайте целевую аудиторию и создавайте контент, который соответствует их интересам и потребностям.</li>
+    <li>Создайте портфолио с разнообразными примерами своих работ, чтобы продемонстрировать свои навыки.</li>
+    <li>Работайте над улучшением своих навыков в использовании инструментов и программ для создания контента.</li>
+    <li>Запрашивайте отзывы от клиентов, чтобы улучшать качество своих услуг и наращивать базу клиентов.</li>
+</ul>
+
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Используйте социальные сети для продвижения своих услуг и создания сети контактов.</li>
+    <li>Подписывайтесь на актуальные тренды в дизайне и контенте, чтобы оставаться в курсе новинок.</li>
+    <li>Публикуйте свои работы на платформах, где находятся ваши потенциальные клиенты, например, Instagram или Pinterest.</li>
+    <li>Создавайте контент, который можно легко адаптировать для разных социальных сетей, чтобы сэкономить время.</li>
+</ul>
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>Fiverr</td>
+                <td>От $5 до $500</td>
+                <td>$300</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Upwork</td>
+                <td>От $10 до $500</td>
+                <td>$400</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Freelancer</td>
+                <td>От $10 до $300</td>
+                <td>$350</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>99designs</td>
+                <td>Зависит от проекта</td>
+                <td>$600</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>PeoplePerHour</td>
+                <td>От $10 до $500</td>
+                <td>$400</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal5')">Прочитал!</button>
+    </div>
+</div>
+
+<!-- Модальное окно 6 -->
+<div id="modal6" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal6')">&times;</span>
+        <h1 class="modal-title">Создание и продажа курсов по искусственному интеллекту</h1>
+        <img src="https://cdn-icons-png.freepik.com/256/8438/8438858.png?semt=ais_hybrid" alt="Иконка" class="modal-icon">
+
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Очень тяжело
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Очень прибыльно
+        </div>
+
+        <h2 class="section-title">Метод создания образовательного курса</h2>
+        <p class="section-description">Если вы обладаете опытом в ИИ и генерации изображений, создайте образовательный курс на Udemy или Teachable и продавайте его. Это дает вам возможность делиться своими знаниями и навыками, а также зарабатывать на этом.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">Вы можете зарабатывать от $200 до $500 за курс, если он будет успешным. В зависимости от популярности и качества курса, возможен заработок от $1000 до $3000 в месяц.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Для создания и запуска курса потребуется от 1 до 3 месяцев. Сосредоточьтесь на создании качественного контента и маркетинге курса для привлечения студентов.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>Udemy</h3>
+                <p>Платформа для создания и продажи онлайн-курсов.</p>
+                <p>Оплата: 50% от цены курса (при продаже через платформу).</p>
+                <p>Функционал: Широкая аудитория и поддержка в создании курса.</p>
+                <button onclick="window.open('https://www.udemy.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Teachable</h3>
+                <p>Платформа для создания и продажи онлайн-курсов.</p>
+                <p>Оплата: 100% от цены курса.</p>
+                <p>Функционал: Полный контроль над курсом и аудиториями.</p>
+                <button onclick="window.open('https://www.teachable.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Thinkific</h3>
+                <p>Платформа для создания и управления онлайн-курсами.</p>
+                <p>Оплата: 100% от цены курса.</p>
+                <p>Функционал: Гибкость в создании курсов и маркетинговые инструменты.</p>
+                <button onclick="window.open('https://www.thinkific.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Skillshare</h3>
+                <p>Платформа для обучения и создания курсов.</p>
+                <p>Оплата: 30% от дохода по подписке.</p>
+                <p>Функционал: Модель подписки, доступ к широкой аудитории.</p>
+                <button onclick="window.open('https://www.skillshare.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Coursera</h3>
+                <p>Платформа для создания курсов совместно с университетами.</p>
+                <p>Оплата: В зависимости от партнерства.</p>
+                <p>Функционал: Доступ к широкой аудитории и возможности сотрудничества.</p>
+                <button onclick="window.open('https://www.coursera.org')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Определите тему курса и целевую аудиторию.</p>
+        <p class="section-description">2. Создайте контент и структуру курса.</p>
+        <p class="section-description">3. Выберите платформу для размещения и продажи курса.</p>
+        <p class="section-description">4. Запустите курс и продвигайте его через социальные сети и рекламу.</p>
+        
+        <h2 class="section-title">Советы для новичков</h2>
+<ul class="section-description">
+    <li>Сосредоточьтесь на создании качественного контента и активно взаимодействуйте с вашими учениками для повышения удовлетворенности.</li>
+    <li>Изучите платформы, на которых вы планируете размещать курсы, чтобы понять их особенности и требования.</li>
+    <li>Создайте четкий план курса с разбивкой на модули и темы, чтобы ученики знали, чего ожидать.</li>
+    <li>Запрашивайте обратную связь от студентов, чтобы улучшить курс и адаптировать его под их нужды.</li>
+    <li>Поддерживайте активность в сообществе студентов, чтобы создать чувство принадлежности и вовлеченности.</li>
+</ul>
+
+<h2 class="section-title">Лайфхаки</h2>
+<ul class="section-description">
+    <li>Используйте отзывы и рекомендации студентов для улучшения курса и его продвижения.</li>
+    <li>Создайте привлекательный рекламный материал для вашего курса, включая видеообзоры и бесплатные вебинары.</li>
+    <li>Предлагайте дополнительные ресурсы и бонусные материалы, чтобы повысить ценность вашего курса.</li>
+    <li>Пользуйтесь социальными сетями и профессиональными платформами для продвижения своих курсов и привлечения аудитории.</li>
+</ul>
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>Udemy</td>
+                <td>50% от цены курса</td>
+                <td>$2000</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Teachable</td>
+                <td>100% от цены курса</td>
+                <td>$2500</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Thinkific</td>
+                <td>100% от цены курса</td>
+                <td>$1500</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Skillshare</td>
+                <td>30% от дохода по подписке</td>
+                <td>$800</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Coursera</td>
+                <td>В зависимости от партнерства</td>
+                <td>$3000</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal6')">Прочитал!</button>
+    </div>
+</div>
+      
+      <!-- Модальное окно 7 -->
+<div id="modal7" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal7')">&times;</span>
+        <h1 class="modal-title">Монетизация изображений, созданных с помощью ИИ, на таких платформах, как OnlyFans</h1>
+        <img src="YOUR_ICON_URL" alt="Иконка" class="modal-icon">
+
+        <div class="difficulty">
+            <span class="difficulty-label">Сложность: </span>
+            <span class="difficulty-stars">?????</span> Нормально
+        </div>
+
+        <div class="income">
+            <span class="income-label">Доход: </span>
+            <span class="income-stars">?????</span> Хорошая доходность
+        </div>
+
+        <h2 class="section-title">Метод монетизации изображений</h2>
+        <p class="section-description">Используйте уникальные изображения, созданные с помощью ИИ, для привлечения подписчиков на платформе OnlyFans. Вы можете предложить эксклюзивный контент, который будет доступен только вашим подписчикам, что позволит вам создать лояльную аудиторию.</p>
+
+        <h2 class="section-title">Потенциальный доход</h2>
+        <p class="section-description">Ваш доход может варьироваться в зависимости от количества подписчиков и уровня подписки. Вы можете зарабатывать от $5 до $50 в месяц с каждого подписчика, что в целом может составить от $500 до $5000 в месяц в зависимости от вашей аудитории.</p>
+
+        <h2 class="section-title">Период времени для запуска</h2>
+        <p class="section-description">Для настройки и запуска вашей страницы на OnlyFans потребуется всего 1-2 недели. Главное — качественный контент и активное продвижение.</p>
+
+        <div class="services-container">
+            <div class="service">
+                <h3>OnlyFans</h3>
+                <p>Платформа для создания и монетизации контента через подписку.</p>
+                <p>Оплата: 80% от дохода с подписок.</p>
+                <p>Функционал: Возможность публиковать контент и общаться с подписчиками.</p>
+                <button onclick="window.open('https://www.onlyfans.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Patreon</h3>
+                <p>Платформа для монетизации творчества через подписку.</p>
+                <p>Оплата: 90% от дохода с подписок.</p>
+                <p>Функционал: Множество уровней подписки и эксклюзивного контента.</p>
+                <button onclick="window.open('https://www.patreon.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Fanhouse</h3>
+                <p>Новая платформа для создания контента и получения дохода.</p>
+                <p>Оплата: 85% от дохода с подписок.</p>
+                <p>Функционал: Простота использования и активное сообщество.</p>
+                <button onclick="window.open('https://www.fanhouse.app')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Ko-fi</h3>
+                <p>Платформа для поддержки авторов и создателей контента.</p>
+                <p>Оплата: 95% от пожертвований.</p>
+                <p>Функционал: Возможность предлагать платный контент.</p>
+                <button onclick="window.open('https://ko-fi.com')">Регистрация</button>
+            </div>
+            <div class="service">
+                <h3>Substack</h3>
+                <p>Платформа для создания и распространения платного контента.</p>
+                <p>Оплата: 90% от дохода с подписок.</p>
+                <p>Функционал: Удобные инструменты для создания рассылок.</p>
+                <button onclick="window.open('https://substack.com')">Регистрация</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Пошаговый план запуска</h2>
+        <p class="section-description bold">1. Создайте уникальный контент с помощью ИИ.</p>
+        <p class="section-description">2. Зарегистрируйтесь на платформе и настройте профиль.</p>
+        <p class="section-description">3. Продвигайте свою страницу через социальные сети.</p>
+        <p class="section-description">4. Создайте специальные предложения для привлечения подписчиков.</p>
+        
+        <h2 class="section-title">Советы для новичков</h2>
+        <p class="section-description">Определите свою целевую аудиторию и активно взаимодействуйте с подписчиками, чтобы удерживать их интерес.</p>
+
+        <h2 class="section-title">Лайфхаки</h2>
+        <p class="section-description">Регулярно обновляйте контент и предлагайте эксклюзивные материалы для своих подписчиков, чтобы стимулировать подписки.</p>
+
+        <h2 class="section-title">Статистика сервисов</h2>
+        <table class="statistics-table">
+            <tr>
+                <th>Платформа</th>
+                <th>Оплата</th>
+                <th>Средний доход (в месяц)</th>
+                <th>Популярность</th>
+                <th>Гео</th>
+            </tr>
+            <tr>
+                <td>OnlyFans</td>
+                <td>80% от дохода с подписок</td>
+                <td>$2000</td>
+                <td>Очень высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Patreon</td>
+                <td>90% от дохода с подписок</td>
+                <td>$1500</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Fanhouse</td>
+                <td>85% от дохода с подписок</td>
+                <td>$1000</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Ko-fi</td>
+                <td>95% от пожертвований</td>
+                <td>$800</td>
+                <td>Средняя</td>
+                <td>Глобально</td>
+            </tr>
+            <tr>
+                <td>Substack</td>
+                <td>90% от дохода с подписок</td>
+                <td>$1200</td>
+                <td>Высокая</td>
+                <td>Глобально</td>
+            </tr>
+        </table>
+
+        <button onclick="closeModal('modal7')">Назад</button>
+    </div>
+</div>
+
+      
+<div class="full-width-cards">  
+    <div class="full-card">  
+        <h2>Как создавать и формулировать промты для получения максимального и точного результата</h2>  
+        <p>Создание точных и детальных промтов — ключ к успешному получению желаемых изображений с помощью ИИ. Вот три разных подхода к формулированию эффективных промтов:</p>  
+        
+        <h3>1. Подход "Детализация"</h3>  
+        <p>Чем больше деталей вы предоставите в промте, тем более точным будет результат. Указывайте не только общий контекст, но и конкретные элементы, которые хотите видеть на изображении.</p>  
+        <p><strong>Пример:</strong> "Создай изображение уютной кофейни в старом городе с деревянными столами, мягким освещением и клиентом, читающим книгу."</p>  
+
+        <h3>2. Подход "Стиль и влияние"</h3>  
+        <p>Указывайте стиль или влияние, которые хотите видеть в изображении. Это может быть конкретный художник, движение или даже съемка с использованием определенной техники.</p>  
+        <p><strong>Пример:</strong> "Создай абстрактное изображение в стиле Ван Гога с яркими цветами и вихреобразными формами, изображающее звездное небо."</p>  
+
+        <h3>3. Подход "Эмоции и атмосфера"</h3>  
+        <p>Используйте слова, чтобы передать эмоции и атмосферу, которую хотите создать. Это может влиять на тон и общее восприятие изображения.</p>  
+        <p><strong>Пример:</strong> "Создай туманное и загадочное лесное озеро при свете луны, с отражениями на воде, передающими чувство спокойствия и уединения."</p>  
+    </div>  
+
+    <div class="full-card">  
+        <h2>Лайфхаки для работы с ИИ-генерацией изображений</h2>  
+        <p>Вот пять лайфхаков, которые помогут вам улучшить результаты генерации изображений с помощью ИИ:</p>  
+        
+        <h3>1. Используйте синонимы и различные формулировки</h3>  
+        <p>Экспериментируйте с синонимами и альтернативными формулировками в ваших промтах. Иногда небольшое изменение может значительно улучшить качество результата.</p>  
+        
+        <h3>2. Задавайте контекст</h3>  
+        <p>Укажите контекст или сценарий, в котором должно быть изображение. Это поможет ИИ лучше понять вашу идею.</p>  
+        
+        <h3>3. Указывайте цветовые палитры</h3>  
+        <p>Указывайте, какие цвета вы хотите видеть в изображении. Это поможет ИИ сосредоточиться на более конкретных визуальных аспектах.</p>  
+        
+        <h3>4. Комбинация разных стилей</h3>  
+        <p>Не бойтесь комбинировать различные стили и элементы, чтобы получить уникальные результаты. Указывайте несколько стилей в одном промте.</p>  
+        
+        <h3>5. Естественные границы</h3>  
+        <p>Указывайте, что должно быть на переднем плане, а что на заднем, чтобы ИИ мог правильно расставить приоритеты в изображении.</p>  
+    </div>  
+
+  
+<div class="container-podval"> 
+    <div class="podval-card">  
+        <h2 class="h11">Если у вас есть вопрос, напишите нам:</h2>  
+        <form id="form">
+            <div class="field">
+                <label for="from_name">Как вас зовут?</label>
+                <input type="text" name="from_name" id="from_name" required>
+            </div>
+            <div class="field">
+                <label for="message">Какой у Вас вопрос?</label>
+                <input type="text" name="message" id="message" required>
+            </div>
+            <div class="field">
+                <label for="reply_to">Куда отправить ответ?</label>
+                <input type="text" name="reply_to" id="reply_to" required>
+            </div>
+            <div class="field">
+                <label>Оцените насколько вам нравиться AiImage:</label>
+                <div class="star-rating">
+                    <span class="star" data-value="1">⭐️</span>
+                    <span class="star" data-value="2">⭐️</span>
+                    <span class="star" data-value="3">⭐️</span>
+                    <span class="star" data-value="4">⭐️</span>
+                    <span class="star" data-value="5">⭐️</span>
+                </div>
+            </div>
+            <input type="submit" id="button" value="Отправить вопрос">
+        </form>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+        <script type="text/javascript">
+            emailjs.init('vBQDFFL5U3na3Tf8N');
+        </script>
+    </div>
+
+  <div class="podval-card">  
+    <h2 class="h11">Подпишитесь на нас!</h2>  
+    <p>Следите за новостями и обновлениями в удобных соц сетях:</p>
+    
+    <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"/>
+        </a>
+        <a href="https://t.me" target="_blank">
+            <img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram"/>
+        </a>
+        <a href="https://twitter.com" target="_blank">
+            <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter"/>
+        </a>
+        <a href="https://www.facebook.com" target="_blank">
+            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"/>
+        </a>
+    </div>
+
+    <div class="crypto-addresses">
         <h4>Адреса для пожертвований:</h4>
         
         <div class="address">
             <span>Btc:</span>
             <input type="text" value="bc1q3r5gad7dxc276ael06n02gek7ncm536hpndgmq" readonly>
-            <a class="copy-button" onclick="copyToClipboard('bc1q3r5gad7dxc276ael06n02gek7ncm536hpndgmq')">Копировать</a>
+            <button class="copy-button" onclick="copyToClipboard('bc1q3r5gad7dxc276ael06n02gek7ncm536hpndgmq')">Копировать</button>
         </div>
         
         <div class="address">
             <span>Eth:</span>
             <input type="text" value="0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A" readonly>
-            <a class="copy-button" onclick="copyToClipboard('0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A')">Копировать</a>
+            <button class="copy-button" onclick="copyToClipboard('0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A')">Копировать</button>
         </div>
         
         <div class="address">
             <span>Usdt:</span>
             <input type="text" value="0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A" readonly>
-            <a class="copy-button" onclick="copyToClipboard('0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A')">Копировать</a>
+            <button class="copy-button" onclick="copyToClipboard('0x6DCB8490bFD12Ab30FCc2d3Afb9A242F5CF0D31A')">Копировать</button>
         </div>
     </div>
     
@@ -303,39 +1136,11 @@
     }
 </script>
 </div>
-    </div>
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
 
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="generated-images-container">         </div>
-   </div>
-</div>
-
-<div class="loading" id="loading-spinner" style="display:none;"> 
-    <img src="https://i.gifer.com/yy3.gif" alt="Loading..." class="loading-gif">
-    <h1>Ai создаёт ваше(ы) изображение(я)...</h1>
-    <p>Не забывайте и о возможностях: обработки, улучшения качества, увеличения размера.
-    <p>Ниже под фильтрами и вашей историей, список бесплатных сервисов!</p>
+<div class="full-width-card">Ai Image - Бесплатные обучающие материалы. 2024</div>  
+    </div>  
   
-    <p><strong>СЛУЧАЙНЫЕ CОВЕТЫ:</strong></p>
-    <h2 class="loading-tip" id="loading-tip">Рекомендации и советы для вас: (совет появится здесь)</h2>
-      </div>
+    <script src="script.js"></script>  
 
-<div class="tooltip-modal" id="tooltipModal">
-    <div class="tooltip-content" id="tooltipContent"></div>
-</div>
-
-    </div>
-   <script src="script.js"></script>
-  </body>
+</body>  
 </html>
