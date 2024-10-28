@@ -319,92 +319,87 @@ document.addEventListener('DOMContentLoaded', function() {
 // КАРТОЧКИ ПРОКРУТКА = = = = = =
 const appPanel = document.querySelector('.app-panel');
 let isDragging = false;
-let startX;
+let startX, startY;
 let scrollLeft;
+let isHorizontalSwipe = false;
+const scrollSpeed = 2; // Скорость прокрутки
 
 appPanel.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.pageX - appPanel.offsetLeft;
     scrollLeft = appPanel.scrollLeft;
     appPanel.style.cursor = 'grabbing';
+    appPanel.style.scrollBehavior = 'auto';
 });
 
 appPanel.addEventListener('mouseleave', () => {
     isDragging = false;
     appPanel.style.cursor = 'grab';
+    isHorizontalSwipe = false;
 });
 
 appPanel.addEventListener('mouseup', () => {
     isDragging = false;
     appPanel.style.cursor = 'grab';
+    isHorizontalSwipe = false;
 });
 
 appPanel.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     e.preventDefault();
-  
+
     const x = e.pageX - appPanel.offsetLeft;
-    const walk = (x - startX) * 1;
+    const walk = (x - startX) * scrollSpeed;
     appPanel.scrollLeft = scrollLeft - walk;
 });
 
-// Обработка сенсорных событий для мобильных устройств
+// Сенсорные события для мобильных устройств с углом свайпа
 appPanel.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].pageX - appPanel.offsetLeft;
+    startY = e.touches[0].pageY;
     scrollLeft = appPanel.scrollLeft;
+    isHorizontalSwipe = false;
+    appPanel.style.scrollBehavior = 'auto';
 });
 
 appPanel.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
 
-    e.preventDefault(); // Предотвращаем прокрутку страницы
     const x = e.touches[0].pageX - appPanel.offsetLeft;
-    const walk = (x - startX) * 1;
-    appPanel.scrollLeft = scrollLeft - walk;
+    const y = e.touches[0].pageY;
+    const xDiff = Math.abs(x - startX);
+    const yDiff = Math.abs(y - startY);
+
+    // Проверяем, больше ли горизонтальное движение
+    if (xDiff > yDiff) {
+        isHorizontalSwipe = true;
+        e.preventDefault(); // Блокируем вертикальную прокрутку только для горизонтального свайпа
+        const walk = (x - startX) * scrollSpeed;
+        appPanel.scrollLeft = scrollLeft - walk;
+    }
 });
 
-// Добавьте обработчик для touchend
-appPanel.addEventListener('touchend', (e) => {
+appPanel.addEventListener('touchend', () => {
     isDragging = false;
-
-    // Если был свайп, разрешаем прокрутку страницы
-    if (Math.abs(e.changedTouches[0].pageX - startX) < 30) {
-        e.stopPropagation();
-    }
+    isHorizontalSwipe = false;
+    appPanel.style.scrollBehavior = 'smooth';
 });
 
+//СТРЕЛКИ НА КОНТЕЙНЕР АПП
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
 
-document.addEventListener("DOMContentLoaded", function () {
-    const donationButton = document.querySelector(".donation-button");
-
-    if (donationButton) {
-        donationButton.addEventListener("click", function () {
-            alert("AiImage: Спасибо за поддержку!");
-        });
-    }
+appPanel.addEventListener('scroll', () => {
+    // Проверяем, находится ли панель в крайнем левом положении
+    arrowLeft.style.color = appPanel.scrollLeft > 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
+    
+    // Проверяем, находится ли панель в крайнем правом положении
+    const isAtEnd = appPanel.scrollWidth - appPanel.clientWidth <= appPanel.scrollLeft + 1;
+    arrowRight.style.color = !isAtEnd ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)';
 });
 
-// Бесконечная прокрутка карточек
-function setupInfiniteScroll(appPanel) {
-    const cardCount = appPanel.children.length;
-
-    appPanel.addEventListener('scroll', () => {
-        const scrollPosition = appPanel.scrollLeft;
-        const panelWidth = appPanel.scrollWidth - appPanel.clientWidth;
-
-        // Если достигли конца, прокручиваем к началу
-        if (scrollPosition >= panelWidth) {
-            appPanel.scrollLeft = 0; // Прокрутка к началу
-        }
-    });
-}
-
-// Инициализация бесконечной прокрутки
-setupInfiniteScroll(appPanel);
-
-
-// УВЕДОМЛЕНИЯ
+// УВЕДОМЛЕНИЯ ====================
 window.alert = function (message) {
     Swal.fire({
         title: message,
@@ -495,3 +490,27 @@ function showLoadingScreen() {
 // Пример использования функции showLoadingScreen, например, при нажатии на кнопку "Generate"
 document.getElementById("generate").addEventListener("click", showLoadingScreen);
 document.getElementById("generate-multiple").addEventListener("click", showLoadingScreen);
+
+// ПОДСКАЗКИ ОКНО
+// Находим все элементы с классом tooltip
+document.querySelectorAll('.tooltip').forEach(item => {
+    item.addEventListener('click', function() {
+        // Получаем текст подсказки из атрибута data-tooltip
+        const tooltipText = item.getAttribute('data-tooltip');
+        
+        // Находим модальное окно и вставляем текст
+        const modal = document.getElementById('tooltipModal');
+        const modalContent = document.getElementById('tooltipContent');
+        modalContent.textContent = tooltipText;
+
+        // Показываем модальное окно
+        modal.style.display = 'flex';
+    });
+});
+
+// Закрываем модальное окно при нажатии на фон
+document.getElementById('tooltipModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        this.style.display = 'none';
+    }
+});
