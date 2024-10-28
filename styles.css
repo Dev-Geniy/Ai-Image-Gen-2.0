@@ -293,9 +293,12 @@ button:hover {
 }
 
 .bottom-container h3,
-.bottom-container p,
 .bottom-container a {
     user-select: none;
+}
+
+.bottom-container p {
+      font-size: 18px;
 }
 
 .news-item {
@@ -646,4 +649,57 @@ body {
     color: white;
     margin-top: 15px;
     text-align: center;
+}
+
+/* иконки */
+.crypto-addresses {
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.crypto-addresses h4 {
+    margin-bottom: 10px; /* Отступ между заголовком и адресами */
+}
+
+.address {
+    display: flex; /* Используем flex для адресов */
+    align-items: center; /* Центрируем элементы по вертикали */
+    margin: 5px 0; /* Отступ между адресами */
+}
+
+.address span {
+    margin-right: 10px; /* Отступ между меткой и полем ввода */
+}
+
+.address input {
+    flex:1; /* Заставляем поле занимать доступное пространство */
+    padding: 5px; /* Внутренний отступ */
+    border: 1px solid #ccc; /* Рамка */
+    border-radius: 5px; /* Скругляем углы */
+    margin-right: 10px; /* Отступ между полем и кнопкой */
+}
+
+.copy-button {
+    position: flex;
+    background-color: #4460AA; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    padding: 5px 10px; /* Отступ внутри кнопки */
+    border-radius: 5px; /* Скругляем углы */
+    cursor: pointer; /* Указываем, что это кликабельный элемент */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.copy-button:hover {
+    background-color: #365b8a; /* Цвет кнопки при наведении */
+}
+
+.thank-you {
+    margin-top: 20px; /* Отступ сверху */
+    font-size: 14px; /* Размер шрифта для благодарности */
+    color: white; /* Цвет текста */
+}
+
+.social-icons a {
+    text-decoration: none; /* Убираем нижнее подчеркивание */
+    color: inherit; /* Устанавливаем цвет текста как наследуемый от родителя */
 }
