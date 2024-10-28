@@ -183,7 +183,6 @@ button:hover {
     }
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -636,7 +635,7 @@ body {
 }
 
 .arrow-left::before {
-    border-width: 10px 15px 10px 0; /* Широкая стрелка без палочки */
+    border-width: 10px 15px 10px 0;
     border-color: transparent rgba(255, 255, 255, 0.3) transparent transparent;
 }
 
@@ -645,18 +644,17 @@ body {
 }
 
 .arrow-right::before {
-    border-width: 10px 0 10px 15px; /* Широкая стрелка без палочки */
+    border-width: 10px 0 10px 15px;
     border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
 }
 
-/* Меняем прозрачность стрелок при наведении */
 .app-panel-container:hover .arrow-left,
 .app-panel-container:hover .arrow-right {
     opacity: 0.8;
 }
 
 
-/*Алерт меняем на Алерт 2*/
+/* Алерт */
 .cyberpunk-popup {
     box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 20px rgba(0, 255, 204, 0.8);
 }
@@ -699,58 +697,57 @@ body {
 
 /* иконки */
 .crypto-addresses {
-    margin-top: 20px; /* Отступ сверху */
+    margin-top: 20px;
 }
 
 .crypto-addresses h4 {
-    margin-bottom: 10px; /* Отступ между заголовком и адресами */
+    margin-bottom: 10px;
 }
 
 .address {
-    display: flex; /* Используем flex для адресов */
-    align-items: center; /* Центрируем элементы по вертикали */
-    margin: 5px 0; /* Отступ между адресами */
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
 }
 
 .address span {
-    margin-right: 10px; /* Отступ между меткой и полем ввода */
+    margin-right: 10px;
 }
 
 .address input {
-    flex:1; /* Заставляем поле занимать доступное пространство */
-    padding: 5px; /* Внутренний отступ */
-    border: 1px solid #ccc; /* Рамка */
-    border-radius: 5px; /* Скругляем углы */
-    margin-right: 10px; /* Отступ между полем и кнопкой */
+    flex:1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .copy-button {
     position: flex;
-    background-color: #4460AA; /* Цвет фона кнопки */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем рамку */
-    padding: 5px 10px; /* Отступ внутри кнопки */
-    border-radius: 5px; /* Скругляем углы */
-    cursor: pointer; /* Указываем, что это кликабельный элемент */
-    transition: background-color 0.3s; /* Плавный переход цвета фона */
+    background-color: #4460AA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .copy-button:hover {
-    background-color: #365b8a; /* Цвет кнопки при наведении */
+    background-color: #365b8a;
 }
 
 .thank-you {
-    margin-top: 20px; /* Отступ сверху */
-    font-size: 14px; /* Размер шрифта для благодарности */
-    color: white; /* Цвет текста */
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
 }
 
 .social-icons a {
-    text-decoration: none; /* Убираем нижнее подчеркивание */
-    color: inherit; /* Устанавливаем цвет текста как наследуемый от родителя */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* ВОПРОСЫ*/
 /* Контейнер для select и вопросика */
 .select-container {
     display: flex;
@@ -786,13 +783,13 @@ body {
     padding: 8px;
     border-radius: 5px;
     font-size: 12px;
-    line-height: 1.4; /* Увеличение межстрочного интервала */
-    max-width: 250px; /* Максимальная ширина для многострочного текста */
-    white-space: normal; /* Позволяет тексту переходить на следующую строку */
+    line-height: 1.4;
+    max-width: 250px;
+    white-space: normal;
     z-index: 10;
     opacity: 1;
     transition: opacity 0.2s;
-    text-align: left; /* Выровняем текст по левому краю */
+    text-align: left;
 }
 
 .tooltip::after {
@@ -803,31 +800,4 @@ body {
 
 .tooltip:hover::after {
     display: block;
-}
-
-/* ОКНО */
-/* Основной стиль модального окна */
-.tooltip-modal {
-    display: none; /* По умолчанию скрыто */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-/* Содержимое модального окна */
-.tooltip-content {
-    max-width: 300px;
-    background: #333;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 1.4;
 }
