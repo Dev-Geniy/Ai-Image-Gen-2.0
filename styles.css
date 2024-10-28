@@ -570,9 +570,8 @@ body {
 
 .app-panel-container {
     overflow: hidden;
-    cursor: grab;
     width: 100%;
-    max-width: 600px;
+    max-width: auto;
     position: relative;
 }
 
@@ -583,6 +582,7 @@ body {
     padding: 10px;
     scroll-behavior: smooth;
     transition: transform 0.2s ease;
+    cursor: grab;
 }
 
 .app-card {
@@ -597,8 +597,8 @@ body {
     border-radius: 5px;
 }
 
-.app-panel-container:active {
-    cursor: grabbing;
+.app-panel:active {
+   cursor: grabbing;
 }
 
 .app-panel-container h2 {
@@ -609,6 +609,52 @@ body {
     font-size: 24px;
     color: white;
 }
+
+/* Стили для стрелок */
+.arrow-left, .arrow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+    opacity: 0.3; /* Начальная прозрачность */
+}
+
+.arrow-left::before, .arrow-right::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-left::before {
+    border-width: 10px 15px 10px 0; /* Широкая стрелка без палочки */
+    border-color: transparent rgba(255, 255, 255, 0.3) transparent transparent;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.arrow-right::before {
+    border-width: 10px 0 10px 15px; /* Широкая стрелка без палочки */
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
+}
+
+/* Меняем прозрачность стрелок при наведении */
+.app-panel-container:hover .arrow-left,
+.app-panel-container:hover .arrow-right {
+    opacity: 0.8;
+}
+
 
 /*Алерт меняем на Алерт 2*/
 .cyberpunk-popup {
@@ -702,4 +748,86 @@ body {
 .social-icons a {
     text-decoration: none; /* Убираем нижнее подчеркивание */
     color: inherit; /* Устанавливаем цвет текста как наследуемый от родителя */
+}
+
+/* ВОПРОСЫ*/
+/* Контейнер для select и вопросика */
+.select-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.tooltip {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #00BFFF;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Подсказка при наведении */
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 110%;
+    bottom: 120%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.4; /* Увеличение межстрочного интервала */
+    max-width: 250px; /* Максимальная ширина для многострочного текста */
+    white-space: normal; /* Позволяет тексту переходить на следующую строку */
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s;
+    text-align: left; /* Выровняем текст по левому краю */
+}
+
+.tooltip::after {
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.tooltip:hover::after {
+    display: block;
+}
+
+/* ОКНО */
+/* Основной стиль модального окна */
+.tooltip-modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Содержимое модального окна */
+.tooltip-content {
+    max-width: 300px;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.4;
 }
