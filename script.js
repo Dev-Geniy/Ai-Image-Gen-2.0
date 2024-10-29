@@ -488,3 +488,5 @@ function showLoadingScreen() {
 // Пример использования функции showLoadingScreen, например, при нажатии на кнопку "Generate"
 document.getElementById("generate").addEventListener("click", showLoadingScreen);
 document.getElementById("generate-multiple").addEventListener("click", showLoadingScreen);
+
+//КАРТИНКИ ПРИМЕРЫ ==============================
