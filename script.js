@@ -33,15 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
         select.addEventListener("change", updatePrompt);
     });
 
-    // Кнопка для генерации 1 изображения
-    generateButton.addEventListener("click", function () {
+// Кнопка для генерации 1 изображения
+generateButton.addEventListener("click", function () {
+    if (textInput.value.trim()) { // Проверка на наличие текста
+        displayLoadingState(true); // Переместить сюда
         generateImage(1);
-    });
+    } else {
+        alert("Пожалуйста, введите текст для генерации изображения.");
+    }
+});
 
-    // Кнопка для генерации 5 изображений
-    generateMultipleButton.addEventListener("click", function () {
+// Кнопка для генерации 5 изображений
+generateMultipleButton.addEventListener("click", function () {
+    if (textInput.value.trim()) { // Проверка на наличие текста
+        displayLoadingState(true); // Переместить сюда
         generateImage(5);
-    });
+    } else {
+        alert("Пожалуйста, введите текст для генерации изображения.");
+    }
+});
 
     // Закрытие модального окна
     closeButton.onclick = function () {
@@ -481,12 +491,15 @@ function updateLoadingTip() {
 
 // Показываем загрузочный экран и обновляем совет
 function showLoadingScreen() {
-    document.getElementById("loading-spinner").style.display = "block";
-    updateLoadingTip();
+    const textInput = document.getElementById("text-input"); // Предположим, у вас есть текстовое поле с ID "text-input"
+    
+    // Проверяем, есть ли текст в текстовом поле
+    if (textInput.value.trim() !== "") {
+        document.getElementById("loading-spinner").style.display = "block";
+        updateLoadingTip();
+    }
 }
 
 // Пример использования функции showLoadingScreen, например, при нажатии на кнопку "Generate"
 document.getElementById("generate").addEventListener("click", showLoadingScreen);
 document.getElementById("generate-multiple").addEventListener("click", showLoadingScreen);
-
-//КАРТИНКИ ПРИМЕРЫ ==============================
