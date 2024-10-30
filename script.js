@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Получаем значения из всех выпадающих списков
         const styleValue = document.getElementById("style-select").value;
-        const formatValue = document.getElementById("format-select").value;
+        const angleValue = document.getElementById("angle-select").value; // Добавлено
+        const focusValue = document.getElementById("focus-select").value; // Добавлено
         const toneValue = document.getElementById("tone-select").value;
         const themeValue = document.getElementById("theme-select").value;
         const filterValue = document.getElementById("filter-select").value;
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const placeValue = document.getElementById("place-select").value;
 
         // Формируем полный промт
-        const fullPrompt = [promptText, styleValue, formatValue, toneValue, themeValue, filterValue, characterValue, placeValue]
+        const fullPrompt = [promptText, styleValue, angleValue, focusValue, toneValue, themeValue, filterValue, characterValue, placeValue]
             .filter(item => item) // Убираем пустые строки
             .join(', '); // Объединяем значения через запятую
         
@@ -33,25 +34,25 @@ document.addEventListener("DOMContentLoaded", function () {
         select.addEventListener("change", updatePrompt);
     });
 
-// Кнопка для генерации 1 изображения
-generateButton.addEventListener("click", function () {
-    if (textInput.value.trim()) { // Проверка на наличие текста
-        displayLoadingState(true); // Переместить сюда
-        generateImage(1);
-    } else {
-        alert("Пожалуйста, введите текст для генерации изображения.");
-    }
-});
+    // Кнопка для генерации 1 изображения
+    generateButton.addEventListener("click", function () {
+        if (textInput.value.trim()) { // Проверка на наличие текста
+            displayLoadingState(true); // Переместить сюда
+            generateImage(1);
+        } else {
+            alert("Пожалуйста, введите текст для генерации изображения.");
+        }
+    });
 
-// Кнопка для генерации 5 изображений
-generateMultipleButton.addEventListener("click", function () {
-    if (textInput.value.trim()) { // Проверка на наличие текста
-        displayLoadingState(true); // Переместить сюда
-        generateImage(5);
-    } else {
-        alert("Пожалуйста, введите текст для генерации изображения.");
-    }
-});
+    // Кнопка для генерации 5 изображений
+    generateMultipleButton.addEventListener("click", function () {
+        if (textInput.value.trim()) { // Проверка на наличие текста
+            displayLoadingState(true); // Переместить сюда
+            generateImage(5);
+        } else {
+            alert("Пожалуйста, введите текст для генерации изображения.");
+        }
+    });
 
     // Закрытие модального окна
     closeButton.onclick = function () {
@@ -137,6 +138,7 @@ generateMultipleButton.addEventListener("click", function () {
         modal.style.display = "block";
     }
 });
+
 
 // Дополнения версии 2.0 для работы с историей запросов
 document.addEventListener('DOMContentLoaded', () => {
@@ -503,3 +505,8 @@ function showLoadingScreen() {
 // Пример использования функции showLoadingScreen, например, при нажатии на кнопку "Generate"
 document.getElementById("generate").addEventListener("click", showLoadingScreen);
 document.getElementById("generate-multiple").addEventListener("click", showLoadingScreen);
+
+// Кнопка открыть учебные материалы
+    document.getElementById("open-link").addEventListener("click", function() {
+        window.open("https://dev-geniy.github.io/Ai-Image-Gen-2.0/mat", "_blank");
+    });
