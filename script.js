@@ -510,3 +510,64 @@ document.getElementById("generate-multiple").addEventListener("click", showLoadi
     document.getElementById("open-link").addEventListener("click", function() {
         window.open("https://dev-geniy.github.io/Ai-Image-Gen-2.0/mat", "_blank");
     });
+
+// ========================================
+// Инициализация счётчиков для изображений
+let generateCount = parseInt(localStorage.getItem("generateCount")) || 0;
+let dailyCount = parseInt(localStorage.getItem("dailyCount")) || 0;
+let weeklyCount = parseInt(localStorage.getItem("weeklyCount")) || 0;
+let monthlyCount = parseInt(localStorage.getItem("monthlyCount")) || 0;
+let lastMonthCount = parseInt(localStorage.getItem("lastMonthCount")) || 0;
+
+// Настройка значений для дохода
+const stockPricePerImage = 10; // Цена за изображение на стоках
+const nftPricePerImage = 50; // Цена за изображение на NFT
+
+// Обновление всех счётчиков и дохода
+function updateCounters() {
+    document.getElementById("generate-count").textContent = generateCount;
+    document.getElementById("daily-count").textContent = dailyCount;
+    document.getElementById("weekly-count").textContent = weeklyCount;
+    document.getElementById("monthly-count").textContent = monthlyCount;
+    document.getElementById("last-month-count").textContent = lastMonthCount;
+
+    // Рассчёт дохода
+    const stockIncome = generateCount * stockPricePerImage;
+    const nftIncome = generateCount * nftPricePerImage;
+
+    document.getElementById("stock-income").textContent = `${stockIncome} $`;
+    document.getElementById("nft-income").textContent = `${nftIncome} $`;
+}
+
+// Сохранение всех значений в localStorage и обновление на экране
+function saveAndDisplayCounters() {
+    localStorage.setItem("generateCount", generateCount);
+    localStorage.setItem("dailyCount", dailyCount);
+    localStorage.setItem("weeklyCount", weeklyCount);
+    localStorage.setItem("monthlyCount", monthlyCount);
+    localStorage.setItem("lastMonthCount", lastMonthCount);
+    updateCounters();
+}
+
+// Функция генерации изображения
+function generateImages(count) {
+    // Имитация успешной генерации или ошибки
+    const generationSuccess = Math.random() > 0.1; // 90% шанс успешной генерации
+
+    if (generationSuccess) {
+        dailyCount += count;
+        weeklyCount += count;
+        monthlyCount += count;
+        generateCount += count;
+        saveAndDisplayCounters();
+    } else {
+        alert("Ошибка при генерации изображения. Попробуйте ещё раз.");
+    }
+}
+
+// События для кнопок
+document.getElementById("generate").addEventListener("click", () => generateImages(1));
+document.getElementById("generate-multiple").addEventListener("click", () => generateImages(5));
+
+// Начальная установка значений
+updateCounters();
