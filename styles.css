@@ -17,10 +17,11 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('https://img.freepik.com/premium-photo/blue-wash-day-japanese-village_1282444-172329.jpg?w=360') no-repeat center center;
     background-size: cover;
     z-index: -1;
 }
+
 
 .content {
     position: relative;
@@ -853,4 +854,61 @@ body {
     margin: 0 auto; /* Центрирует изображение */
     width: 250px; /* Ширина изображения */
     height: 250px; /* Высота изображения */
+}
+
+/* .....СЧЁТЧИК.... */
+/* Основной контейнер */
+.counter-container, .income-table {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Заголовки и описания */
+.counter-title, .income-title {
+    font-size: 1.5em;
+    color: #00bfff;
+}
+
+.counter-description, .income-description, .income-note {
+    font-size: 0.9em;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Стиль для счётчика */
+.cyber-counter .display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    color: #00c0ff;
+    text-shadow: 0 0 8px #00c0ff, 0 0 15px #007acc;
+    margin-bottom: 20px;
+}
+
+/* Таблица статистики и дохода */
+.stats-table, .income-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #202020;
+    color: #b0b0b0;
+}
+
+.stats-table th, .stats-table td, .income-table th, .income-table td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.stats-table th, .income-table th {
+    background-color: #282828;
+    color: #00bfff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+button:hover {
+    background: #004080;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
 }
