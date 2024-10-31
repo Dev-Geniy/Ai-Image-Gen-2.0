@@ -571,3 +571,40 @@ document.getElementById("generate-multiple").addEventListener("click", () => gen
 
 // Начальная установка значений
 updateCounters();
+
+// -------- ТЕМЫ -------//
+
+// Функция для переключения темы и сохранения её в localStorage
+function changeTheme(theme) {
+    document.body.classList.remove("theme-red", "theme-green", "theme-invert");
+    
+    switch (theme) {
+        case "Cyber-Red":
+            document.body.classList.add("theme-red");
+            break;
+        case "Cyber-Green":
+            document.body.classList.add("theme-green");
+            break;
+        case "Cyber-Invert":
+            document.body.classList.add("theme-invert");
+            break;
+        default:
+            break; // Cyber-Blue по умолчанию
+    }
+    
+    // Сохранение выбранной темы в localStorage
+    localStorage.setItem("selectedTheme", theme);
+}
+
+// Функция для загрузки темы из localStorage при загрузке страницы
+function loadTheme() {
+    const savedTheme = localStorage.getItem("selectedTheme");
+    if (savedTheme) {
+        changeTheme(savedTheme);
+    } else {
+        changeTheme("Cyber-Blue"); // Задаём "Cyber-Blue" как тему по умолчанию
+    }
+}
+
+// Загрузка темы при загрузке страницы
+document.addEventListener("DOMContentLoaded", loadTheme);
