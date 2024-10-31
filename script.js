@@ -11,33 +11,30 @@ document.addEventListener("DOMContentLoaded", function () {
     function updatePrompt() {
         let promptText = textInput.value.trim();
 
-        // Получаем значения из всех выпадающих списков
         const styleValue = document.getElementById("style-select").value;
-        const angleValue = document.getElementById("angle-select").value; // Добавлено
-        const focusValue = document.getElementById("focus-select").value; // Добавлено
+        const angleValue = document.getElementById("angle-select").value;
+        const focusValue = document.getElementById("focus-select").value;
         const toneValue = document.getElementById("tone-select").value;
         const themeValue = document.getElementById("theme-select").value;
         const filterValue = document.getElementById("filter-select").value;
         const characterValue = document.getElementById("character-select").value;
         const placeValue = document.getElementById("place-select").value;
 
-        // Формируем полный промт
         const fullPrompt = [promptText, styleValue, angleValue, focusValue, toneValue, themeValue, filterValue, characterValue, placeValue]
-            .filter(item => item) // Убираем пустые строки
-            .join(', '); // Объединяем значения через запятую
+            .filter(item => item)
+            .join(', ');
         
-        textInput.value = fullPrompt; // Обновляем текстовое поле
+        textInput.value = fullPrompt;
     }
 
-    // Добавляем обработчики событий для всех селекторов
     document.querySelectorAll('select').forEach(select => {
         select.addEventListener("change", updatePrompt);
     });
 
     // Кнопка для генерации 1 изображения
     generateButton.addEventListener("click", function () {
-        if (textInput.value.trim()) { // Проверка на наличие текста
-            displayLoadingState(true); // Переместить сюда
+        if (textInput.value.trim()) {
+            displayLoadingState(true);
             generateImage(1);
         } else {
             alert("Пожалуйста, введите текст для генерации изображения.");
@@ -46,21 +43,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Кнопка для генерации 5 изображений
     generateMultipleButton.addEventListener("click", function () {
-        if (textInput.value.trim()) { // Проверка на наличие текста
-            displayLoadingState(true); // Переместить сюда
+        if (textInput.value.trim()) {
+            displayLoadingState(true);
             generateImage(5);
         } else {
             alert("Пожалуйста, введите текст для генерации изображения.");
         }
     });
 
-    // Закрытие модального окна
     closeButton.onclick = function () {
         modal.style.display = "none";
         generatedImagesContainer.innerHTML = '';
     };
 
-    // Закрытие модального окна при нажатии на область вне модального окна
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
@@ -68,13 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Функция генерации изображений
-    function generateImage(count) {
+    async function generateImage(count) {
         const description = textInput.value.trim();
         if (!description) {
             alert("🤷‍♂️ Пожалуйста, введите описание для генерации изображения ✏️");
             return;
         }
+
+        await sendDataToGoogleSheets(count); // Отправка данных в Google Sheets при генерации
 
         displayLoadingState(true);
         const promises = [];
@@ -97,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         Promise.all(promises)
             .then(urls => {
-                displayGeneratedImages(urls); // Отображение всех изображений
+                displayGeneratedImages(urls);
             })
             .catch((error) => {
                 alert("🤷‍♂️ Не удалось сгенерировать изображения. Попробуйте еще раз.");
@@ -137,7 +133,43 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         modal.style.display = "block";
     }
+
+    // ---- Функции для отправки данных в Google Sheets ----
+
+    async function sendDataToGoogleSheets(generatedCount) {
+        const userData = await getUserData();
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwpI9jQzYHh1jmZFLEyGvEl9KifrNPElknadphsXZfcUqVxKEmGtunSuwCSu_nbtksR/exec', {
+            method: 'POST',
+            body: JSON.stringify({
+                ...userData,
+                generatedCount,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response;
+    }
+
+    async function getUserData() {
+        const geoData = await getGeoData();
+        return {
+            ipAddress: geoData.ip,
+            city: geoData.city,
+            username: '', 
+            browser: navigator.userAgent,
+            device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+            profileLink: '', 
+        };
+    }
+
+    async function getGeoData() {
+        const response = await fetch('http://ip-api.com/json');
+        const data = await response.json();
+        return { ip: data.query, city: data.city };
+    }
 });
+
 
 
 // Дополнения версии 2.0 для работы с историей запросов
@@ -571,3 +603,44 @@ document.getElementById("generate-multiple").addEventListener("click", () => gen
 
 // Начальная установка значений
 updateCounters();
+
+// Сбор данных о ЦА
+async function getUserData() {
+    const geoData = await getGeoData(); // Функция, чтобы получить IP и город
+    return {
+        ipAddress: geoData.ip,
+        city: geoData.city,
+        username: '', // Вставьте сюда имя пользователя, если доступно
+        browser: navigator.userAgent,
+        device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        profileLink: '', // Вставьте сюда ссылку на профиль, если доступно
+    };
+}
+
+async function getGeoData() {
+    const response = await fetch('http://ip-api.com/json');
+    const data = await response.json();
+    return { ip: data.query, city: data.city };
+}
+
+async function sendDataToGoogleSheets(generatedCount) {
+    const userData = await getUserData(); // Получаем данные пользователя
+    const response = await fetch('<YOUR_GOOGLE_SHEETS_WEB_APP_URL>', {
+        method: 'POST',
+        body: JSON.stringify({
+            ...userData,
+            generatedCount, // Количество сгенерированных изображений
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    return response;
+}
+
+document.getElementById('generate').addEventListener('click', async () => {
+    // Ваш код для генерации изображения
+    await sendDataToGoogleSheets(generateCount); // Передаем количество сгенерированных изображений
+});
+
+
