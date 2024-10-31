@@ -34,7 +34,8 @@ header {
     padding: 15px 0;
     text-align: center;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.2);
+    box-shadow: 0 5px 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+
     position: fixed;
     top: 0;
     left: 0;
@@ -108,7 +109,8 @@ h1 {
     font-size: 3rem;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.9);
+    text-shadow: 0 0 10px var(--text-shadow-color);
+
 }
 
 .container {
@@ -126,7 +128,7 @@ textarea {
     padding: 10px;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-color);
     color: white;
 }
 
@@ -135,7 +137,7 @@ button {
     margin-right: 15px;
     border: none;
     border-radius: 5px;
-    background: rgba(0, 255, 255, 0.1);
+    background: var(--primary-color);
     color: white;
     font-size: 1.6rem;
     cursor: pointer;
@@ -144,8 +146,9 @@ button {
 }
 
 button:hover {
-    background: rgba(0, 255, 255, 0.3);
+    background: var(--secondary-color);
     transform: scale(1.05);
+    box-shadow: 0 0 15px var(--secondary-color);
 }
 
 .button-card {
@@ -172,15 +175,15 @@ button:hover {
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 5px var(--secondary-color);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        box-shadow: 0 0 15px var(--secondary-color);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 5px var(--secondary-color);
     }
 }
 
@@ -320,19 +323,6 @@ button:hover {
     line-height: 1.5;
 }
 
-.subscribe {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.subscribe-text {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 24px;
-    color: black;
-    text-shadow: 0 0 10px lightblue;
-    margin-bottom: 10px;
-}
-
 .social-icons {
     display: flex;
     justify-content: center;
@@ -381,21 +371,6 @@ button:hover {
 .loading-gif {
     width: 170px;
     height: 170px;
-}
-
-.donation-button button {
-    padding: 10px 20px;
-    background-color: #4444;
-    color: Black;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-.donation-button button:hover {
-    background: none;
-    transform: scale(1.1);
 }
 
 select {
@@ -521,13 +496,11 @@ body {
     right: 0;
     width: 8px;
     height: 100%;
-    background: linear-gradient(180deg, #00FFFF, #007FFF);
+    background: var(--scroll-gradient);
     opacity: 0;
     transition: opacity 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
     z-index: 9999;
-    
-    
-    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 80px #007FFF;
+    box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
     filter: blur(1px);
 }
 
@@ -652,19 +625,20 @@ body {
 
 /* Алерт */
 .cyberpunk-popup {
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 20px rgba(0, 255, 204, 0.8);
+    box-shadow: 0 0 20px var(--highlight-color), 0 0 20px var(--secondary-color);
 }
 .cyberpunk-button {
     padding: 10px 20px;
     font-size: 16px;
-    color: #ff00ff;
+    color: var(--highlight-color);
     background: none;
-    border: 2px solid #00ffcc;
-    text-shadow: 0 0 5px #00ffcc;
+    border: 2px solid var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
     transition: 0.3s;
 }
+
 .cyberpunk-button:hover {
-    background-color: #00ffcc;
+    background-color: var(--secondary-color);
     color: #0f0f3d;
 }
 
@@ -718,9 +692,10 @@ body {
     margin-right: 10px;
 }
 
+/* Кнопка копирования адреса */
 .copy-button {
     position: flex;
-    background-color: #4460AA;
+    background-color: var(--highlight-color);
     color: white;
     border: none;
     padding: 5px 10px;
@@ -729,8 +704,9 @@ body {
     transition: background-color 0.3s;
 }
 
+
 .copy-button:hover {
-    background-color: #365b8a;
+    background-color: darken(var(--highlight-color), 20%);
 }
 
 .thank-you {
@@ -758,7 +734,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #00BFFF;
+    background-color: var(--highlight-color);
     color: white;
     font-weight: bold;
     font-size: 12px;
@@ -868,7 +844,7 @@ body {
 /* Заголовки и описания */
 .counter-title, .income-title {
     font-size: 1.5em;
-    color: #00bfff;
+    color:  var(--highlight-color);
 }
 
 .counter-description, .income-description, .income-note {
@@ -881,8 +857,8 @@ body {
 .cyber-counter .display {
     font-family: 'Orbitron', sans-serif;
     font-size: 28px;
-    color: #00c0ff;
-    text-shadow: 0 0 8px #00c0ff, 0 0 15px #007acc;
+    color: white;
+    text-shadow: 0 0 10px var(--text-shadow-color);
     margin-bottom: 20px;
 }
 
@@ -895,20 +871,95 @@ body {
 }
 
 .stats-table th, .stats-table td, .income-table th, .income-table td {
-    border: 1px solid #333;
+    border: 1px solid var(--text-shadow-color);
     padding: 10px;
     text-align: center;
 }
 
 .stats-table th, .income-table th {
     background-color: #282828;
-    color: #00bfff;
+    color: var(--highlight-color);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
-button:hover {
-    background: #004080;
-    color: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+/* - - - - - ТЕМЫ - - - - - -*/
+/* Основные темы для переключения */
+:root {
+    --primary-color: rgba(0, 255, 255, 0.1); /* Cyber-Blue */
+    --secondary-color: rgba(0, 255, 255, 0.5);
+    --highlight-color: #00BFFF;
+    --text-shadow-color: rgba(0, 255, 255, 0.9);
+    --scroll-gradient: linear-gradient(180deg, #00FFFF, #007FFF);
+}
+
+/* Тема Cyber-Red */
+.theme-red {
+    --primary-color: rgba(255, 0, 0, 0.1);
+    --secondary-color: rgba(255, 0, 0, 0.5);
+    --highlight-color: #FF0040;
+    --text-shadow-color: rgba(255, 0, 0, 0.9);
+    --scroll-gradient: linear-gradient(180deg, #FF0000, #7F0000);
+}
+
+/* Тема Cyber-Green */
+.theme-green {
+    --primary-color: rgba(0, 255, 0, 0.1);
+    --secondary-color: rgba(0, 255, 0, 0.5);
+    --highlight-color: #00FF80;
+    --text-shadow-color: rgba(0, 255, 0, 0.9);
+    --scroll-gradient: linear-gradient(180deg, #00FF00, #007F00);
+}
+
+/* Тема Cyber-Invert */
+.theme-invert {
+    --primary-color: rgba(255, 255, 255, 0.1);
+    --secondary-color: rgba(255, 255, 255, 0.8);
+    --highlight-color: #BFBFBF;
+    --text-shadow-color: rgba(255, 255, 255, 0.9);
+    --scroll-gradient: linear-gradient(180deg, #FFFFFF, #BFBFBF);
+}
+
+/* ======== ИКОНКИ ======== */
+/* Стили для контейнера переключателя */
+.theme-switcher {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Общие стили для кнопок */
+.theme-btn {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://cdn1.iconfinder.com/data/icons/seo-and-web-development-5/32/development_edit_paint_repaint_color_brush-256.png');
+    background-size: cover;
+    background-blend-mode: multiply;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+/* Индивидуальные стили для каждой темы */
+.theme-blue {
+    background-color: #00bfff;
+}
+
+.theme-red {
+    background-color: #ff0040;
+}
+
+.theme-green {
+    background-color: #00ff00;
+}
+
+.theme-invert {
+    background-color: #FFFFFF;
+}
+
+/* Эффект при наведении — просто увеличение прозрачности */
+.theme-btn:hover {
+    opacity: 0.4;
 }
