@@ -122,17 +122,21 @@
 </div>
 
 <div class="select-container">
-    <span class="tooltip" data-tooltip="Тип персонажа: 'Дедушка' придаст зрелость, 'Мужчина' или 'Женщина' добавят современные черты, а 'Мальчик' или 'Девочка' — молодость и наивность.">?</span>
+    <span class="tooltip" data-tooltip="Тип персонажа: 'Мужчина' и 'Девушка' — современные образы, 'Супергерой' и 'Монстр' — элементы фантазии, 'Древняя сущность' и 'Инопланетное существо' — загадочность. 'Маг', 'Робот', 'Вампир', 'Фея', 'Воин' и 'Призрак' — обогащают мир персонажей разнообразными архетипами.">?</span>
     <select id="character-select">
-        <option value="">▪️ Персонаж ▪️▪️▪️</option>
-        <option value="grandfather">Дедушка</option>
-        <option value="grandmother">Бабушка</option>
+        <option value="">▪️ Персонаж ▪️</option>
         <option value="man">Мужчина</option>
-        <option value="woman">Женщина</option>
-        <option value="young-man">Парень</option>
         <option value="young-woman">Девушка</option>
-        <option value="boy">Мальчик</option>
-        <option value="girl">Девочка</option>
+        <option value="superhero">Супергерой</option>
+        <option value="monster">Монстр</option>
+        <option value="ancient-entity">Древняя сущность</option>
+        <option value="alien">Инопланетное существо</option>
+        <option value="wizard">Маг</option>
+        <option value="robot">Робот</option>
+        <option value="vampire">Вампир</option>
+        <option value="fairy">Фея</option>
+        <option value="warrior">Воин</option>
+        <option value="ghost">Призрак</option>
     </select>
 </div>
 
@@ -164,8 +168,19 @@
 </div>
 
 <div class="app-panel-container">
-  <h2>Меняйте тему в 1 клик. Ставьте свои любимые фото!</h2>
+  <h2>Меняйте тему в 1 клик:</h2>
 </div>
+      <div class="theme-switcher">
+    <button class="theme-btn theme-blue" onclick="changeTheme('Cyber-Blue')" title="Cyber-Blue"></button>
+    <button class="theme-btn theme-red" onclick="changeTheme('Cyber-Red')" title="Cyber-Red"></button>
+    <button class="theme-btn theme-green" onclick="changeTheme('Cyber-Green')" title="Cyber-Green"></button>
+    <button class="theme-btn theme-invert" onclick="changeTheme('Cyber-Invert')" title="Cyber-Invert"></button>
+</div>
+
+<div class="app-panel-container">
+  <h2>Ставьте на задний фон свои любимые фото!</h2>
+</div>
+      
   <div class="background-controls">
     <label for="background-upload" class="upload-label">
         <img src="https://cdn4.iconfinder.com/data/icons/success-filloutline/64/ebook-e_learning-education-plant-online-512.png" alt="Upload Icon" class="upload-icon">
@@ -189,7 +204,7 @@
           <p>▪ Бесплатный полностью </p>
           <p>Хорошо подходит для жанров "Anime" и "Реализм".</p>
     <div class="button-card"> 
-       <button class="button-link" onclick="window.open('https://waifu2x.booru.pics/', '_blank')">Перейти</button>
+       <button class="button" onclick="window.open('https://waifu2x.booru.pics/', '_blank')">Перейти</button>
    </div>
 </div>
 
@@ -201,7 +216,7 @@
     <p>▪️ Бесплатный полностью</p>
     <p>Идеально для редактирования изображений разных форматов, добавление текстов и т.д..</p>
     <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www.photopea.com/', '_blank')">Перейти</button>
+        <button class="button" onclick="window.open('https://www.photopea.com/', '_blank')">Перейти</button>
     </div>
 </div>
 
@@ -213,7 +228,7 @@
     <p>▪️ Без регистрации и бесплатно.</p>
     <p>Отлично для быстрого редактирования и фильтров.</p>
     <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www5.lunapic.com/editor/', '_blank')">Перейти</button>
+        <button class="button" onclick="window.open('https://www5.lunapic.com/editor/', '_blank')">Перейти</button>
     </div>
 </div>
 
@@ -225,7 +240,7 @@
     <p>▪️ Поддержка различных разрешений</p>
     <p>Прекрасно подходит для портретов и объектов.</p>
     <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://www.remove.bg/ru', '_blank')">Перейти</button>
+        <button class="button" onclick="window.open('https://www.remove.bg/ru', '_blank')">Перейти</button>
     </div>
 </div>
       
@@ -237,7 +252,7 @@
     <p>▪️ Бесплатно первые 100 шт.</p>
     <p>Идеально подходит для фотографий и графики.</p>
     <div class="button-card"> 
-        <button class="button-link" onclick="window.open('https://imglarger.com/', '_blank')">Перейти</button>
+        <button class="button" onclick="window.open('https://imglarger.com/', '_blank')">Перейти</button>
     </div>
 </div>
         <!-- Добавьте больше карточек при необходимости -->
@@ -341,15 +356,6 @@
   </div>
 </div>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
 <div class="bottom-container">
     <div class="news-item" id="news2">
@@ -442,17 +448,16 @@
             </li>
         </ul>
               <p>Все материалы открыты для вас и абсолютно бесплатны. <strong>Начните обучение:</strong></p>
-        <button class="button-link" id="open-link">Как заработать на изображениях - открывайте все учебные материалы бесплатно!</button>
-        <p>Не благодарите, лучшая благодарность — это ваш успех!</p>
+        <button style="text-align: center;" id="open-link">Начать заработать на изображениях все материалы бесплатно!</button>
+        <p style="text-align: center;">Не благодарите, лучшая благодарность — это ваш успех!</p>
     </div>
 </div>
-
       
 <div class="bottom-container">
-<div class="header-container">
-        <img src="https://i.gifer.com/yy3.gif" alt="Animation" class="header-animation">
+
+  <img src="https://i.gifer.com/yy3.gif" alt="Animation" class="header-animation" >
         <h1 class="animated-title">AIImage v2.0 PRO</h1>
-    </div>
+  
     <h3 class="news-text">Наша история успеха!</h3>
         <p>Мы начали свой путь в 2024 году 20.10 и уже достигли многого. Сравните наши версии:</p>
         
@@ -472,7 +477,8 @@
           <li>История генераций</li>
           <li>Новостнуя лента</li>
         
-        <h2 style="text-align: center;">AIImage v2.0 PRO – Прорывные возможности</h2>
+        
+  <h2 style="text-align: center;">AIImage v2.0 PRO – Прорывные возможности</h2>
         <p>Последняя версия объединяет все улучшения и добавляет Топ-5 сервисов для работы с изображениями:</p>
         <ul>
             <li><strong>Photopea</strong> — аналог Photoshop, онлайн (выбирайте фото и редактируйте) ▪️ Бесплатный.</li>
@@ -572,6 +578,7 @@
 </div>
   
 <div class="bottom-ful-container">
+
   <h3>«AIImage» v2.0 PRO</h3> 
      <p>Made in Ukraine 2024 Все права защищены.</p>
   </div>
